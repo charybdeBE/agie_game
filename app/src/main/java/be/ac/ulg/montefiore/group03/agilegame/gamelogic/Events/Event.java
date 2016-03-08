@@ -12,7 +12,11 @@ public abstract  class  Event {
     protected Date occurs;
     protected int delay; // could be negative
     protected Skills amelioration; // May be negative ?
+    protected String name;
 
     public abstract void effect(Programmer _p);
 
+    public String getName(){
+        return name;
+    }
 }

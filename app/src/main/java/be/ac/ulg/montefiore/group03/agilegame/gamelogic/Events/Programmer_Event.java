@@ -13,9 +13,11 @@ public class Programmer_Event extends Event {
     public void effect(Programmer _p) { //Could be inherited by special programmer_event
         if(_p.like(depend)){
             if(_p.hasSkill(this.amelioration.getType())){
-                _p.getSkill(this.amelioration.getType()){
+                if(this.amelioration.getLevel() > 0)
+                    _p.getSkill(this.amelioration.getType()).levelUp();
+                else
+                    _p.getSkill(this.amelioration.getType()).levelDown();
 
-                }
             }
         }
     }
