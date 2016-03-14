@@ -46,16 +46,16 @@ public class Event_Builder {
         if(coin > 0.7)
             return null;
 
-        int day = getADay() - DateUtil.getDay(month) + 1; //Select a day of the month
-        Date ev = DateUtil.dateFromString(day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month), "d.M.y");
+        int day = getADay(); //Select a day of the month
+        System.out.println("" + day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month));
+        Date ev = DateUtil.dateFromString(""+ day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month), "d.M.y");
 
-        System.out.println(nrOfEvents.get(turn));
         Programmer_Event p =  new Programmer_Event("Bull" + nrOfEvents.get(turn), ev);
         return p;
 
     }
 
     private int getADay(){
-        return (gen.nextInt() % 27) + 1; //Don't care of the month lol
+        return gen.nextInt(28) + 1; //Don't care of the month lol
     }
 }
