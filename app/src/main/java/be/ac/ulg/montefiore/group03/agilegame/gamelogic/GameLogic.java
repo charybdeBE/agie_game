@@ -37,21 +37,9 @@ public class GameLogic {
     public ArrayList<String> getStringEventsOfDay (Date _d) {
         ArrayList<String> toRet = new ArrayList<>();
         ArrayList<Event> e = events.get(DateUtil.getFirstDayOfMonth(_d));
-        if(e == null || e.isEmpty()){
+        if(e == null){
             //Generate events for the whole month
-            int actualTurn = DateUtil.getMonth(_d) - DateUtil.getMonth(start); //TODO use year to count
-            System.out.println(DateUtil.getMonth(_d) +"p"+ DateUtil.getMonth(start));
-            if(actualTurn < 0)
-                return new ArrayList<String>();
-
-            e = new ArrayList<Event>();
-            for(int i=0; i <= Event_Builder.MAX_EVENT; ++i) {
-                Programmer_Event t = Event_Builder.getInstance().buildProgramingEvent(_d, actualTurn);
-                e.add(t);
-            }
-            events.put(DateUtil.getFirstDayOfMonth(_d), e);
-
-            System.out.println("Fabricate");
+            generateMonthEvent(_d);
             return getStringEventsOfDay(_d);
         }
         int size = e.size();
@@ -59,7 +47,6 @@ public class GameLogic {
 
         for(int i = 0; i < size; ++i) {
             if (DateUtil.getDay(e.get(i).getDate()) == day) {
-                System.out.println(e.get(i).getName());
                 toRet.add(e.get(i).getName());
             }
         }
@@ -75,4 +62,35 @@ public class GameLogic {
     }
 
 
+    private void generateMonthEvent(Date _d){
+        int actualTurn =  12 * (DateUtil.getYear(_d) - DateUtil.getYear(start)) + DateUtil.getMonth(_d) - DateUtil.getMonth(start);
+        if(actualTurn < 0) {
+            return;
+        }
+        ArrayList<Event> e = new ArrayList<Event>();
+        for(int i=0; i <= Event_Builder.MAX_EVENT; ++i) {
+            Programmer_Event t = Event_Builder.getInstance().buildProgramingEvent(_d, actualTurn);
+            if(t != null)
+                e.add(t);
+        }
+        events.put(DateUtil.getFirstDayOfMonth(_d), e);
+
+        System.out.println("Fabricate");
+
+    }
+    public ArrayList<String> getStringEventsOfMonth(Date _d) {
+        ArrayList<String> toRet = new ArrayList<>();
+        ArrayList<Event> e = events.get(DateUtil.getFirstDayOfMonth(_d));
+        if(e == null){
+            generateMonthEvent(_d);
+            return getStringEventsOfMonth(_d);
+        }
+        int size = e.size();
+        int day = DateUtil.getDay(_d);
+
+        for(int i = 0; i < size; ++i) {
+            toRet.add(e.get(i).toString());
+        }
+        return toRet;
+    }
 }

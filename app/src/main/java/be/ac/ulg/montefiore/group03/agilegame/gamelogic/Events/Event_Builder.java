@@ -31,6 +31,7 @@ public class Event_Builder {
         return Event_Builder.instance;
     }
 
+    //could return null
     public Programmer_Event buildProgramingEvent(Date month, int turn){
         if(nrOfEvents.size() <= turn){
             for(int i=nrOfEvents.size(); i <= turn; ++i)
@@ -39,10 +40,15 @@ public class Event_Builder {
        if (nrOfEvents.get(turn) > MAX_EVENT )
             return null;
 
+        nrOfEvents.set(turn, nrOfEvents.get(turn)  + 1);
+
+        double coin = gen.nextDouble();
+        if(coin > 0.7)
+            return null;
+
         int day = getADay() - DateUtil.getDay(month) + 1; //Select a day of the month
         Date ev = DateUtil.dateFromString(day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month), "d.M.y");
 
-        nrOfEvents.set(turn, nrOfEvents.get(turn)  + 1);
         System.out.println(nrOfEvents.get(turn));
         Programmer_Event p =  new Programmer_Event("Bull" + nrOfEvents.get(turn), ev);
         return p;

@@ -1,5 +1,6 @@
 package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
@@ -22,5 +23,11 @@ public abstract  class  Event {
 
     public Date getDate() {
         return occurs;
+
+    }
+
+    public String toString(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return "" + sdf.format(occurs) + " " + name;
     }
 }

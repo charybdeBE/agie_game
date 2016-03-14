@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -22,6 +23,8 @@ public class Calendar extends AppCompatActivity {
     private ArrayList<String> eventsString;
     private CalendarView cal    ;
     private ListView list;
+    private Button monthView;
+
 
     public GameLogic logic; //TODO CHANGE !
 
@@ -31,21 +34,30 @@ public class Calendar extends AppCompatActivity {
 
         logic = new GameLogic();
 
-        eventsString = logic.getStringEventsOfDay(logic.getNow());
+        eventsString = logic.getStringEventsOfMonth(logic.getNow());
         list = (ListView)findViewById(R.id.listView);
         list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1 ,eventsString));
+
 
         cal = (CalendarView)findViewById(R.id.calendarView1);
         cal.setOnDateChangeListener(new calListener(this));
         cal.setDate(logic.getNow().getTime());
 
+        monthView = (Button)findViewById(R.id.monthV);
+        monthView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventsString = logic.getStringEventsOfMonth(new Date(cal.getDate()));
+                list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, eventsString));
+            }
+        });
+
+
     }
 
     protected void updateEvent(Date select){
         eventsString = logic.getStringEventsOfDay(select);
-
         list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, eventsString));
-
     }
 
 
