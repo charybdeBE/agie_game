@@ -19,4 +19,8 @@ public abstract  class  Event {
     public String getName(){
         return name;
     }
+
+    public Date getDate() {
+        return occurs;
+    }
 }

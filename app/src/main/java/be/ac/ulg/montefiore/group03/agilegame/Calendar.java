@@ -8,6 +8,7 @@ import android.widget.CalendarView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,11 +18,10 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 public class Calendar extends AppCompatActivity {
 
 
-    //NOTE MonthInit is calculated compare to current month, if one day we use save game change it
     private ArrayAdapter<String> listAdapter;
     private ArrayList<String> eventsString;
-
-    private int month; //nr of month since beg of the game
+    private CalendarView cal    ;
+    private ListView list;
 
     public GameLogic logic; //TODO CHANGE !
 
@@ -29,42 +29,26 @@ public class Calendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        CalendarView cal = (CalendarView)findViewById(R.id.calendarView);
-        month = calculateMonth(cal);
+        logic = new GameLogic();
+
+        eventsString = logic.getStringEventsOfDay(logic.getNow());
+        list = (ListView)findViewById(R.id.listView);
+        list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1 ,eventsString));
+
+        cal = (CalendarView)findViewById(R.id.calendarView1);
         cal.setOnDateChangeListener(new calListener(this));
-
-
-        ListView list = (ListView)findViewById(R.id.listView);
-        listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1 ,eventsString);
-        list.setAdapter(listAdapter);
-
-        updateEvent();
+        cal.setDate(logic.getNow().getTime());
 
     }
 
-    protected int calculateMonth(CalendarView cal){
-        SimpleDateFormat monthSDF = new SimpleDateFormat("M");
-        SimpleDateFormat yearSDF = new SimpleDateFormat("y");
+    protected void updateEvent(Date select){
+        eventsString = logic.getStringEventsOfDay(select);
 
-        int monthInit = Integer.getInteger(monthSDF.format(new Date(System.currentTimeMillis())));
-        int yearInit = Integer.getInteger(yearSDF.format(new Date(System.currentTimeMillis())));
-        int monthCal = Integer.getInteger(monthSDF.format(new Date(cal.getDate())));
-        int yearCal = Integer.getInteger(yearSDF.format(new Date(cal.getDate())));
-        return monthCal - monthInit + 12 * (yearCal - yearInit);
+        list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, eventsString));
+
     }
 
-    protected void updateEvent(){
-        eventsString = logic.getStringEventsOfMonth(month);
-        listAdapter.notifyDataSetChanged();
-    }
 
-    protected int getMonth(){
-        return month;
-    }
-
-    protected void setMonth(int _m){
-        month = _m;
-    }
 
 
 }
@@ -77,10 +61,9 @@ class calListener implements CalendarView.OnDateChangeListener {
         this.context = _c;
     }
     @Override
-    public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-        context.setMonth(context.calculateMonth(view));
-        context.updateEvent();
-
+    public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) { //it seems that month = [0;11]
+        Date selected = DateUtil.dateFromString(""+dayOfMonth+"."+(month+1)+"."+year+"", "d.M.y");
+        context.updateEvent(selected);
     }
 
 }
