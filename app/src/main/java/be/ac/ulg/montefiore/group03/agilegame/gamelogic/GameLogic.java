@@ -18,6 +18,7 @@ public class GameLogic {
 
     private HashMap<Date, ArrayList<Event>> events; //note that the key is supposed to be the first day of the month
     private ArrayList<Programmer> team;
+    private App application;
 
     private Date start;
     private Date now;
@@ -79,6 +80,7 @@ public class GameLogic {
     }
 
 
+    //TODO include feature events
     private void generateMonthEvent(Date _d){
         int actualTurn =  12 * (DateUtil.getYear(_d) - DateUtil.getYear(start)) + DateUtil.getMonth(_d) - DateUtil.getMonth(start);
         if(actualTurn < 0) {
@@ -93,9 +95,8 @@ public class GameLogic {
         Collections.sort(e);
         events.put(DateUtil.getFirstDayOfMonth(_d), e);
 
-        System.out.println("Fabricate");
-
     }
+
     public ArrayList<String> getStringEventsOfMonth(Date _d) {
         ArrayList<String> toRet = new ArrayList<>();
         ArrayList<Event> e = events.get(DateUtil.getFirstDayOfMonth(_d));
@@ -111,5 +112,7 @@ public class GameLogic {
         }
         return toRet;
     }
+
+    //TODO Manage programmers
 }
 

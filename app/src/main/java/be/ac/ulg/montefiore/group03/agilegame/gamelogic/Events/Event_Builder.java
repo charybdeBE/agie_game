@@ -18,6 +18,7 @@ public class Event_Builder {
     private ArrayList<Integer> nrOfEvents;
     private Random gen;
 
+
     private Event_Builder(){
         this.gen = new Random();
         this.nrOfEvents = new ArrayList<Integer>();
@@ -29,6 +30,11 @@ public class Event_Builder {
         if(Event_Builder.instance == null)
             return new Event_Builder();
         return Event_Builder.instance;
+    }
+
+
+    public Feature_Event buildFeatureEvent(Date d, int turn){
+        //TODO Implement like buildProgramming (or even mix the 2)
     }
 
     //could return null
@@ -50,6 +56,7 @@ public class Event_Builder {
         System.out.println("" + day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month));
         Date ev = DateUtil.dateFromString(""+ day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month), "d.M.y");
 
+        //TODO Add interest
         Programmer_Event p =  new Programmer_Event("Bull" + nrOfEvents.get(turn), ev);
         return p;
 
