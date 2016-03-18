@@ -1,6 +1,8 @@
 package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -21,13 +23,28 @@ public class GameLogic {
     private Date now;
     private int turn;
 
-    public GameLogic(){
+
+    private static GameLogic single = null; //Singleton rox
+
+    public static GameLogic getInstance(){
+        if(GameLogic.single == null){
+            GameLogic.single = new GameLogic();
+        }
+        return GameLogic.single;
+    }
+
+    private GameLogic(){
         Date ajd = DateUtil.dateFromString("1.3.2016","d.M.y");
         events = new HashMap<Date, ArrayList<Event>>();
         team = new ArrayList<Programmer>();
         Programmer_Event test = new Programmer_Event("First of March", ajd);
+        Programmer_Event t2 = new Programmer_Event("Presentation to the client", DateUtil.dateFromString("15.3.2016","d.M.y"));
+        Programmer_Event t3 = new Programmer_Event("E3", DateUtil.dateFromString("15.3.2016","d.M.y"));
+
         ArrayList<Event> ll = new ArrayList<Event>();
         ll.add(test);
+        ll.add(t2);
+        ll.add(t3);
         events.put(ajd, ll);
         start = ajd;
         now = ajd;
@@ -73,6 +90,7 @@ public class GameLogic {
             if(t != null)
                 e.add(t);
         }
+        Collections.sort(e);
         events.put(DateUtil.getFirstDayOfMonth(_d), e);
 
         System.out.println("Fabricate");
@@ -94,3 +112,4 @@ public class GameLogic {
         return toRet;
     }
 }
+

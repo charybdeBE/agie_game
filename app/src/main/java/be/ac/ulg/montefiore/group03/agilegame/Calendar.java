@@ -1,5 +1,7 @@
 package be.ac.ulg.montefiore.group03.agilegame;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +10,9 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,47 +24,49 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 public class Calendar extends AppCompatActivity {
 
 
-    private ArrayAdapter<String> listAdapter;
     private ArrayList<String> eventsString;
     private CalendarView cal    ;
     private ListView list;
-    private Button monthView;
 
 
-    public GameLogic logic; //TODO CHANGE !
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        logic = new GameLogic();
 
-        eventsString = logic.getStringEventsOfMonth(logic.getNow());
+        eventsString = GameLogic.getInstance().getStringEventsOfMonth(GameLogic.getInstance().getNow());
         list = (ListView)findViewById(R.id.listView);
-        list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1 ,eventsString));
+        list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list,eventsString));
 
 
         cal = (CalendarView)findViewById(R.id.calendarView1);
         cal.setOnDateChangeListener(new calListener(this));
-        cal.setDate(logic.getNow().getTime());
+        cal.setDate(GameLogic.getInstance().getNow().getTime());
 
-        monthView = (Button)findViewById(R.id.monthV);
+        Button monthView = (Button)findViewById(R.id.monthV);
         monthView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventsString = logic.getStringEventsOfMonth(new Date(cal.getDate()));
-                list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, eventsString));
+                eventsString = GameLogic.getInstance().getStringEventsOfMonth(new Date(cal.getDate()));
+                list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list, eventsString));
             }
         });
 
-
+        Button toCal = (Button) findViewById(R.id.back);
+        toCal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     protected void updateEvent(Date select){
-        eventsString = logic.getStringEventsOfDay(select);
-        list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, eventsString));
+        eventsString = GameLogic.getInstance().getStringEventsOfDay(select);
+        list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list,eventsString));
     }
-
 
 
 

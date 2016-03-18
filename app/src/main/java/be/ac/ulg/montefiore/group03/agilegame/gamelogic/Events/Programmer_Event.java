@@ -14,11 +14,13 @@ public class Programmer_Event extends Event {
     private Interest depend;
 
     public Programmer_Event(String s, Date d) {
-        super();
-        occurs = d;
-        name = s;
+        super(s,d);
     }
 
+    public Programmer_Event(String s, Date d, Interest i){
+        super(s,d);
+        this.depend = i;
+    }
     public void effect(Programmer _p) { //Could be inherited by special programmer_event
         if(_p.like(depend)){
             if(_p.hasSkill(this.amelioration.getType())){
@@ -30,4 +32,6 @@ public class Programmer_Event extends Event {
             }
         }
     }
+
+
 }
