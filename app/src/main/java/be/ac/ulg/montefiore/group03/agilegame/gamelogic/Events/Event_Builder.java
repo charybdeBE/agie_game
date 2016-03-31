@@ -32,10 +32,11 @@ public class Event_Builder {
         return Event_Builder.instance;
     }
 
-
+/*
     public Feature_Event buildFeatureEvent(Date d, int turn){
         //TODO Implement like buildProgramming (or even mix the 2)
     }
+*/
 
     //could return null
     public Programmer_Event buildProgramingEvent(Date month, int turn){
