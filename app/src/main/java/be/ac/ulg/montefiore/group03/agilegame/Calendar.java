@@ -57,7 +57,7 @@ public class Calendar extends AppCompatActivity {
         toCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                Intent i = new Intent(getApplicationContext(), Manager.class);
                 startActivity(i);
             }
         });
