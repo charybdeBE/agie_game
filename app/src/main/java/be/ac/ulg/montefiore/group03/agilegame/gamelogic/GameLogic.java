@@ -121,6 +121,7 @@ public class GameLogic {
 
     /**
      * Give the current budget
+     * Created by Sylvain
      * @return budget
      */
     public int getBudget() {

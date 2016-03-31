@@ -6,9 +6,10 @@
     <string name="help_button_text">Help</string>
     <string name="calendar_button_text">Calendar</string>
     <string name="simulate_button_text">Simulate</string>
-    <string name="budget_text">Budget: 0 $</string>
+    <string name="budget_text">Budget:\n0 $</string>
     <string name="title_activity_manager">Manager</string>
     <string name="programmers_list_title">My Team</string>
     <string name="tasks_list_title">Tasks of the project</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="recruit_programmers_button" >Recruit new team member</string>
 </resources>
