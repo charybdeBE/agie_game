@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import be.ac.ulg.montefiore.group03.agilegame.Calendar;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 
@@ -18,8 +21,22 @@ public class Manager extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /* Set up the global vieuw */
         setContentView(R.layout.activity_manager);
 
+        /* Set up the budget */
+        int newBudget = 0;
+        newBudget = GameLogic.getInstance().getBudget();
+        String budget = getBudgetReadable(newBudget);
+        budget = "Budget:\n" + budget + " $";
+
+        TextView budgetTextView = (TextView) findViewById(R.id.budget_textView);
+
+        if (budgetTextView != null)
+            budgetTextView.setText(budget);
+
+        /* Set up the calendar button listener */
         Button toCal = (Button) findViewById(R.id.calendar_button);
         toCal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +46,7 @@ public class Manager extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
 
     @Override
@@ -51,5 +69,28 @@ public class Manager extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private String getBudgetReadable(int budget) {
+
+        String newBudget = "";
+
+        while((budget / 1000) > 0) {
+
+            String reste = "" + budget % 1000;
+
+            /* padding 0 to the reste */
+            while (reste.length() < 3) {
+
+                reste = "0" + reste;
+            }
+
+            newBudget = "," + reste + newBudget;
+            budget = budget / 1000;
+        }
+
+        newBudget = budget + newBudget;
+
+        return newBudget;
     }
 }

@@ -23,6 +23,7 @@ public class GameLogic {
     private Date start;
     private Date now;
     private int turn;
+    private int budget;
 
 
     private static GameLogic single = null; //Singleton rox
@@ -50,6 +51,9 @@ public class GameLogic {
         start = ajd;
         now = ajd;
         turn = 0;
+
+        application = new App();
+        budget = application.getInitialBudget();
     }
 
     public ArrayList<String> getStringEventsOfDay (Date _d) {
@@ -114,5 +118,14 @@ public class GameLogic {
     }
 
     //TODO Manage programmers
+
+    /**
+     * Give the current budget
+     * @return budget
+     */
+    public int getBudget() {
+
+        return this.budget;
+    }
 }
 
