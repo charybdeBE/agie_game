@@ -14,6 +14,10 @@ public class Features {
     }
 
 
+    public SkillType getNeeded() { return this.needed; }
+    public int getDuration(){ return  this.monthNeeded; }
+
+
     /**
      * Working on a task (gain 50 xp or a skill)
      * @param  p : the programmer who has work on the task

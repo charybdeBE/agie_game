@@ -7,15 +7,15 @@ import java.util.ArrayList;
  * Builder and "controller" of programmers
  */
 public class Programmer_Builder {
-    private final int MAX_PROG = 8;
+    private static final int MAX_PROG = 8;
 
     private static Programmer_Builder instance = null;
 
 
-    private ArrayList<Programmer> freeCoders;
+    private ArrayList<Programmer> avaiableCoders;
 
     private Programmer_Builder(){
-        this.freeCoders = new ArrayList<Programmer>();
+        this.avaiableCoders = new ArrayList<Programmer>();
     }
 
     public static Programmer_Builder getInstance() {
@@ -25,12 +25,13 @@ public class Programmer_Builder {
         return Programmer_Builder.instance;
     }
 
-    //TODO to implements
+//TODO implement
     public ArrayList<Programmer> getFreeCoders(){
-        if(this.freeCoders.size() < MAX_PROG) {
-            //Regeneerates codes
+        if(this.avaiableCoders.size() < MAX_PROG) {
+            //Regeneerates coders
+
         }
-        return freeCoders;
+        return avaiableCoders;
     }
 
     public void engage(Programmer p){
