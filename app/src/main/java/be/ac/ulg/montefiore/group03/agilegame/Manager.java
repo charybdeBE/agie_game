@@ -29,7 +29,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 
 public class Manager extends AppCompatActivity {
 
-    ListView programmers = null;
+    ListView programmers_view = null;
     ArrayList<Programmer> team = null;
 
     @Override
@@ -43,27 +43,27 @@ public class Manager extends AppCompatActivity {
 
 
         /* Set up the programmers list */
-        if (programmers == null) {
-            this.programmers = (ListView) findViewById(R.id.programmers);
-        }
 
         this.team = GameLogic.getInstance().getTeam();
 
+        this.programmers_view = (ListView) findViewById(R.id.programmers);
+
         // just for testing
-        String[] programmers = new String[]{"Programmeur 1", "Programmeur 2", "Programmeur 3", "Programmeur 4"};
+        String[][] programmers_list = new String[][]{{"Prog 1", "60 xp"}, {"Prog 2", "50 xp"}, {"Prog 3", "40 xp"}, {"Prog 4", "15 xp"}};
 
-        List<HashMap<String, String>> prog_list = new ArrayList<HashMap<String, String>>();
+        List<HashMap<String, String>> liste_programmeurs = new ArrayList<HashMap<String, String>>();
 
-        HashMap<String, String> prog;
-        for (int i = 0; i < programmers.length; i++) {
-            prog = new HashMap<String, String>();
-            prog.put("Name", programmers[i]);
-            prog_list.add(prog);
+        HashMap<String, String> element;
+        for (int i = 0; i < programmers_list.length; i++) {
+            element = new HashMap<String, String>();
+            element.put("Name", programmers_list[i][0]);
+            element.put("Experience", programmers_list[i][1]);
+            liste_programmeurs.add(element);
         }
 
-        ListAdapter adpter = new SimpleAdapter(this, prog_list, android.R.layout.simple_list_item_2, new String[] {"name"}, new int[] {android.R.id.text1});
+        ListAdapter adpter = new SimpleAdapter(this, liste_programmeurs, android.R.layout.simple_list_item_2, new String[] {"name", "Experience"}, new int[] {android.R.id.text1, android.R.id.text2});
 
-        this.programmers.setAdapter(adpter);
+        this.programmers_view.setAdapter(adpter);
 
 
 
