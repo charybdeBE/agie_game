@@ -9,7 +9,9 @@ public class Programmer extends Person {
     private List<Skills> skills;
     private List<Interest> interests;
 
+
     private Features workOn; // Work max on a task ?
+    private int salary;
 
     public Boolean like(Interest _i){
         return this.interests.contains(_i);
@@ -22,5 +24,16 @@ public class Programmer extends Person {
         return skills.get(skills.indexOf(type));
     }
 
+    public int getSalary(){
+        return this.salary;
+    }
+
+    public Features getWork(){
+        return workOn;
+    }
+
+    public void setWork(Features task){
+        this.workOn = task;
+    }
 
 }
