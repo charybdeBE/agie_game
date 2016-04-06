@@ -43,6 +43,9 @@ public class GameLogic {
         Programmer_Event t2 = new Programmer_Event("Presentation to the client", DateUtil.dateFromString("15.3.2016","d.M.y"));
         Programmer_Event t3 = new Programmer_Event("E3", DateUtil.dateFromString("15.3.2016","d.M.y"));
 
+        team.add(new Programmer("Sylvain Dazy"));
+        team.add(new Programmer("Laurent Vanosmael"));
+
         ArrayList<Event> ll = new ArrayList<Event>();
         ll.add(test);
         ll.add(t2);

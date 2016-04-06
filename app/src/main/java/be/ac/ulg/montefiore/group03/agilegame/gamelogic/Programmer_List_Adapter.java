@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import be.ac.ulg.montefiore.group03.agilegame.R;
 
 /**
@@ -15,26 +17,26 @@ import be.ac.ulg.montefiore.group03.agilegame.R;
 public class Programmer_List_Adapter extends BaseAdapter {
 
     Context context;
-    String[] data;
+    ArrayList<Programmer> data;
     private static LayoutInflater inflater = null;
 
-    public Programmer_List_Adapter(Context context, String[] data) {
+    public Programmer_List_Adapter(Context context, ArrayList<Programmer> programmers) {
         // TODO Auto-generated constructor stub
         this.context = context;
-        this.data = data;
+        this.data = programmers;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return data.length;
+        return data.size();
     }
 
     @Override
     public Object getItem(int position) {
         // TODO Auto-generated method stub
-        return data[position];
+        return data.get(position);
     }
 
     @Override
@@ -51,7 +53,7 @@ public class Programmer_List_Adapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.programmer_item, null);
         if (vi != null) {
             TextView text = (TextView) vi.findViewById(R.id.programmer_name);
-            text.setText(data[position]);
+            text.setText(data.get(position).getName());
         }
         return vi;
     }

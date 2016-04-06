@@ -5,16 +5,15 @@ package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
  */
 public class Person {
 
-    private String name, firstname;
+    private String name;
 
-    public Person(String name, String firstname) {
-        this.name = name;
-        this.firstname = firstname;
+    public Person () {
+        this.name = "Unknown Name";
     }
 
+    public Person(String name) {
+        this.name = name;
+    }
 
     public String getName() { return this.name; }
-
-    public String getFirstname() { return this.firstname; }
-
 }

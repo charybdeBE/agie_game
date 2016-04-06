@@ -49,7 +49,7 @@ public class Manager extends AppCompatActivity {
 
         this.programmers_view = (ListView) findViewById(R.id.programmers);
 
-        this.programmers_view.setAdapter(new Programmer_List_Adapter(this, new String[] {"Sylvain Dazy", "Laurent Vanosmael"}));
+        this.programmers_view.setAdapter(new Programmer_List_Adapter(this, this.team));
 
         /*
         // just for testing

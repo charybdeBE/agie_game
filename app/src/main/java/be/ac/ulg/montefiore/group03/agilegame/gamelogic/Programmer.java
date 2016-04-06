@@ -13,7 +13,12 @@ public class Programmer extends Person {
     private Features workOn; // Work max on a task ?
     private int salary;
 
-    public Programmer(ArrayList<Skills> _s, ArrayList<Interest> _i){
+    public Programmer(String name) {
+        super(name);
+    }
+
+    public Programmer(String name, ArrayList<Skills> _s, ArrayList<Interest> _i) {
+        super(name);
         this.skills = _s;
         this.interests = _i;
         this.salary = 800;
