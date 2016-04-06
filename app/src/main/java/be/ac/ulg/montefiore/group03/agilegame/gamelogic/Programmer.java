@@ -36,4 +36,8 @@ public class Programmer extends Person {
         this.workOn = task;
     }
 
+    public void addSkill(Skills s){
+        skills.add(s);
+    }
+
 }
