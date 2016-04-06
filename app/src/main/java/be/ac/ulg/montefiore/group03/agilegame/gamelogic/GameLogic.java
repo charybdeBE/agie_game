@@ -52,7 +52,7 @@ public class GameLogic {
         now = ajd;
         turn = 0;
 
-        application = new App();
+        application = new App(4);
         budget = application.getInitialBudget();
     }
 
