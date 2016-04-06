@@ -90,6 +90,9 @@ public class Manager extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        
+        ListView tasks= (ListView) findViewById(R.id.tasks);
+        tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));
 
     }
 

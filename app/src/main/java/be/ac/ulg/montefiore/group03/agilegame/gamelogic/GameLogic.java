@@ -137,5 +137,10 @@ public class GameLogic {
 
         return this.budget;
     }
+    
+    
+    public ArrayList<Features> getFeatureList(){
+        return this.application.getFeatures();
+    }
 }
 
