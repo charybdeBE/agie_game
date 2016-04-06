@@ -10,7 +10,6 @@ public class Programmer extends Person {
     private ArrayList<Skills> skills;
     private ArrayList<Interest> interests;
 
-
     private Features workOn; // Work max on a task ?
     private int salary;
 
@@ -22,7 +21,6 @@ public class Programmer extends Person {
             this.salary += 300 * _s.get(i).getLevel() * _s.get(i).getLevel();
         }
     }
-
 
     public Boolean like(Interest _i){
         return this.interests.contains(_i);
