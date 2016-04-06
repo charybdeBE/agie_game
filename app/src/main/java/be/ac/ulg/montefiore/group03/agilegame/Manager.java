@@ -26,6 +26,7 @@ import java.util.List;
 import be.ac.ulg.montefiore.group03.agilegame.Calendar;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer_List_Adapter;
 
 public class Manager extends AppCompatActivity {
 
@@ -48,6 +49,9 @@ public class Manager extends AppCompatActivity {
 
         this.programmers_view = (ListView) findViewById(R.id.programmers);
 
+        this.programmers_view.setAdapter(new Programmer_List_Adapter(this, new String[] {"Sylvain Dazy", "Laurent Vanosmael"}));
+
+        /*
         // just for testing
         String[][] programmers_list = new String[][]{{"Prog 1", "60 xp"}, {"Prog 2", "50 xp"}, {"Prog 3", "40 xp"}, {"Prog 4", "15 xp"}};
 
@@ -64,7 +68,7 @@ public class Manager extends AppCompatActivity {
         ListAdapter adpter = new SimpleAdapter(this, liste_programmeurs, android.R.layout.simple_list_item_2, new String[] {"name", "Experience"}, new int[] {android.R.id.text1, android.R.id.text2});
 
         this.programmers_view.setAdapter(adpter);
-
+        */
 
 
 

@@ -75,7 +75,8 @@
             <ListView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/programmers" />
+                android:id="@+id/programmers" >
+            </ListView>
 
         </LinearLayout>
 
