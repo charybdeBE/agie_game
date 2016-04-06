@@ -120,6 +120,15 @@ public class GameLogic {
     //TODO Manage programmers
 
     /**
+     * Give the current team of programmers
+     *
+     * @return the list of programmers of the team
+     */
+    public ArrayList<Programmer> getTeam() {
+        return this.team;
+    }
+
+    /**
      * Give the current budget
      * Created by Sylvain
      * @return budget
