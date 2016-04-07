@@ -1,4 +1,4 @@
-package be.ac.ulg.montefiore.group03.agilegame;
+package be.ac.ulg.montefiore.group03.agilegame.listAdapter;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType;
@@ -21,35 +22,12 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType;
 import static be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType.Android;
 
 //http://stackoverflow.com/questions/15832335/android-custom-row-item-for-listview
-public class Task_List_Adapter extends BaseAdapter {
+public class Task_List_Adapter extends Array_List_Adapter {
 
-
-    Context context;
-    ArrayList<Features> data;
-    private static LayoutInflater inflater = null;
 
     public Task_List_Adapter(Context context, ArrayList<Features> data) {
-        this.context = context;
-        this.data = data;
-        inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        super(context, data);
     }
-
-    @Override
-    public int getCount() {
-        return data.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return data.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

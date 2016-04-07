@@ -1,4 +1,4 @@
-package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
+package be.ac.ulg.montefiore.group03.agilegame.listAdapter;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,40 +11,22 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import be.ac.ulg.montefiore.group03.agilegame.R;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 
 /**
  * Created by sylvain on 4/6/16.
  */
-public class Programmer_List_Adapter extends BaseAdapter {
+public class Programmer_List_Adapter extends Array_List_Adapter {
 
     Context context;
     ArrayList<Programmer> data;
     private static LayoutInflater inflater = null;
 
     public Programmer_List_Adapter(Context context, ArrayList<Programmer> programmers) {
-        // TODO Auto-generated constructor stub
-        this.context = context;
-        this.data = programmers;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        super(context, programmers);
     }
 
-    @Override
-    public int getCount() {
-        // TODO Auto-generated method stub
-        return data.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        // TODO Auto-generated method stub
-        return data.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        // TODO Auto-generated method stub
-        return position;
-    }
+    
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
