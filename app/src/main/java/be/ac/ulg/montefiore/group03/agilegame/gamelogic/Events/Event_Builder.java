@@ -1,10 +1,14 @@
 package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events;
 
+import android.content.res.Resources;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
 import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
+import be.ac.ulg.montefiore.group03.agilegame.R;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 
 /**
@@ -13,6 +17,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 public class Event_Builder {
     public static final int MAX_EVENT = 10;
     public static final double RANDOMNESS = 0.7;
+    public static final int NR_OF_STRING_EVENT = 5;
 
     private static Event_Builder instance = null;
     private ArrayList<Integer> nrOfEvents;
@@ -23,6 +28,7 @@ public class Event_Builder {
         this.gen = new Random();
         this.nrOfEvents = new ArrayList<Integer>();
         this.nrOfEvents.add(0);
+
         Event_Builder.instance = this;
     }
 
@@ -57,8 +63,13 @@ public class Event_Builder {
         System.out.println("" + day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month));
         Date ev = DateUtil.dateFromString(""+ day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month), "d.M.y");
 
-        //TODO Add interest
-        Programmer_Event p =  new Programmer_Event("Bull" + nrOfEvents.get(turn), ev);
+        Interest[] arr = Interest.values();
+        Interest inte = arr[gen.nextInt(arr.length)];
+
+        int id = gen.nextInt(NR_OF_STRING_EVENT);
+
+        //TODO rework event to specialize them
+        Programmer_Event p =  new Programmer_Event("Bull", ev, inte);
         return p;
 
     }

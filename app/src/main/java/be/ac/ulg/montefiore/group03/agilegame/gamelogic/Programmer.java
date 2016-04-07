@@ -27,6 +27,16 @@ public class Programmer extends Person {
         }
     }
 
+    public Programmer(int id, ArrayList<Skills> _s, ArrayList<Interest> _i) {
+        super(id);
+        this.skills = _s;
+        this.interests = _i;
+        this.salary = 800;
+        for(int i = 0; i < _s.size(); ++i){
+            this.salary += 300 * _s.get(i).getLevel() * _s.get(i).getLevel();
+        }
+    }
+
     public Boolean like(Interest _i){
         return this.interests.contains(_i);
     }

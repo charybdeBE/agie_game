@@ -94,7 +94,18 @@ public class Manager extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        
+
+
+        Button toPole = (Button) findViewById(R.id.recruit_btn);
+        toPole.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Pole_emploi.class);
+
+                startActivity(i);
+            }
+        });
+
         ListView tasks= (ListView) findViewById(R.id.tasks);
         tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));
 

@@ -21,6 +21,13 @@ public class Programmer_Event extends Event {
         super(s,d);
         this.depend = i;
     }
+
+    public Programmer_Event(int  id, Date d, Interest i){
+        super(id,d);
+        this.depend = i;
+    }
+
+    //TODO change with xp
     public void effect(Programmer _p) { //Could be inherited by special programmer_event
         if(_p.like(depend)){
             if(_p.hasSkill(this.amelioration.getType())){

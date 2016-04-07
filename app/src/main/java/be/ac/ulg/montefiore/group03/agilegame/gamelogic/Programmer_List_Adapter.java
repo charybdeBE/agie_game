@@ -1,6 +1,7 @@
 package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,13 @@ public class Programmer_List_Adapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.programmer_item, null);
         if (vi != null) {
             TextView text = (TextView) vi.findViewById(R.id.programmer_name);
-            text.setText(data.get(position).getName());
+            if(data.get(position).hasId()){
+                Resources res = context.getResources();
+                text.setText(res.getStringArray(R.array.persons)[data.get(position).getId()]);
+            }
+            else {
+                text.setText(data.get(position).getName());
+            }
         }
         return vi;
     }

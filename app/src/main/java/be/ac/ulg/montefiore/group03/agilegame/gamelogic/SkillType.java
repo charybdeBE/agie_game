@@ -6,5 +6,6 @@ package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
 public enum SkillType {
     JAVA_Prog,
     Network,
-    Design
+    Design,
+    Diagrams
 }

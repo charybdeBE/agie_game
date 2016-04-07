@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Calendar"></activity>
+        <activity android:name=".Calendar" />
+        <activity android:name=".Pole_emploi"></activity>
     </application>
 
 </manifest>

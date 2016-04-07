@@ -14,19 +14,26 @@ public abstract  class  Event implements Comparable<Event> {
     protected int delay; // could be negative
     protected Skills amelioration; // May be negative ?
     protected String name;
+    protected int id;
 
     public abstract void effect(Programmer _p);
 
 
     public Event(String s, Date d) {
+        id = -1;
         occurs = d;
         name = s;
     }
 
+    public Event(int i, Date d){
+        id = i;
+        occurs = d;
+    }
 
     public String getName(){
         return name;
     }
+    public int getId() { return id; }
 
     public Date getDate() {
         return occurs;

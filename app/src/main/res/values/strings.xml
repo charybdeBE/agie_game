@@ -11,5 +11,45 @@
     <string name="programmers_list_title">My Team</string>
     <string name="tasks_list_title">Tasks of the project</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="recruit_programmers_button" >Recruit new team member</string>
-</resources>
+    <string name="recruit_programmers_button">Recruit new team member</string>
+
+
+
+    <string-array name="event_interests_name_array">
+        <item>E3</item>
+        <item>Oracle Conference</item>
+        <item>Open Source Festival</item>
+        <item>Sudoku Championship</item>
+        <item>Salon de l\'auto</item>
+
+
+    </string-array>
+
+    <string-array name="persons">
+        <item>Laurent Vanosmael</item>
+        <item>Laurent Mathy</item>
+        <item>Tom Barbette</item>
+        <item>Sylvain Dazy</item>
+        <item>Chaperon Rouge</item>
+        <item>Ali Baba</item>
+        <item>Salah Meche</item>
+        <item>John McQueen</item>
+        <item>Linda Lovelace</item>
+        <item>Ada Lovelace</item>
+    </string-array>
+
+
+
+    <string name="name10">Design Pattern</string>
+    <string name="name20">Android Compatibility</string>
+    <string name="name30">Little flower on the right</string>
+    <string name="name40">Backend</string>
+    <string name="name50">Front-End</string>
+        <string name="name1">Crash Server</string>
+        <string name="name2">Client Check</string>
+        <string name="name3">I split coffee on diagram</string>
+        <string name="name4">We dont need this anymore</string>
+
+
+
+    </resources>
