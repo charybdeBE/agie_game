@@ -18,19 +18,16 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
  */
 public class Programmer_List_Adapter extends Array_List_Adapter {
 
-    Context context;
     ArrayList<Programmer> data;
-    private static LayoutInflater inflater = null;
 
     public Programmer_List_Adapter(Context context, ArrayList<Programmer> programmers) {
         super(context, programmers);
     }
 
-    
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
         View vi = convertView;
         if (vi == null)
             vi = inflater.inflate(R.layout.programmer_item, null);

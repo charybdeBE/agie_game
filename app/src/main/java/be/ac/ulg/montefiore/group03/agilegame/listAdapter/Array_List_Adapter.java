@@ -13,8 +13,8 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
  */
 public abstract class Array_List_Adapter extends BaseAdapter {
 
-    Context context;
-    ArrayList data;
+    protected Context context;
+    protected ArrayList data;
     protected static LayoutInflater inflater = null;
 
     public Array_List_Adapter(Context context, ArrayList data) {

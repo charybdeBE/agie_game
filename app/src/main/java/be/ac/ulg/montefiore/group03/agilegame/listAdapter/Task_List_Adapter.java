@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType;
 
 import static be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType.Android;
@@ -24,6 +25,7 @@ import static be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType.Android
 //http://stackoverflow.com/questions/15832335/android-custom-row-item-for-listview
 public class Task_List_Adapter extends Array_List_Adapter {
 
+    ArrayList<Features> data;
 
     public Task_List_Adapter(Context context, ArrayList<Features> data) {
         super(context, data);
