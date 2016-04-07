@@ -7,7 +7,7 @@ import java.util.Random;
  * Created by charybde on 18.03.16.
  */
 public class App {
-    private static final int MAX_TASK_SIZE = 21;
+    private static final int MAX_TASK_SIZE = 20;
     private ArrayList<Features> tasks;
 
     private int initialBudget;
@@ -20,8 +20,8 @@ public class App {
         for(int i = 0; i < features; ++i){
             int skill_nr =  e.nextInt(vals.length);
             SkillType s = vals[skill_nr];
-            int size = e.nextInt(MAX_TASK_SIZE);
-            tasks.add(new Features(s, size));
+            int size = e.nextInt(MAX_TASK_SIZE) + 1;
+            tasks.add(new Features(i, s, size));
         }
 
     }

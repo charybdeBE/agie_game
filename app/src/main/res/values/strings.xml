@@ -21,8 +21,6 @@
         <item>Open Source Festival</item>
         <item>Sudoku Championship</item>
         <item>Salon de l\'auto</item>
-
-
     </string-array>
 
     <string-array name="persons">
@@ -38,13 +36,36 @@
         <item>Ada Lovelace</item>
     </string-array>
 
+    <string-array name="features_JAVA">
+        <item>
+            Binary Search Algorithm
+        </item>
+        <item> Back End implementation</item>
+        <item> Menu clickable</item>
+    </string-array>
+    <string-array name="features_NETWORK">
+        <item>Configure Server</item>
+        <item>Upgrade Server</item>
+        <item>Buy Server</item>
+    </string-array>
+    <string-array name="features_DESIGN">
+        <item>Front end implementation</item>
+        <item>Little flower on the right</item>
+        <item>Nice and cool menu</item>
+    </string-array>
+    <string-array name="features_DIAGRAMS">
+        <item>Design Pattern</item>
+        <item>High level diagram</item>
+        <item>Use cases</item>
+    </string-array>
+    <string-array name="features_ANDROID">
+        <item>Android compatibility</item>
+        <item>Upgrade version</item>
+        <item>Buy a new phone</item>
+    </string-array>
 
 
-    <string name="name10">Design Pattern</string>
-    <string name="name20">Android Compatibility</string>
-    <string name="name30">Little flower on the right</string>
-    <string name="name40">Backend</string>
-    <string name="name50">Front-End</string>
+
         <string name="name1">Crash Server</string>
         <string name="name2">Client Check</string>
         <string name="name3">I split coffee on diagram</string>

@@ -6,9 +6,10 @@ package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
 public class Features {
     private SkillType needed; // The skill needed to work on tat feature
     private int monthNeeded; // The numbe rof month / Level of work
+    private int id;
 
-
-    public Features(SkillType what, int time){
+    public Features(int id, SkillType what, int time){
+        this.id = id;
         this.needed = what;
         this.monthNeeded = time;
     }
@@ -16,7 +17,7 @@ public class Features {
 
     public SkillType getNeeded() { return this.needed; }
     public int getDuration(){ return  this.monthNeeded; }
-
+    public int getId() {return this.id; }
 
     /**
      * Working on a task (gain 50 xp or a skill)
@@ -32,7 +33,7 @@ public class Features {
         else{
             p.addSkill(new Skills(this.needed));
         }
-        return this.monthNeeded;
+        return this.monthNeeded < 0 ? 0 : this.monthNeeded;
 
     }
 }
