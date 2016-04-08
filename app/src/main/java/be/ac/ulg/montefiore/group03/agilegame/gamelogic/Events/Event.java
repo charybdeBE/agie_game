@@ -11,8 +11,8 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
  */
 public abstract  class  Event implements Comparable<Event> {
     protected Date occurs;
-    protected int delay; // could be negative
-    protected Skills amelioration; // May be negative ?
+    protected int delay; // could be negative ? affect progression and XP
+    protected Skills amelioration;
     protected String name;
     protected int id;
 
@@ -30,10 +30,15 @@ public abstract  class  Event implements Comparable<Event> {
         occurs = d;
     }
 
+    public Event(int i, Date d, Skills amelioration, int delay){
+        this(i,d);
+        this.amelioration = amelioration;
+        this.delay = delay;
+    }
+
     public String getName(){
         return name;
     }
-    public int getId() { return id; }
 
     public Date getDate() {
         return occurs;
@@ -43,6 +48,8 @@ public abstract  class  Event implements Comparable<Event> {
     public int compareTo(Event another) {
         return this.getDate().compareTo(another.getDate());
     }
+    public Boolean hasId(){ return this.id == -1 ? false :  true;}
+    public int getId() { return this.id; }
 
     public String toString(){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");

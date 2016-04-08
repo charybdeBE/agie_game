@@ -10,6 +10,8 @@ import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 
 /**
  * Created by charybde on 14.03.16.
@@ -17,7 +19,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 public class Event_Builder {
     public static final int MAX_EVENT = 10;
     public static final double RANDOMNESS = 0.7;
-    public static final int NR_OF_STRING_EVENT = 5;
+    public static final int NR_OF_PROG_EVENT = 5;
 
     private static Event_Builder instance = null;
     private ArrayList<Integer> nrOfEvents;
@@ -44,7 +46,34 @@ public class Event_Builder {
     }
 */
 
-    //could return null
+    public Programmer_Event getSpecialized(int id, Date d){
+        id %= NR_OF_PROG_EVENT;
+        switch(id){
+            case 0:case 3:
+                return new Programmer_Event(id, d, Interest.Video_Game, null, 3);
+            case 1:
+                Skills s = new Skills(SkillType.JAVA);
+                s.gainXp(50);
+                return new Programmer_Event(id, d, Interest.New_Tech, s, 5);
+            case 2:
+                SkillType[] cache = SkillType.values();
+                Skills ss = new Skills(cache[gen.nextInt(cache.length)]); //random skill for the theme of the conference
+                ss.gainXp(50);
+                return new Programmer_Event(id, d, Interest.OpenSource, ss, 5);
+            case 4:
+                return new Programmer_Event(id, d, Interest.Cars, null, 2);
+
+        }
+        return null;
+    }
+
+
+    /**
+     * @author Laurent
+     * @param month the 1st of the month where the event could happen
+     * @param turn the turn it is creates
+     * @return the event created warning it could be null thanks of random
+     */
     public Programmer_Event buildProgramingEvent(Date month, int turn){
         if(nrOfEvents.size() <= turn){
             for(int i=nrOfEvents.size(); i <= turn; ++i)
@@ -56,21 +85,16 @@ public class Event_Builder {
         nrOfEvents.set(turn, nrOfEvents.get(turn)  + 1);
 
         double coin = gen.nextDouble();
-        if(coin > 0.7)
+        if(coin > RANDOMNESS)
             return null;
 
         int day = getADay(); //Select a day of the month
         System.out.println("" + day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month));
         Date ev = DateUtil.dateFromString(""+ day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month), "d.M.y");
 
-        Interest[] arr = Interest.values();
-        Interest inte = arr[gen.nextInt(arr.length)];
-
-        int id = gen.nextInt(NR_OF_STRING_EVENT);
-
-        //TODO rework event to specialize them
-        Programmer_Event p =  new Programmer_Event("Bull", ev, inte);
-        return p;
+        int id = gen.nextInt(NR_OF_PROG_EVENT);
+        System.out.println("aaaaaaaaaa "  + id );
+        return getSpecialized(id , ev);
 
     }
 

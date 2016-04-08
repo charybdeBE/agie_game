@@ -1,32 +1,21 @@
 package be.ac.ulg.montefiore.group03.agilegame;
 
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import be.ac.ulg.montefiore.group03.agilegame.Calendar;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer_List_Adapter;
+import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_List_Adapter;
+import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Task_List_Adapter;
 
 public class Manager extends AppCompatActivity {
 

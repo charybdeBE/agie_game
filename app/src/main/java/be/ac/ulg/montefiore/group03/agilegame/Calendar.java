@@ -8,23 +8,22 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
+import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Event_List_Adapter;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event;
+
+
 
 public class Calendar extends AppCompatActivity {
 
 
-    private ArrayList<String> eventsString;
+    private ArrayList<Event> event;
     private CalendarView cal    ;
     private ListView list;
 
@@ -35,10 +34,9 @@ public class Calendar extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
 
-        eventsString = GameLogic.getInstance().getStringEventsOfMonth(GameLogic.getInstance().getNow());
+        event = GameLogic.getInstance().getEventsOfMonth(GameLogic.getInstance().getNow());
         list = (ListView)findViewById(R.id.listView);
-        list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list,eventsString));
-
+        list.setAdapter(new Event_List_Adapter(getApplicationContext(), event));
 
         cal = (CalendarView)findViewById(R.id.calendarView1);
         cal.setOnDateChangeListener(new calListener(this));
@@ -48,8 +46,8 @@ public class Calendar extends AppCompatActivity {
         monthView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventsString = GameLogic.getInstance().getStringEventsOfMonth(new Date(cal.getDate()));
-                list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list, eventsString));
+                event = GameLogic.getInstance().getEventsOfMonth(new Date(cal.getDate()));
+                list.setAdapter(new Event_List_Adapter(getApplicationContext(), event));
             }
         });
 
@@ -64,8 +62,8 @@ public class Calendar extends AppCompatActivity {
     }
 
     protected void updateEvent(Date select){
-        eventsString = GameLogic.getInstance().getStringEventsOfDay(select);
-        list.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.list,eventsString));
+        event = GameLogic.getInstance().getEventsOfDay(select);
+        list.setAdapter(new Event_List_Adapter(getApplicationContext(),event));
     }
 
 

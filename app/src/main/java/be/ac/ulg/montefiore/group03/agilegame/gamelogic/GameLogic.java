@@ -39,18 +39,12 @@ public class GameLogic {
         Date ajd = DateUtil.dateFromString("1.3.2016","d.M.y");
         events = new HashMap<Date, ArrayList<Event>>();
         team = new ArrayList<Programmer>();
-        Programmer_Event test = new Programmer_Event("First of March", ajd);
-        Programmer_Event t2 = new Programmer_Event("Presentation to the client", DateUtil.dateFromString("15.3.2016","d.M.y"));
-        Programmer_Event t3 = new Programmer_Event("E3", DateUtil.dateFromString("15.3.2016","d.M.y"));
+
 
         team.add(new Programmer("Sylvain Dazy"));
         team.add(new Programmer("Laurent Vanosmael"));
 
-        ArrayList<Event> ll = new ArrayList<Event>();
-        ll.add(test);
-        ll.add(t2);
-        ll.add(t3);
-        events.put(ajd, ll);
+
         start = ajd;
         now = ajd;
         turn = 0;
@@ -59,20 +53,20 @@ public class GameLogic {
         budget = application.getInitialBudget();
     }
 
-    public ArrayList<String> getStringEventsOfDay (Date _d) {
-        ArrayList<String> toRet = new ArrayList<>();
+    public ArrayList<Event> getEventsOfDay (Date _d) {
+        ArrayList<Event> toRet = new ArrayList<>();
         ArrayList<Event> e = events.get(DateUtil.getFirstDayOfMonth(_d));
         if(e == null){
             //Generate events for the whole month
             generateMonthEvent(_d);
-            return getStringEventsOfDay(_d);
+            return getEventsOfDay(_d);
         }
         int size = e.size();
         int day = DateUtil.getDay(_d);
 
         for(int i = 0; i < size; ++i) {
             if (DateUtil.getDay(e.get(i).getDate()) == day) {
-                toRet.add(e.get(i).getName());
+                toRet.add(e.get(i));
             }
         }
         return toRet;
@@ -104,20 +98,14 @@ public class GameLogic {
 
     }
 
-    public ArrayList<String> getStringEventsOfMonth(Date _d) {
-        ArrayList<String> toRet = new ArrayList<>();
+    public ArrayList<Event> getEventsOfMonth(Date _d) {
         ArrayList<Event> e = events.get(DateUtil.getFirstDayOfMonth(_d));
         if(e == null){
             generateMonthEvent(_d);
-            return getStringEventsOfMonth(_d);
+            return getEventsOfMonth(_d);
         }
-        int size = e.size();
-        int day = DateUtil.getDay(_d);
 
-        for(int i = 0; i < size; ++i) {
-            toRet.add(e.get(i).toString());
-        }
-        return toRet;
+        return e;
     }
 
     //TODO Manage programmers

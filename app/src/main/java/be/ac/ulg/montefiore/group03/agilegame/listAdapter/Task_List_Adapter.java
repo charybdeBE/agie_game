@@ -29,6 +29,7 @@ public class Task_List_Adapter extends Array_List_Adapter {
 
     public Task_List_Adapter(Context context, ArrayList<Features> data) {
         super(context, data);
+        this.data = data;
     }
 
     @Override

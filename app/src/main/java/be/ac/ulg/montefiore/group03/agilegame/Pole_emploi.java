@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer_Builder;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer_List_Adapter;
+import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_List_Adapter;
 
 public class Pole_emploi extends AppCompatActivity {
 

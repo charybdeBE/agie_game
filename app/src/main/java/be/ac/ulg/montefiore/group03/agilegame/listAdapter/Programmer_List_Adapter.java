@@ -22,6 +22,7 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
 
     public Programmer_List_Adapter(Context context, ArrayList<Programmer> programmers) {
         super(context, programmers);
+        data = programmers;
     }
 
 

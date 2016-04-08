@@ -30,14 +30,13 @@ public class Skills {
     public int levelDown(){
         return --this.level;
     }
-
     public SkillType getType(){
         return type;
     }
-
     public int getLevel(){
         return level;
     }
+    public int getXp() { return this.current_xp; }
 
     public void  gainXp(int xp){
         current_xp += xp;
