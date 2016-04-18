@@ -8,6 +8,8 @@ import java.util.Random;
 
 import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
 import be.ac.ulg.montefiore.group03.agilegame.R;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.App;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType;
@@ -20,16 +22,21 @@ public class Event_Builder {
     public static final int MAX_EVENT = 10;
     public static final double RANDOMNESS = 0.7;
     public static final int NR_OF_PROG_EVENT = 5;
+    public static final int NR_OF_FEAT_EVENT = 4;
 
     private static Event_Builder instance = null;
     private ArrayList<Integer> nrOfEvents;
+    private ArrayList<Boolean> haveFeatEvent;
     private Random gen;
 
 
     private Event_Builder(){
         this.gen = new Random();
         this.nrOfEvents = new ArrayList<Integer>();
+        this.haveFeatEvent = new ArrayList<>();
+        this.haveFeatEvent.add(false);
         this.nrOfEvents.add(0);
+
 
         Event_Builder.instance = this;
     }
@@ -40,13 +47,68 @@ public class Event_Builder {
         return Event_Builder.instance;
     }
 
-/*
-    public Feature_Event buildFeatureEvent(Date d, int turn){
-        //TODO Implement like buildProgramming (or even mix the 2)
-    }
-*/
 
-    public Programmer_Event getSpecialized(int id, Date d){
+    /**
+     *
+     * @param month The 1st of the month the event could happen
+     * @param turn  the xe turn of the game
+     * @return An event if one is generated null if not
+     */
+    public Feature_Event buildFeatureEvent(Date month, int turn, App a){
+        if(haveFeatEvent.size() <= turn){
+            for(int i=haveFeatEvent.size(); i <= turn; ++i)
+                haveFeatEvent.add(false);
+        }
+        if (haveFeatEvent.get(turn) == true )
+            return null;
+
+        haveFeatEvent.set(turn,true);
+
+        double coin = gen.nextDouble();
+        if(coin > RANDOMNESS)
+            return null;
+
+        int day = getADay(); //Select a day of the month
+        Date ev = DateUtil.dateFromString("" + day + "." + DateUtil.getMonth(month) + "." + DateUtil.getYear(month), "d.M.y");
+
+        int id = gen.nextInt(NR_OF_FEAT_EVENT);
+        return getSpecializedFeatureEvent(id, ev, a);
+    }
+
+    public Feature_Event getSpecializedFeatureEvent(int id, Date d, App a){
+        id %= NR_OF_FEAT_EVENT;
+        Skills s;
+        Features f;
+        ArrayList<Features> feat;
+        switch(id){
+            case 0:
+                feat = a.getFeatures(SkillType.Network);
+                if(feat.size() == 0)
+                    return null;
+                f = feat.get(gen.nextInt(feat.size()));
+                s = new Skills(SkillType.Network);
+                s.gainXp(25); //Bonus xp
+                return new Feature_Event(id, d, f, s, 5);
+            case 1:
+                feat = a.getFeatures();
+                f = feat.get(gen.nextInt(feat.size()));
+                return new Feature_Event(id, d, f, null, 2);
+            case 2:
+                feat = a.getFeatures(SkillType.Diagrams);
+                if(feat.size() == 0)
+                    return null;
+                f = feat.get(gen.nextInt(feat.size()));
+                return new Feature_Event(id, d, f, null, 0); // 0 means no work this month
+            case 3:
+                feat = a.getFeatures();
+                f = feat.get(gen.nextInt(feat.size()));
+                return new Feature_Event(id, d, f, null, -1);
+        }
+        return null;
+    }
+
+
+    public Programmer_Event getSpecializedProgrammerEvent(int id, Date d){
         id %= NR_OF_PROG_EVENT;
         switch(id){
             case 0:case 3:
@@ -94,7 +156,7 @@ public class Event_Builder {
 
         int id = gen.nextInt(NR_OF_PROG_EVENT);
         System.out.println("aaaaaaaaaa "  + id );
-        return getSpecialized(id , ev);
+        return getSpecializedProgrammerEvent(id , ev);
 
     }
 

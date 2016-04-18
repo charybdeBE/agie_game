@@ -21,6 +21,7 @@ public class Manager extends AppCompatActivity {
 
     ListView programmers_view = null;
     ArrayList<Programmer> team = null;
+    HelpMessage help_msg = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +95,15 @@ public class Manager extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        help_msg = new HelpMessage();
+        Button help = (Button) findViewById(R.id.help_button);
+        help.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                help_msg.show(getSupportFragmentManager(), "help");
+            }
+        });
+
 
         ListView tasks= (ListView) findViewById(R.id.tasks);
         tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));

@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="quit_button_text">Quit</string>
     <string name="summary_button_text">Summary</string>
-    <string name="help_button_text">Help</string>
+    <string name="help_button_text">Did you know ?</string>
     <string name="calendar_button_text">Calendar</string>
     <string name="simulate_button_text">Simulate</string>
     <string name="budget_text">Budget:\n0 $</string>
@@ -12,6 +12,7 @@
     <string name="tasks_list_title">Tasks of the project</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="recruit_programmers_button">Recruit new team member</string>
+    <string name="ok">OK</string>
 
 
 
@@ -64,12 +65,20 @@
         <item>Buy a new phone</item>
     </string-array>
 
+    <string-array name="events_features_name_array">
+        <item>Server crash</item>
+        <item>Client come to check</item>
+        <item>I split coffee on the diagram</item>
+        <item>We don\'t need this anymore</item>
+    </string-array>
 
 
-        <string name="name1">Crash Server</string>
-        <string name="name2">Client Check</string>
-        <string name="name3">I split coffee on diagram</string>
-        <string name="name4">We dont need this anymore</string>
+    <string-array name="help">
+        <item>Once you hit the simulate button there is no going back</item>
+        <item>The agile methodology is based on the  Agile Manifesto </item>
+        <item>This game was made as a university project</item>
+    </string-array>
+
 
 
 

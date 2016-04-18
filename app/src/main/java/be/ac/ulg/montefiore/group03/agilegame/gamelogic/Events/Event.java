@@ -7,11 +7,17 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 
 /**
- * Created by charybde on 08.03.16.
+
  */
 public abstract  class  Event implements Comparable<Event> {
+    /**
+     * delay :
+     * 0 = no work done this month
+     * -1 = all rest work done but no XP
+     * positive integer i = work and xp divide by i and
+     */
     protected Date occurs;
-    protected int delay; // could be negative ? affect progression and XP
+    protected int delay;
     protected Skills amelioration;
     protected String name;
     protected int id;

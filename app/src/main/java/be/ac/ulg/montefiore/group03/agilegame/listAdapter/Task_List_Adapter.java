@@ -70,15 +70,15 @@ public class Task_List_Adapter extends Array_List_Adapter {
         System.out.println("aaaaaaaaaaaaaaaaaaaaa" + name.getText());
 
         TextView time = (TextView) vi.findViewById(R.id.size_Task);
-        int t = data.get(position).getDuration();
-        if(t > 14)
+        double t = data.get(position).getDuration();
+        if(t > 14.0)
             time.setTextColor(Color.RED);
-        else if (t > 7)
+        else if (t > 7.0)
             time.setTextColor(Color.rgb(255,165,0));
         else
             time.setTextColor(Color.rgb(0,102,0));
 
-        time.setText(" " + Integer.toString(t));
+        time.setText(" " + Double.toString(t));
 
         return vi;
     }

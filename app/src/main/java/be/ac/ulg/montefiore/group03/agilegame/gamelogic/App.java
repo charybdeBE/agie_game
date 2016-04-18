@@ -30,4 +30,19 @@ public class App {
         return this.initialBudget;
     }
     public ArrayList<Features> getFeatures() { return this.tasks;  }
+
+    /**
+     *
+     * @param st a skill type
+     * @return the list of features that depend of a particular skillType
+     */
+    public ArrayList<Features> getFeatures(SkillType st){
+        ArrayList<Features> toRet = new ArrayList<>();
+        for(int i= 0; i < tasks.size(); ++i){
+            if(tasks.get(i).getNeeded() == st){
+                toRet.add(tasks.get(i));
+            }
+        }
+        return toRet;
+    }
 }
