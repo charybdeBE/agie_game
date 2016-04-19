@@ -21,7 +21,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 public class Event_Builder {
     public static final int MAX_EVENT = 10;
     public static final double RANDOMNESS = 0.7;
-    public static final int NR_OF_PROG_EVENT = 5;
+    public static final int NR_OF_PROG_EVENT = 9;
     public static final int NR_OF_FEAT_EVENT = 4;
 
     private static Event_Builder instance = null;
@@ -88,11 +88,11 @@ public class Event_Builder {
                 f = feat.get(gen.nextInt(feat.size()));
                 s = new Skills(SkillType.Network);
                 s.gainXp(25); //Bonus xp
-                return new Feature_Event(id, d, f, s, 5);
+                return new Feature_Event(id, d, f, s, 0.2);
             case 1:
                 feat = a.getFeatures();
                 f = feat.get(gen.nextInt(feat.size()));
-                return new Feature_Event(id, d, f, null, 2);
+                return new Feature_Event(id, d, f, null, 0.5);
             case 2:
                 feat = a.getFeatures(SkillType.Diagrams);
                 if(feat.size() == 0)
@@ -102,7 +102,7 @@ public class Event_Builder {
             case 3:
                 feat = a.getFeatures();
                 f = feat.get(gen.nextInt(feat.size()));
-                return new Feature_Event(id, d, f, null, -1);
+                return new Feature_Event(id, d, f, null, 999); //The task gfet complete
         }
         return null;
     }
@@ -112,18 +112,27 @@ public class Event_Builder {
         id %= NR_OF_PROG_EVENT;
         switch(id){
             case 0:case 3:
-                return new Programmer_Event(id, d, Interest.Video_Game, null, 3);
+                return new Programmer_Event(id, d, Interest.Video_Game, null, 0.7);
             case 1:
                 Skills s = new Skills(SkillType.JAVA);
                 s.gainXp(50);
-                return new Programmer_Event(id, d, Interest.New_Tech, s, 5);
+                return new Programmer_Event(id, d, Interest.New_Tech, s, 0.2);
             case 2:
                 SkillType[] cache = SkillType.values();
                 Skills ss = new Skills(cache[gen.nextInt(cache.length)]); //random skill for the theme of the conference
                 ss.gainXp(50);
-                return new Programmer_Event(id, d, Interest.OpenSource, ss, 5);
+                return new Programmer_Event(id, d, Interest.OpenSource, ss, 0.3);
             case 4:
-                return new Programmer_Event(id, d, Interest.Cars, null, 2);
+                return new Programmer_Event(id, d, Interest.Cars, null, 0.8);
+            case 5:
+                return new All_Team_Event(id, d, 1.1); // Confer 10% de bonus for all programmer
+            case 6:
+                return new All_Team_Event(id, d, 0.7);
+            case 7:
+                return new Programmer_Event(id, d, Interest.New_Tech, null, 0.8);
+            case 8:
+                return new Salary_Event(id, d, 0.9, 100);
+
 
         }
         return null;

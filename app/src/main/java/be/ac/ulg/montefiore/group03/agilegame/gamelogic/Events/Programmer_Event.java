@@ -28,23 +28,18 @@ public class Programmer_Event extends Event {
         this.depend = i;
     }
 
-    public Programmer_Event(int i, Date d, Interest interest, Skills up, int delay){
+    public Programmer_Event(int i, Date d, Interest interest, Skills up, double delay){
         super(i,d,up, delay);
         this.depend = interest;
     }
 
 
-
-    //TODO Complete rework to include xp and all parameters
     public void effect(Programmer _p) { //Could be inherited by special programmer_event
         if(_p.like(depend)){
             if(_p.hasSkill(this.amelioration.getType())){
-                if(this.amelioration.getLevel() > 0)
-                    _p.getSkill(this.amelioration.getType()).levelUp();
-                else
-                    _p.getSkill(this.amelioration.getType()).levelDown();
-
+                _p.getSkill(this.amelioration.getType()).gainXp(this.amelioration.getXp());
             }
+            _p.setBonus(_p.getBonus() * this.delay);
         }
     }
 

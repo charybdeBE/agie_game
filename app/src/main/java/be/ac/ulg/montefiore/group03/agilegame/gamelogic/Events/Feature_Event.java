@@ -22,7 +22,7 @@ public class Feature_Event extends Event{
         this.depend = f;
     }
 
-    public Feature_Event(int id, Date d, Features f, Skills s, int delay ){
+    public Feature_Event(int id, Date d, Features f, Skills s, double delay ){
         super(id,d,s,delay);
         this.depend = f;
     }

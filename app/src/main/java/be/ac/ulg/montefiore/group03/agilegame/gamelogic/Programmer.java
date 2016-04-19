@@ -12,6 +12,7 @@ public class Programmer extends Person {
 
     private Features workOn; // Work max on a task ?
     private int salary;
+    private double bonus; // Bonus to be applied on his month work
 
     public Programmer(String name) {
         super(name);
@@ -19,6 +20,7 @@ public class Programmer extends Person {
 
     public Programmer(String name, ArrayList<Skills> _s, ArrayList<Interest> _i) {
         super(name);
+        this.bonus = 1;
         this.skills = _s;
         this.interests = _i;
         this.salary = 800;
@@ -29,6 +31,7 @@ public class Programmer extends Person {
 
     public Programmer(int id, ArrayList<Skills> _s, ArrayList<Interest> _i) {
         super(id);
+        this.bonus = 1;
         this.skills = _s;
         this.interests = _i;
         this.salary = 800;
@@ -56,12 +59,26 @@ public class Programmer extends Person {
         return workOn;
     }
 
+    public void work(){
+        workOn.progress(this);
+    }
+
+    public void setBonus(double bonus){
+        this.bonus = bonus;
+    }
+    public double getBonus(){
+        return bonus;
+    }
     public void setWork(Features task){
         this.workOn = task;
     }
 
     public void addSkill(Skills s){
         skills.add(s);
+    }
+
+    public void getRaise(int i){
+        this.salary += i;
     }
 
 }

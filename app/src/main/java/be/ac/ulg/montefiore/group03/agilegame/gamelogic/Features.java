@@ -22,13 +22,13 @@ public class Features {
     /**
      * Working on a task (gain 50 xp or a skill)
      * @param  p : the programmer who has work on the task
-     * @param bonus : the bonus added by an event
      * @return the number of month needed to work after
      */
-    public double progress(Programmer p, int bonus){
+    public double progress(Programmer p){
+        double bonus = p.getBonus();
         if(p.hasSkill(this.needed)){
             int level = p.getSkill(this.needed).getLevel();
-            this.monthNeeded -= level / bonus;
+            this.monthNeeded -= ((double) level) * bonus;
             p.getSkill(this.needed).gainXp(50);
         }
         else{

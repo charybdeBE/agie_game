@@ -17,11 +17,15 @@ public abstract  class  Event implements Comparable<Event> {
      * positive integer i = work and xp divide by i and
      */
     protected Date occurs;
-    protected int delay;
+    protected double delay; //Multiplicator
     protected Skills amelioration;
     protected String name;
     protected int id;
 
+    /**
+     *
+     * @param _p the programmer that the effect has to be applied to
+     */
     public abstract void effect(Programmer _p);
 
 
@@ -36,7 +40,7 @@ public abstract  class  Event implements Comparable<Event> {
         occurs = d;
     }
 
-    public Event(int i, Date d, Skills amelioration, int delay){
+    public Event(int i, Date d, Skills amelioration, double delay){
         this(i,d);
         this.amelioration = amelioration;
         this.delay = delay;
