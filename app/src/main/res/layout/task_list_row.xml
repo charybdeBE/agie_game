@@ -36,9 +36,6 @@
                 android:id="@+id/size_Task"
                 />
 
-
-
-
         </LinearLayout>
 
 

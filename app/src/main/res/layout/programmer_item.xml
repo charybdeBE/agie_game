@@ -2,24 +2,44 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:weightSum="1.0" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:src="@drawable/default_img"
+        android:layout_weight="0.25" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/default_img" />
+        android:orientation="vertical"
+        android:layout_weight="0.75" >
 
         <TextView
-            android:layout_width = "wrap_content"
+            android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
-            android:id = "@+id/programmer_name" />
+            android:text="Unknown Name"
+            android:textAlignment="center"
+            android:id="@+id/programmer_name" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="salary: 0 $"
+            android:textAlignment="center"
+            android:id="@+id/programmers_salary"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="None assigned task"
+            android:textAlignment="center"
+            android:id="@+id/programmers_tasks"
+            />
     </LinearLayout>
 
 </LinearLayout>

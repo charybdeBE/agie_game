@@ -30,9 +30,6 @@ public class Manager extends AppCompatActivity {
         /* Set up the global vieuw */
         setContentView(R.layout.activity_manager);
 
-
-
-
         /* Set up the programmers list */
 
         this.team = GameLogic.getInstance().getTeam();
@@ -40,28 +37,6 @@ public class Manager extends AppCompatActivity {
         this.programmers_view = (ListView) findViewById(R.id.programmers);
 
         this.programmers_view.setAdapter(new Programmer_List_Adapter(this, this.team));
-
-        /*
-        // just for testing
-        String[][] programmers_list = new String[][]{{"Prog 1", "60 xp"}, {"Prog 2", "50 xp"}, {"Prog 3", "40 xp"}, {"Prog 4", "15 xp"}};
-
-        List<HashMap<String, String>> liste_programmeurs = new ArrayList<HashMap<String, String>>();
-
-        HashMap<String, String> element;
-        for (int i = 0; i < programmers_list.length; i++) {
-            element = new HashMap<String, String>();
-            element.put("Name", programmers_list[i][0]);
-            element.put("Experience", programmers_list[i][1]);
-            liste_programmeurs.add(element);
-        }
-
-        ListAdapter adpter = new SimpleAdapter(this, liste_programmeurs, android.R.layout.simple_list_item_2, new String[] {"name", "Experience"}, new int[] {android.R.id.text1, android.R.id.text2});
-
-        this.programmers_view.setAdapter(adpter);
-        */
-
-
-
 
         /* Set up the budget */
         int newBudget = 0;

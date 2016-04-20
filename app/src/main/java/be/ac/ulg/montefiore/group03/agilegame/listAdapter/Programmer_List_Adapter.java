@@ -33,14 +33,24 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
         if (vi == null)
             vi = inflater.inflate(R.layout.programmer_item, null);
         if (vi != null) {
-            TextView text = (TextView) vi.findViewById(R.id.programmer_name);
+            TextView name = (TextView) vi.findViewById(R.id.programmer_name);
             if(data.get(position).hasId()){
                 Resources res = context.getResources();
-                text.setText(res.getStringArray(R.array.persons)[data.get(position).getId()]);
+                name.setText(res.getStringArray(R.array.persons)[data.get(position).getId()]);
             }
             else {
-                text.setText(data.get(position).getName());
+                name.setText(data.get(position).getName());
             }
+
+            TextView salary = (TextView) vi.findViewById(R.id.programmers_salary);
+            salary.setText("Salary: " + data.get(position).getSalary() + " $");
+
+            TextView assignedTask = (TextView) vi.findViewById(R.id.programmers_tasks);
+
+            if (data.get(position).getWork() != null)
+                assignedTask.setText("Work on " + data.get(position).getWork());
+            else
+                assignedTask.setText("None assigned task");
         }
         return vi;
     }
