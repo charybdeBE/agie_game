@@ -17,8 +17,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/quit_button_text"
-            android:id="@+id/quit_button"
+            android:clickable="false"
+            android:id="@+id/month_now"
             android:layout_weight=".33"
             style="?android:attr/buttonBarButtonStyle" />
 

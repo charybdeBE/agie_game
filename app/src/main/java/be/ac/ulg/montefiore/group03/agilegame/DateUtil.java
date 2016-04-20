@@ -33,6 +33,11 @@ public class DateUtil {
         }
         return ret;
     }
+    public static String dateToString(Date date, String pattern){
+        SimpleDateFormat df = new SimpleDateFormat(pattern);
+        return  df.format(date);
+    }
+
     public static Date getFirstDayOfMonth(Date d){
         return DateUtil.dateFromString("1."+DateUtil.getMonth(d)+"."+DateUtil.getYear(d), "d.M.y");
     }
