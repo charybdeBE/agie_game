@@ -1,7 +1,11 @@
 package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events;
 
+import android.app.Application;
+
+import java.util.ArrayList;
 import java.util.Date;
 
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.App;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
@@ -27,7 +31,13 @@ public class Feature_Event extends Event{
         this.depend = f;
     }
     @Override
-    public void effect(Programmer _p) {
+    public void effect(Programmer _p) {}
 
+    public void effect(App app){
+        ArrayList<Features> features = app.getFeatures();
+        if(features.contains(depend)){
+            Features f = features.get(features.indexOf(depend));
+            f.setBonus(delay * f.getBonus());
+        }
     }
 }
