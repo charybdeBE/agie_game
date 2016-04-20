@@ -87,6 +87,8 @@ public class Task_List_Adapter extends Array_List_Adapter {
     }
 
     class taskDragListener implements View.OnDragListener {
+        private int initialColor = Color.rgb(0,0,0);
+        private int dropColor = Color.rgb(255, 255, 255);
 
         @Override
         public boolean onDrag(View v, DragEvent event) {
@@ -96,17 +98,21 @@ public class Task_List_Adapter extends Array_List_Adapter {
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     // when we enter in a zone in which the view can be dropped in
-                    v.setBackgroundColor();
+                    initialColor = v.getDrawingCacheBackgroundColor();
+                    v.setBackgroundColor(dropColor);
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
                     // when we are not in a zone that is droppable (in this case, when we leave a task
+                    v.setBackgroundColor(initialColor);
                     break;
                 case DragEvent.ACTION_DROP:
                     // when it is dropped: Assign task to the programmer
 
+                    v.setBackgroundColor(initialColor);
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
-                    // when the drop is finished (after): Nothing to do
+                    // when the drop is finished (after)
+                    v.setBackgroundColor(initialColor);
                 default:
                     break;
             }
