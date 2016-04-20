@@ -62,7 +62,7 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
 
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                ClipData data = ClipData.newPlainText(" ", " ");
+                ClipData data = ClipData.newPlainText("hello", "word");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 view.startDrag(data, shadowBuilder, view, 0);
                 view.setVisibility(View.VISIBLE);
@@ -73,3 +73,5 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
         }
     }
 }
+
+
