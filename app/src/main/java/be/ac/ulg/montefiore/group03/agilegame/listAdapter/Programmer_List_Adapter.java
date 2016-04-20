@@ -34,7 +34,7 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
             vi = inflater.inflate(R.layout.programmer_item, null);
         if (vi != null) {
 
-            vi.setOnTouchListener(new programmerTouchListener());
+            vi.findViewById(R.id.profile_photo).setOnTouchListener(new programmerTouchListener());
 
             TextView name = (TextView) vi.findViewById(R.id.programmer_name);
             if(data.get(position).hasId()){
