@@ -20,9 +20,9 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
  */
 public class Event_List_Adapter extends Array_List_Adapter{
 
-    private ArrayList<Event> data;
+    private ArrayList<Programmer_Event> data;
 
-    public Event_List_Adapter(Context context, ArrayList<Event> data) {
+    public Event_List_Adapter(Context context, ArrayList<Programmer_Event> data) {
         super(context, data);
         this.data = data;
     }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Date;
 
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Event_List_Adapter;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event;
@@ -23,7 +24,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event;
 public class Calendar extends AppCompatActivity {
 
 
-    private ArrayList<Event> event;
+    private ArrayList<Programmer_Event> event;
     private CalendarView cal    ;
     private ListView list;
 
