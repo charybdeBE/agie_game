@@ -102,7 +102,7 @@ public class Event_Builder {
             case 3:
                 feat = a.getFeatures();
                 f = feat.get(gen.nextInt(feat.size()));
-                return new Feature_Event(id, d, f, null, 999); //The task gfet complete
+                return new Feature_Event(id, d, f, null, 999); //The task get complete
         }
         return null;
     }
