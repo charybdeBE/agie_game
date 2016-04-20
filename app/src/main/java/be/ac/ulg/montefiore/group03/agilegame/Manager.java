@@ -1,12 +1,20 @@
 package be.ac.ulg.montefiore.group03.agilegame;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -73,16 +81,14 @@ public class Manager extends AppCompatActivity {
 
         help_msg = new HelpMessage();
         Button help = (Button) findViewById(R.id.help_button);
-        help.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
+        help.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 help_msg.show(getSupportFragmentManager(), "help");
             }
         });
 
-
-        ListView tasks= (ListView) findViewById(R.id.tasks);
+        ListView tasks = (ListView) findViewById(R.id.tasks);
         tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));
-
     }
 
     @Override
@@ -111,7 +117,7 @@ public class Manager extends AppCompatActivity {
 
         String newBudget = "";
 
-        while((budget / 1000) > 0) {
+        while ((budget / 1000) > 0) {
 
             String reste = "" + budget % 1000;
 
@@ -130,3 +136,4 @@ public class Manager extends AppCompatActivity {
         return newBudget;
     }
 }
+
