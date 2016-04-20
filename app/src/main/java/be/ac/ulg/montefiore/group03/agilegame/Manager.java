@@ -87,6 +87,16 @@ public class Manager extends AppCompatActivity {
             }
         });
 
+        Button simulate_btn = (Button) findViewById(R.id.simulate_button);
+        simulate_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                GameLogic.getInstance().simulate();
+            }
+        });
+
+        Button month_button = (Button) findViewById(R.id.month_now);
+
+        month_button.setText(DateUtil.dateToString(GameLogic.getInstance().getNow(), "MMM yyyy"));
         ListView tasks = (ListView) findViewById(R.id.tasks);
         tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));
     }

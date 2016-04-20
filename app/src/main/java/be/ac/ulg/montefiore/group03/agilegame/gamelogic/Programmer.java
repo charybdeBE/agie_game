@@ -16,6 +16,8 @@ public class Programmer extends Person {
 
     public Programmer(String name) {
         super(name);
+        this.skills = new ArrayList<>();
+        this.interests = new ArrayList<>();
     }
 
     public Programmer(String name, ArrayList<Skills> _s, ArrayList<Interest> _i) {
@@ -60,7 +62,8 @@ public class Programmer extends Person {
     }
 
     public void work(){
-        workOn.progress(this);
+        if(workOn != null)
+            workOn.progress(this);
     }
 
     public void setBonus(double bonus){
