@@ -72,8 +72,8 @@ public class Manager extends AppCompatActivity {
 
         help_msg = new HelpMessage();
         Button help = (Button) findViewById(R.id.help_button);
-        help.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
+        help.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 help_msg.show(getSupportFragmentManager(), "help");
             }
         });
@@ -90,9 +90,8 @@ public class Manager extends AppCompatActivity {
         Button month_button = (Button) findViewById(R.id.month_now);
 
         month_button.setText(DateUtil.dateToString(GameLogic.getInstance().getNow(), "MMM yyyy"));
-        ListView tasks= (ListView) findViewById(R.id.tasks);
+        ListView tasks = (ListView) findViewById(R.id.tasks);
         tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));
-
     }
 
     @Override
@@ -122,7 +121,7 @@ public class Manager extends AppCompatActivity {
 
         String newBudget = "";
 
-        while((budget / 1000) > 0) {
+        while ((budget / 1000) > 0) {
 
             String reste = "" + budget % 1000;
 
@@ -141,3 +140,4 @@ public class Manager extends AppCompatActivity {
         return newBudget;
     }
 }
+

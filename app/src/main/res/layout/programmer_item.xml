@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="?android:attr/listPreferredItemHeight"
         android:src="@drawable/default_img"
+        android:id="@+id/profile_photo"
         android:layout_weight="0.25" />
 
     <LinearLayout
@@ -22,14 +23,12 @@
             android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
             android:text="Unknown Name"
-            android:textAlignment="center"
             android:id="@+id/programmer_name" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="salary: 0 $"
-            android:textAlignment="center"
             android:id="@+id/programmers_salary"
             />
 
@@ -37,7 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="None assigned task"
-            android:textAlignment="center"
             android:id="@+id/programmers_tasks"
             />
     </LinearLayout>

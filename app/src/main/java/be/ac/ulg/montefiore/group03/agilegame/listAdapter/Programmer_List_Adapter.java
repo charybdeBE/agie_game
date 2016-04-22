@@ -1,8 +1,10 @@
 package be.ac.ulg.montefiore.group03.agilegame.listAdapter;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -25,14 +27,15 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
         data = programmers;
     }
 
-
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         if (vi == null)
             vi = inflater.inflate(R.layout.programmer_item, null);
         if (vi != null) {
+
+            vi.findViewById(R.id.profile_photo).setOnTouchListener(new programmerTouchListener());
+
             TextView name = (TextView) vi.findViewById(R.id.programmer_name);
             if(data.get(position).hasId()){
                 Resources res = context.getResources();
@@ -54,4 +57,21 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
         }
         return vi;
     }
+
+    private final class programmerTouchListener implements View.OnTouchListener {
+
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                ClipData data = ClipData.newPlainText("hello", "word");
+                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                view.startDrag(data, shadowBuilder, view, 0);
+                view.setVisibility(View.VISIBLE);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 }
+
+
