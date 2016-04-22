@@ -66,7 +66,6 @@ public class Manager extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Pole_emploi.class);
-
                 startActivity(i);
             }
         });
@@ -83,6 +82,8 @@ public class Manager extends AppCompatActivity {
         simulate_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 GameLogic.getInstance().simulate();
+                Intent i = new Intent(getApplicationContext(), Summary_activity.class);
+                startActivity(i);
             }
         });
 
@@ -116,7 +117,8 @@ public class Manager extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private String getBudgetReadable(int budget) {
+    //TODO move at an appropriate place
+    public static String getBudgetReadable(int budget) {
 
         String newBudget = "";
 

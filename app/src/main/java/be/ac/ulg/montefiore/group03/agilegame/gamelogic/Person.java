@@ -1,9 +1,11 @@
 package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
 
+import java.util.Observable;
+
 /**
  * Created by charybde on 08.03.16.
  */
-public class Person {
+public class Person extends Observable{
 
     private String name;
     private int id;
@@ -27,4 +29,9 @@ public class Person {
     public Boolean hasId() { return id != -1 ? true : false;}
     public int getId()  { return id;}
     public String getName() { return this.name; }
+    public void notify(Object o){
+        setChanged();
+        notifyObservers(o);
+    }
+
 }

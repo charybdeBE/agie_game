@@ -13,6 +13,8 @@ public class All_Team_Event extends Programmer_Event {
     }
 
     public void effect(Programmer _p){
+
         _p.setBonus(_p.getBonus() * this.delay);
+        _p.notify(this);
     }
 }

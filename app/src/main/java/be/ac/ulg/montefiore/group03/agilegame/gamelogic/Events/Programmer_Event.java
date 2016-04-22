@@ -1,6 +1,7 @@
 package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events;
 
 import java.util.Date;
+import java.util.Observable;
 
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
@@ -10,7 +11,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 /**
  * Created by charybde on 08.03.16.
  */
-public class Programmer_Event extends Event {
+public class Programmer_Event extends Event{
 
     private Interest depend;
 
@@ -37,9 +38,14 @@ public class Programmer_Event extends Event {
     public void effect(Programmer _p) { //Could be inherited by special programmer_event
         if(_p.like(depend)){
             if(_p.hasSkill(this.amelioration.getType())){
-                _p.getSkill(this.amelioration.getType()).gainXp(this.amelioration.getXp());
+                Skills s =  _p.getSkill(this.amelioration.getType());
+                boolean b = s.gainXp(this.amelioration.getXp());
+                if(b)
+                    _p.notifyObservers(s);
             }
             _p.setBonus(_p.getBonus() * this.delay);
+
+            _p.notify(this);
         }
     }
 
