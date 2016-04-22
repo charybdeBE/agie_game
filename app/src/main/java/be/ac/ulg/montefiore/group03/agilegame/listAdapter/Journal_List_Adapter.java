@@ -44,6 +44,7 @@ public class Journal_List_Adapter extends Array_List_Adapter{
         Journal_entry entry = data.get(position);
         String txt = "";
 
+        //TODO use a visitor pattern to avoid "instanceof"
         //TODO MAP features and strings
         if(entry instanceof Journal_entry_programmer){
             String[] names = res.getStringArray(R.array.persons);
