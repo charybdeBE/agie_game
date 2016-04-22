@@ -3,11 +3,13 @@ package be.ac.ulg.montefiore.group03.agilegame.listAdapter;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.res.Resources;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
             vi = inflater.inflate(R.layout.programmer_item, null);
         if (vi != null) {
 
-            vi.findViewById(R.id.profile_photo).setOnTouchListener(new programmerTouchListener());
+            vi.findViewById(R.id.profile_photo).setOnTouchListener(new programmerTouchListener(data.get(position)));
 
             TextView name = (TextView) vi.findViewById(R.id.programmer_name);
             if(data.get(position).hasId()){
@@ -50,8 +52,29 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
 
             TextView assignedTask = (TextView) vi.findViewById(R.id.programmers_tasks);
 
-            if (data.get(position).getWork() != null)
-                assignedTask.setText("Work on " + data.get(position).getWork());
+            if (data.get(position).getWork() != null) {
+
+                /* Amelioration : mettre un nom a Feature ou bien faire une fonction qui le renvoie */
+                Resources res = context.getResources();
+
+                switch (data.get(position).getWork().getNeeded()) {
+                    case Android:
+                        assignedTask.setText(res.getStringArray(R.array.features_ANDROID)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_ANDROID).length]);
+                        break;
+                    case JAVA:
+                        assignedTask.setText(res.getStringArray(R.array.features_JAVA)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_JAVA).length]);
+                        break;
+                    case Network:
+                        assignedTask.setText(res.getStringArray(R.array.features_NETWORK)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_NETWORK).length]);
+                        break;
+                    case Design:
+                        assignedTask.setText(res.getStringArray(R.array.features_DESIGN)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_DESIGN).length]);
+                        break;
+                    case Diagrams:
+                        assignedTask.setText(res.getStringArray(R.array.features_DIAGRAMS)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_DIAGRAMS).length]);
+                        break;
+                }
+            }
             else
                 assignedTask.setText("None assigned task");
         }
@@ -60,11 +83,18 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
 
     private final class programmerTouchListener implements View.OnTouchListener {
 
+        private Programmer p = null;
+
+        public programmerTouchListener(Programmer p) {
+            super();
+            this.p = p;
+        }
+
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                ClipData data = ClipData.newPlainText("hello", "word");
+//                ClipData data = ClipData.newPlainText("hello", "word");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-                view.startDrag(data, shadowBuilder, view, 0);
+                view.startDrag(null, shadowBuilder, p, 0);
                 view.setVisibility(View.VISIBLE);
                 return true;
             } else {

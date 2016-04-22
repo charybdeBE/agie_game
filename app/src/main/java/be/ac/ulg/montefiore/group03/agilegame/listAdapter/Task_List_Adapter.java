@@ -40,7 +40,7 @@ public class Task_List_Adapter extends Array_List_Adapter {
         if (vi == null)
             vi = inflater.inflate(R.layout.task_list_row, null);
 
-        vi.setOnDragListener(new taskDragListener());
+        vi.setOnDragListener(new taskDragListener(data.get(position)));
 
         Resources res = context.getResources();
         TextView name = (TextView) vi.findViewById(R.id.name);
@@ -87,8 +87,13 @@ public class Task_List_Adapter extends Array_List_Adapter {
     }
 
     class taskDragListener implements View.OnDragListener {
-        private int initialColor = Color.rgb(0,0,0);
-        private int dropColor = Color.rgb(255, 255, 255);
+
+        private Features task = null;
+
+        public taskDragListener (Features t) {
+            super();
+            this.task = t;
+        }
 
         @Override
         public boolean onDrag(View v, DragEvent event) {
@@ -98,21 +103,17 @@ public class Task_List_Adapter extends Array_List_Adapter {
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     // when we enter in a zone in which the view can be dropped in
-                    initialColor = v.getDrawingCacheBackgroundColor();
-                    v.setBackgroundColor(dropColor);
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
                     // when we are not in a zone that is droppable (in this case, when we leave a task
-                    v.setBackgroundColor(initialColor);
                     break;
                 case DragEvent.ACTION_DROP:
                     // when it is dropped: Assign task to the programmer
-
-                    v.setBackgroundColor(initialColor);
+                    Programmer p = (Programmer) event.getLocalState();
+                    p.setWork(this.task);
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     // when the drop is finished (after)
-                    v.setBackgroundColor(initialColor);
                 default:
                     break;
             }
