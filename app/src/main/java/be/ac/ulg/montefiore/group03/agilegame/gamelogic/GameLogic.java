@@ -2,21 +2,21 @@ package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 
 import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event_Builder;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Feature_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Journal.Journal;
 
 /**
  * Created by charybde on 08.03.16.
  */
 public class GameLogic {
 
+    private HashMap<Integer, Journal> summary;
     private HashMap<Date, ArrayList<Programmer_Event>> events; // programming events note that the key is supposed to be the first day of the month
     private ArrayList<Programmer> team;
     private App application;
@@ -37,6 +37,7 @@ public class GameLogic {
     }
 
     private GameLogic(){
+        summary = new HashMap<>();
         Date ajd = DateUtil.dateFromString("1.3.2016","d.M.y");
         events = new HashMap<Date, ArrayList<Programmer_Event>>();
         team = new ArrayList<Programmer>();
@@ -81,7 +82,6 @@ public class GameLogic {
     }
 
 
-    //TODO include feature events
     private void generateMonthEvent(Date _d){
         int actualTurn =  12 * (DateUtil.getYear(_d) - DateUtil.getYear(start)) + DateUtil.getMonth(_d) - DateUtil.getMonth(start);
         if(actualTurn < 0) {
@@ -135,18 +135,36 @@ public class GameLogic {
     }
 
     public void simulate(){
+        Journal journal = new Journal();
+        journal.setStartBudget(budget);
         Feature_Event feat_event = Event_Builder.getInstance().buildFeatureEvent(now, turn, application);
+
+        for(Features f : application.getFeatures()){
+            f.addObserver(journal);
+        }
+
         if(feat_event != null){
             feat_event.effect(application);
         }
+
         ArrayList<Programmer_Event> prog_event = getEventsOfMonth(now);
         for(Programmer programmer : team) {
+            programmer.addObserver(journal);
             for (Programmer_Event event : prog_event) {
                 event.effect(programmer);
             }
             programmer.work();
+            journal.addSalary(programmer.getSalary());
             budget -= programmer.getSalary();
+            programmer.deleteObserver(journal);
+            programmer.setWork(null);
         }
+
+        for(Features f : application.getFeatures()){
+            f.deleteObserver(journal);
+        }
+
+        summary.put(turn, journal);
 
         //Update now and turn
         int month = DateUtil.getMonth(now) + 1;
@@ -159,5 +177,12 @@ public class GameLogic {
         turn++;
 
     }
+
+    public Journal getSummary(int when){
+        return this.summary.get(when);
+    }
+
+    public int getTurn(){return turn;}
+
 }
 

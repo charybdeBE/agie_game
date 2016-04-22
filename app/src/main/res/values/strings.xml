@@ -15,6 +15,7 @@
     <string name="ok">OK</string>
 
 
+    <!--  String for events -->
 
     <string-array name="event_interests_name_array">
         <item>E3</item>
@@ -27,6 +28,8 @@
         <item>SpaceX launching</item>
         <item>Syndicalist Manifestation</item>
     </string-array>
+
+    <!--  String for persons name -->
 
     <string-array name="persons">
         <item>Laurent Vanosmael</item>
@@ -41,6 +44,7 @@
         <item>Ada Lovelace</item>
     </string-array>
 
+    <!--  String for features -->
     <string-array name="features_JAVA">
         <item>
             Binary Search Algorithm
@@ -77,6 +81,7 @@
     </string-array>
 
 
+    <!--  String for help -->
     <string-array name="help">
         <item>Once you hit the simulate button there is no going back</item>
         <item>The agile methodology is based on the  Agile Manifesto </item>
@@ -84,6 +89,18 @@
     </string-array>
 
 
+    <!--  String for summary -->
+    <string name="has_participated">\n\t has participated in %1$s</string>
+    <string name="is_now_level">\n\t is now level %1$d in %2$s </string>
+    <string name="has_worked">\n\t has worked %1$d on %2$s</string>
+    <string name="there_was">\n\t there was %1$s</string>
+    <string name="complete">\n\t is now complete</string>
+    <string name="cancel">\n\t has been canceled</string>
+    <string name="progress">\n\t has progress of %1$d </string>
+    <string name="title_activity_summary_activity">Summary</string>
+    <string name="budget">Budget</string>
+    <string name="start_budget">\n\t Start budget : %1$s </string>
+    <string name="salaries">\n\t Depenses : %1$s </string>
+    <string name="new_budget">\n\t New Budget : %1$s </string>
 
-
-    </resources>
+</resources>

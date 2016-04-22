@@ -2,6 +2,7 @@ package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Observable;
 
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
@@ -9,7 +10,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 /**
 
  */
-public abstract  class  Event implements Comparable<Event> {
+public abstract  class  Event  implements Comparable<Event> {
     /**
      * delay :
      * 0 = no work done this month

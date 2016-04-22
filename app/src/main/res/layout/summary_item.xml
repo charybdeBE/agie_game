@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:weightSum="1.0">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:src="@drawable/default_img"
+        android:id="@+id/journal_entry_pic"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1.0"
+        android:layout_weight="0.75"
+        >
+        <TextView
+            android:layout_weight="0.10"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Laurent Vanosmael"
+            android:gravity="left"
+            android:lines="1"
+            android:textAlignment="gravity"
+            android:id="@+id/journal_entry_name"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.90"
+            android:text="\n\t has particpated in event 1\n\t is now level 1 in JAVA \n\t is now level 66 in JAVA \n\t is now level 55 in JAVA \n\t is now level 69 in JAVA "
+            android:gravity="left"
+            android:textAlignment="gravity"
+            android:id="@+id/journal_entry"
+            />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+

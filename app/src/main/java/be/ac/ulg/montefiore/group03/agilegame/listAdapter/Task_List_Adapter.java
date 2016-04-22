@@ -70,7 +70,6 @@ public class Task_List_Adapter extends Array_List_Adapter {
                 break;
         }
 
-        System.out.println("aaaaaaaaaaaaaaaaaaaaa" + name.getText());
 
         TextView time = (TextView) vi.findViewById(R.id.size_Task);
         double t = data.get(position).getDuration();

@@ -62,8 +62,10 @@ public class Programmer extends Person {
     }
 
     public void work(){
-        if(workOn != null)
-            workOn.progress(this);
+        if(workOn != null) {
+            Double workTime = workOn.getDuration() - workOn.progress(this);
+            notifyObservers(workTime);
+        }
     }
 
     public void setBonus(double bonus){
@@ -77,6 +79,7 @@ public class Programmer extends Person {
     }
 
     public void addSkill(Skills s){
+        notifyObservers(s);
         skills.add(s);
     }
 

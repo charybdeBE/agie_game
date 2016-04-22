@@ -38,9 +38,18 @@ public class Skills {
     }
     public int getXp() { return this.current_xp; }
 
-    public void  gainXp(int xp){
+    /**
+     *
+     * @param xp the number of xp points to add
+     * @return true if there is a level up
+     */
+    public boolean gainXp(int xp){
         current_xp += xp;
-        while(level < (0.1 * Math.sqrt(current_xp))  + 1)
+        boolean lvlUp = false;
+        while(level < (0.1 * Math.sqrt(current_xp))  + 1) {
             this.levelUp();
+            lvlUp = true;
+        }
+        return  lvlUp;
     }
 }

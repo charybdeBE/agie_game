@@ -160,11 +160,9 @@ public class Event_Builder {
             return null;
 
         int day = getADay(); //Select a day of the month
-        System.out.println("" + day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month));
         Date ev = DateUtil.dateFromString(""+ day + "."+DateUtil.getMonth(month)+"."+DateUtil.getYear(month), "d.M.y");
 
         int id = gen.nextInt(NR_OF_PROG_EVENT);
-        System.out.println("aaaaaaaaaa "  + id );
         return getSpecializedProgrammerEvent(id , ev);
 
     }

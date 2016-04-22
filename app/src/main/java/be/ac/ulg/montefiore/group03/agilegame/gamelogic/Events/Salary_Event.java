@@ -18,5 +18,8 @@ public class Salary_Event extends All_Team_Event {
     public void effect(Programmer _p){
         super.effect(_p);
         _p.getRaise(salary_bonus);
+        _p.notify(this);
+        System.out.println("Salary was there listen by " + _p.countObservers());
+
     }
 }

@@ -11,7 +11,7 @@
             android:layout_height="?android:attr/listPreferredItemHeight"
             android:layout_weight="0.25"
             android:id="@+id/skill"/>
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -19,16 +19,17 @@
             android:layout_weight="0.75"
             >
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.90"
-                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:textAlignment="gravity"
                 android:id="@+id/name"
                 />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.10"
 
                 android:gravity="bottom"
@@ -36,7 +37,7 @@
                 android:id="@+id/size_Task"
                 />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
 

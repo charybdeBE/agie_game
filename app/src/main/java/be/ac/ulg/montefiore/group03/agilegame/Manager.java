@@ -30,25 +30,6 @@ public class Manager extends AppCompatActivity {
         /* Set up the global vieuw */
         setContentView(R.layout.activity_manager);
 
-        /* Set up the programmers list */
-
-        this.team = GameLogic.getInstance().getTeam();
-
-        this.programmers_view = (ListView) findViewById(R.id.programmers);
-
-        this.programmers_view.setAdapter(new Programmer_List_Adapter(this, this.team));
-
-        /* Set up the budget */
-        int newBudget = 0;
-        newBudget = GameLogic.getInstance().getBudget();
-        String budget = getBudgetReadable(newBudget);
-        budget = "Budget:\n" + budget + " $";
-
-        TextView budgetTextView = (TextView) findViewById(R.id.budget_textView);
-
-        if (budgetTextView != null)
-            budgetTextView.setText(budget);
-
         /* Set up the calendar button listener */
         Button toCal = (Button) findViewById(R.id.calendar_button);
         toCal.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +47,6 @@ public class Manager extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Pole_emploi.class);
-
                 startActivity(i);
             }
         });
@@ -83,14 +63,11 @@ public class Manager extends AppCompatActivity {
         simulate_btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 GameLogic.getInstance().simulate();
+                Intent i = new Intent(getApplicationContext(), Summary_activity.class);
+                startActivity(i);
             }
         });
 
-        Button month_button = (Button) findViewById(R.id.month_now);
-
-        month_button.setText(DateUtil.dateToString(GameLogic.getInstance().getNow(), "MMM yyyy"));
-        ListView tasks = (ListView) findViewById(R.id.tasks);
-        tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));
     }
 
     @Override
@@ -115,27 +92,48 @@ public class Manager extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private String getBudgetReadable(int budget) {
+    //TODO Use this function to update view when come from hidden
+    protected void onStart(){
+        super.onStart();
 
+       /* Set up the programmers list */
+        this.team = GameLogic.getInstance().getTeam();
+        this.programmers_view = (ListView) findViewById(R.id.programmers);
+        this.programmers_view.setAdapter(new Programmer_List_Adapter(this, this.team));
+
+        /* Set up the budget */
+        int newBudget = 0;
+        newBudget = GameLogic.getInstance().getBudget();
+        String budget = getBudgetReadable(newBudget);
+        budget = "Budget:\n" + budget + " $";
+
+        TextView budgetTextView = (TextView) findViewById(R.id.budget_textView);
+
+        if (budgetTextView != null)
+            budgetTextView.setText(budget);
+        Button month_button = (Button) findViewById(R.id.month_now);
+        month_button.setText(DateUtil.dateToString(GameLogic.getInstance().getNow(), "MMM yyyy"));
+
+        ListView tasks = (ListView) findViewById(R.id.tasks);
+        tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));
+    }
+
+    //TODO move at an appropriate place
+    public static String getBudgetReadable(int budget) {
         String newBudget = "";
-
         while ((budget / 1000) > 0) {
-
             String reste = "" + budget % 1000;
-
             /* padding 0 to the reste */
             while (reste.length() < 3) {
-
                 reste = "0" + reste;
             }
-
             newBudget = "," + reste + newBudget;
             budget = budget / 1000;
         }
-
         newBudget = budget + newBudget;
-
         return newBudget;
     }
+
+
 }
 

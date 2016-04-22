@@ -1,9 +1,11 @@
 package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
 
+import java.util.Observable;
+
 /**
  * Created by charybde on 08.03.16.
  */
-public class Features {
+public class Features extends Observable {
     private SkillType needed; // The skill needed to work on tat feature
     private double monthNeeded; // The numbe rof month / Level of work
     private int id;
@@ -33,12 +35,23 @@ public class Features {
         if(p.hasSkill(this.needed)){
             int level = p.getSkill(this.needed).getLevel();
             this.monthNeeded -= ((double) level) * bonus * delay_bonus;
-            p.getSkill(this.needed).gainXp((int) (50 * delay_bonus * bonus));
+            Skills skill =  p.getSkill(this.needed);
+            boolean lvlUp = skill.gainXp((int) (50 * delay_bonus * bonus));
+            if(lvlUp){
+                p.notify(skill);
+            }
         }
         else{
             p.addSkill(new Skills(this.needed));
         }
-        return this.monthNeeded < 0 ? 0 : this.monthNeeded;
+
+        double still_to_do =  this.monthNeeded < 0 ? 0 : this.monthNeeded;
+        if(still_to_do == 0) {
+            setChanged();
+            notifyObservers(new Double(0));
+        }
+
+        return still_to_do;
 
     }
 }
