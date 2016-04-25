@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import be.ac.ulg.montefiore.group03.agilegame.Manager;
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
@@ -32,6 +33,7 @@ public class Task_List_Adapter extends Array_List_Adapter {
     public Task_List_Adapter(Context context, ArrayList<Features> data) {
         super(context, data);
         this.data = data;
+
     }
 
     @Override
@@ -82,6 +84,7 @@ public class Task_List_Adapter extends Array_List_Adapter {
         time.setText(" " + Double.toString(t));
 
         return vi;
+
     }
 
     class taskDragListener implements View.OnDragListener {
@@ -109,6 +112,7 @@ public class Task_List_Adapter extends Array_List_Adapter {
                     // when it is dropped: Assign task to the programmer
                     Programmer p = (Programmer) event.getLocalState();
                     p.setWork(this.task);
+                    ((Manager) context).refreshProgList(); //TODO protect from bad casts
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     // when the drop is finished (after)

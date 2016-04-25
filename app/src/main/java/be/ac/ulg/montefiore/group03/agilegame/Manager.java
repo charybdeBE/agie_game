@@ -92,11 +92,11 @@ public class Manager extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //TODO Use this function to update view when come from hidden
+    //Use this function to update view when come from hidden
     protected void onStart(){
         super.onStart();
 
-       /* Set up the programmers list */
+        /* Set up the programmers list */
         this.team = GameLogic.getInstance().getTeam();
         this.programmers_view = (ListView) findViewById(R.id.programmers);
         this.programmers_view.setAdapter(new Programmer_List_Adapter(this, this.team));
@@ -116,6 +116,12 @@ public class Manager extends AppCompatActivity {
 
         ListView tasks = (ListView) findViewById(R.id.tasks);
         tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));
+    }
+
+    public void refreshProgList(){
+        System.out.println("Refresh ? ");
+        this.team = GameLogic.getInstance().getTeam();
+        this.programmers_view.setAdapter(new Programmer_List_Adapter(this, this.team));
     }
 
     //TODO move at an appropriate place

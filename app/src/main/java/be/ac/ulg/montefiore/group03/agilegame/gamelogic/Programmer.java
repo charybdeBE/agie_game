@@ -75,6 +75,7 @@ public class Programmer extends Person {
         return bonus;
     }
     public void setWork(Features task){
+        System.out.println("Let's work");
         this.workOn = task;
     }
 
