@@ -49,6 +49,7 @@ public class Journal implements Observer {
         }
     }
 
+
     private void update_feature_completion(Features f) {
         Journal_entry_feature entry = getOrNew(f);
         entry.setIsFinish(true);

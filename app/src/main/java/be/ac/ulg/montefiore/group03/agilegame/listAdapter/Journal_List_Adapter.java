@@ -97,7 +97,7 @@ public class Journal_List_Adapter extends Array_List_Adapter{
                     break;
             }
 
-            text.setText(names[entry.getId()]);
+            name.setText(names[entry.getId()]);
             for(Feature_Event event : ((Journal_entry_feature) entry).getEvents()){
                 String st = String.format(res.getString(R.string.there_was), events_names[event.getId()]);
                 txt += st;

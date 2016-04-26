@@ -35,12 +35,16 @@ public class Features extends Observable {
         if(p.hasSkill(this.needed)){
             System.out.println("DEBUG " + p.getSkill(this.needed).getLevel() + "B" + bonus + "C" + delay_bonus);
             int level = p.getSkill(this.needed).getLevel();
-            this.monthNeeded -= ((double) level) * bonus * delay_bonus;
+            double work = ((double) level) * bonus * delay_bonus;
+            this.monthNeeded -= work;
             Skills skill =  p.getSkill(this.needed);
             boolean lvlUp = skill.gainXp((int) (50 * delay_bonus * bonus));
             if(lvlUp){
                 p.notify(skill);
             }
+            p.notify(work);
+            setChanged();
+            notifyObservers(work);
         }
         else{
             Skills s = new Skills(this.needed);
@@ -51,9 +55,9 @@ public class Features extends Observable {
 
         double still_to_do =  this.monthNeeded < 0 ? 0 : this.monthNeeded;
         if(still_to_do == 0) {
-            setChanged();
             notifyObservers(new Double(0));
         }
+
 
         return still_to_do;
 

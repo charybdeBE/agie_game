@@ -81,7 +81,7 @@ public class Task_List_Adapter extends Array_List_Adapter {
         else
             time.setTextColor(Color.rgb(0,102,0));
 
-        time.setText(" " + Double.toString(t));
+        time.setText(String.format(" %.2f", t));
 
         return vi;
 

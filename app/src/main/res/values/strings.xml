@@ -92,11 +92,11 @@
     <!--  String for summary -->
     <string name="has_participated">\n\t has participated in %1$s</string>
     <string name="is_now_level">\n\t is now level %1$d in %2$s </string>
-    <string name="has_worked">\n\t has worked %1$d on %2$s</string>
+    <string name="has_worked">\n\t has worked %1$.2f on %2$s</string>
     <string name="there_was">\n\t there was %1$s</string>
     <string name="complete">\n\t is now complete</string>
     <string name="cancel">\n\t has been canceled</string>
-    <string name="progress">\n\t has progress of %1$d </string>
+    <string name="progress">\n\t has progress of %1$.2f </string>
     <string name="title_activity_summary_activity">Summary</string>
     <string name="budget">Budget</string>
     <string name="start_budget">\n\t Start budget : %1$s </string>
