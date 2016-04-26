@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import be.ac.ulg.montefiore.group03.agilegame.Manager;
 import be.ac.ulg.montefiore.group03.agilegame.R;
+import be.ac.ulg.montefiore.group03.agilegame.Utils;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Feature_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Journal.*;
@@ -45,7 +46,6 @@ public class Journal_List_Adapter extends Array_List_Adapter{
         String txt = "";
 
         //TODO use a visitor pattern to avoid "instanceof"
-        //TODO MAP features and strings
         if(entry instanceof Journal_entry_programmer){
             String[] names = res.getStringArray(R.array.persons);
             String[] events_name = res.getStringArray(R.array.event_interests_name_array);
@@ -72,31 +72,10 @@ public class Journal_List_Adapter extends Array_List_Adapter{
         }
 
         if(entry instanceof Journal_entry_feature){
-            String[] names = null;
+            String[] names = Utils.getFeatureNamesArray(((Journal_entry_feature) entry).getType(), context);
             String[] events_names = res.getStringArray(R.array.events_features_name_array);
-            switch(((Journal_entry_feature) entry).getType()){
-                case Android:
-                    names = res.getStringArray(R.array.features_ANDROID);
-                    img.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.android));
-                    break;
-                case JAVA:
-                    names = res.getStringArray(R.array.features_JAVA);
-                    img.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.java));
-                    break;
-                case Network:
-                    names = res.getStringArray(R.array.features_NETWORK);
-                    img.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.network));
-                    break;
-                case  Design:
-                    names = res.getStringArray(R.array.features_DESIGN);
-                    img.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.design));
-                    break;
-                case Diagrams:
-                    names = res.getStringArray(R.array.features_DIAGRAMS);
-                    img.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diagrams));
-                    break;
-            }
-
+            img.setImageDrawable(Utils.getFeatureImg(((Journal_entry_feature) entry).getType(), context));
+            
             name.setText(names[entry.getId()]);
             for(Feature_Event event : ((Journal_entry_feature) entry).getEvents()){
                 String st = String.format(res.getString(R.string.there_was), events_names[event.getId()]);

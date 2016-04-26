@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import be.ac.ulg.montefiore.group03.agilegame.Manager;
 import be.ac.ulg.montefiore.group03.agilegame.R;
+import be.ac.ulg.montefiore.group03.agilegame.Utils;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
@@ -49,28 +50,8 @@ public class Task_List_Adapter extends Array_List_Adapter {
 
         ImageView skill = (ImageView) vi.findViewById(R.id.skill);
 
-        switch(data.get(position).getNeeded()){
-            case Android :
-                skill.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.android));
-                name.setText(res.getStringArray(R.array.features_ANDROID)[data.get(position).getId() % res.getStringArray(R.array.features_ANDROID).length]);
-                break;
-            case JAVA:
-                skill.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.java));
-                name.setText(res.getStringArray(R.array.features_JAVA)[data.get(position).getId() % res.getStringArray(R.array.features_JAVA).length]);
-                break;
-            case Network:
-                skill.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.network));
-                name.setText(res.getStringArray(R.array.features_NETWORK)[data.get(position).getId() % res.getStringArray(R.array.features_NETWORK).length]);
-                break;
-            case  Design:
-                skill.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.design));
-                name.setText(res.getStringArray(R.array.features_DESIGN)[data.get(position).getId() % res.getStringArray(R.array.features_DESIGN).length]);
-                break;
-            case Diagrams:
-                skill.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.diagrams));
-                name.setText(res.getStringArray(R.array.features_DIAGRAMS)[data.get(position).getId() % res.getStringArray(R.array.features_DIAGRAMS).length]);
-                break;
-        }
+        skill.setImageDrawable(Utils.getFeatureImg(data.get(position), context));
+        name.setText(Utils.getFeatureName(data.get(position), context));
 
         TextView time = (TextView) vi.findViewById(R.id.size_Task);
         double t = data.get(position).getDuration();

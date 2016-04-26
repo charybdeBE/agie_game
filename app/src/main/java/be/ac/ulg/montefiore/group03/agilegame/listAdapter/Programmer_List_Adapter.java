@@ -15,6 +15,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import be.ac.ulg.montefiore.group03.agilegame.R;
+import be.ac.ulg.montefiore.group03.agilegame.Utils;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 
 /**
@@ -54,29 +55,11 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
 
             if (data.get(position).getWork() != null) {
 
-                /* Amelioration : mettre un nom a Feature ou bien faire une fonction qui le renvoie */
-                Resources res = context.getResources();
+                assignedTask.setText(Utils.getFeatureName(data.get(position).getWork(), context));
 
-                switch (data.get(position).getWork().getNeeded()) {
-                    case Android:
-                        assignedTask.setText(res.getStringArray(R.array.features_ANDROID)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_ANDROID).length]);
-                        break;
-                    case JAVA:
-                        assignedTask.setText(res.getStringArray(R.array.features_JAVA)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_JAVA).length]);
-                        break;
-                    case Network:
-                        assignedTask.setText(res.getStringArray(R.array.features_NETWORK)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_NETWORK).length]);
-                        break;
-                    case Design:
-                        assignedTask.setText(res.getStringArray(R.array.features_DESIGN)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_DESIGN).length]);
-                        break;
-                    case Diagrams:
-                        assignedTask.setText(res.getStringArray(R.array.features_DIAGRAMS)[data.get(position).getWork().getId() % res.getStringArray(R.array.features_DIAGRAMS).length]);
-                        break;
-                }
             }
             else
-                assignedTask.setText("None assigned task");
+                assignedTask.setText("No task assigned");
         }
         return vi;
     }

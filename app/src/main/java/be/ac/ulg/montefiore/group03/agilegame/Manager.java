@@ -1,5 +1,6 @@
 package be.ac.ulg.montefiore.group03.agilegame;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_List_Adapter;
@@ -141,6 +143,6 @@ public class Manager extends AppCompatActivity {
         return newBudget;
     }
 
-
+    
 }
 
