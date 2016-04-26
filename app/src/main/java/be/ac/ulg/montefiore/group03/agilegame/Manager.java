@@ -19,6 +19,8 @@ import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Task_List_Adapter;
 
 public class Manager extends AppCompatActivity {
 
+    //TODO Remove task from list when complete/cancel
+    //TODO make the observer of task work properly
     ListView programmers_view = null;
     ArrayList<Programmer> team = null;
     HelpMessage help_msg = null;

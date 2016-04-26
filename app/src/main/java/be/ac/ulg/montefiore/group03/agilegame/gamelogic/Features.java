@@ -33,6 +33,7 @@ public class Features extends Observable {
     public double progress(Programmer p){
         double bonus = p.getBonus();
         if(p.hasSkill(this.needed)){
+            System.out.println("DEBUG " + p.getSkill(this.needed).getLevel() + "B" + bonus + "C" + delay_bonus);
             int level = p.getSkill(this.needed).getLevel();
             this.monthNeeded -= ((double) level) * bonus * delay_bonus;
             Skills skill =  p.getSkill(this.needed);
@@ -42,7 +43,10 @@ public class Features extends Observable {
             }
         }
         else{
-            p.addSkill(new Skills(this.needed));
+            Skills s = new Skills(this.needed);
+            p.addSkill(s);
+            p.notify(s);
+
         }
 
         double still_to_do =  this.monthNeeded < 0 ? 0 : this.monthNeeded;

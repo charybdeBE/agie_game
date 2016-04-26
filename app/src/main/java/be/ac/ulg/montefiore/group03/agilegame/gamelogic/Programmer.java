@@ -18,6 +18,7 @@ public class Programmer extends Person {
         super(name);
         this.skills = new ArrayList<>();
         this.interests = new ArrayList<>();
+        this.bonus = 1;
     }
 
     public Programmer(String name, ArrayList<Skills> _s, ArrayList<Interest> _i) {
@@ -47,10 +48,16 @@ public class Programmer extends Person {
     }
 
     public Boolean hasSkill(SkillType type){
-        return this.skills.contains(type);
+        if(getSkill(type) != null)
+            return true;
+        return false;
     }
     public Skills getSkill(SkillType type){
-        return skills.get(skills.indexOf(type));
+        for(Skills s : skills){
+            if(s.getType() == type)
+                return s;
+        }
+        return null;
     }
 
     public int getSalary(){
@@ -74,8 +81,8 @@ public class Programmer extends Person {
     public double getBonus(){
         return bonus;
     }
+
     public void setWork(Features task){
-        System.out.println("Let's work");
         this.workOn = task;
     }
 
