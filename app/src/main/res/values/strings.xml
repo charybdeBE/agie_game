@@ -13,6 +13,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="recruit_programmers_button">Recruit new team member</string>
     <string name="ok">OK</string>
+    <string name="back">Back</string>
 
 
     <!--  String for events -->

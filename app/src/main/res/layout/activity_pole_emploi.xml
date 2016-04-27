@@ -13,10 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="1.0">
+        android:weightSum="1.00">
       <ImageView
         android:src="@drawable/pole_emploi"
-          android:layout_weight="0.25"
+          android:layout_weight="0.20"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center"/>
@@ -24,9 +24,17 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.75"
+            android:layout_weight="0.70"
+            android:layout_gravity="center"
             android:id="@+id/avaiable_prog"
         />
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:id="@+id/back_button"
+            android:layout_gravity="right"
+            android:layout_weight=".05"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 </RelativeLayout>
