@@ -31,12 +31,13 @@ public class GameLogic {
 
     public static GameLogic getInstance(){
         if(GameLogic.single == null){
-            GameLogic.single = new GameLogic();
+            GameLogic.single = new GameLogic(4); //Default mode easy
         }
         return GameLogic.single;
     }
 
-    private GameLogic(){
+    //TODO clean constructor
+    private GameLogic(int task){
         summary = new HashMap<>();
         Date ajd = DateUtil.dateFromString("1.3.2016","d.M.y");
         events = new HashMap<Date, ArrayList<Programmer_Event>>();
@@ -50,8 +51,12 @@ public class GameLogic {
         now = ajd;
         turn = 0;
 
-        application = new App(4);
+        application = new App(task);
         budget = application.getInitialBudget();
+    }
+
+    public static void newGame(int difficulty){
+        GameLogic.single = new GameLogic(difficulty * 4);
     }
 
     public ArrayList<Programmer_Event> getEventsOfDay (Date _d) {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +27,7 @@ public class Manager extends AppCompatActivity {
     HelpMessage help_msg = null;
 
     //TODO Fin de Jeu ?
-    //TODO new game
+    //TODO save the current game
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,12 +73,22 @@ public class Manager extends AppCompatActivity {
             }
         });
 
+        Button summary_btn = (Button) findViewById(R.id.summary_button);
+        summary_btn.setOnClickListener(new View.OnClickListener () {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Summary_activity.class);
+                startActivity(i);
+             }
+        });
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
@@ -88,14 +99,24 @@ public class Manager extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.menu_easy:
+                GameLogic.newGame(1);
+                this.onStart();
+                return true;
+            case R.id.menu_medium:
+                GameLogic.newGame(2);
+                this.onStart();
+                return true;
+            case R.id.menu_hard:
+                GameLogic.newGame(3);
+                this.onStart();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
     }
-
     //Use this function to update view when come from hidden
     protected void onStart(){
         super.onStart();

@@ -103,4 +103,11 @@
     <string name="salaries">\n\t Depenses : %1$s </string>
     <string name="new_budget">\n\t New Budget : %1$s </string>
 
+
+    <!-- Menu items -->
+    <string name="new_easy">New Game (Easy)</string>
+    <string name="new_medium">New Game (Medium)</string>
+    <string name="new_hard">New Game (Hard)</string>
+
+
 </resources>

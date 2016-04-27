@@ -8,13 +8,14 @@ import java.util.Random;
  */
 public class App {
     private static final int MAX_TASK_SIZE = 20;
+    private static final int INITIAL_BUDGET = 1020300;
     private ArrayList<Features> tasks;
 
     private int initialBudget;
 
     public App(int features){
         this.tasks = new ArrayList<Features>();
-        initialBudget = 10200003;
+        initialBudget = INITIAL_BUDGET;
         Random e = new Random();
         SkillType[] vals = SkillType.values(); //Cache the table for performencies
         for(int i = 0; i < features; ++i){
