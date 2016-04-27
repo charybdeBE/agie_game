@@ -24,6 +24,7 @@ public class Features extends Observable {
     public int getId() {return this.id; }
     public double getBonus() {return  this.delay_bonus; }
     public void setBonus(double _b) {this.delay_bonus = _b;}
+    public void setDuration(double _d){ this.monthNeeded = _d; }
 
     /**
      * Working on a task (gain 50 xp or a skill)
@@ -32,6 +33,10 @@ public class Features extends Observable {
      */
     public double progress(Programmer p){
         double bonus = p.getBonus();
+        if(monthNeeded <= 0)
+            return 0;
+
+
         if(p.hasSkill(this.needed)){
             System.out.println("DEBUG " + p.getSkill(this.needed).getLevel() + "B" + bonus + "C" + delay_bonus);
             int level = p.getSkill(this.needed).getLevel();
@@ -53,13 +58,19 @@ public class Features extends Observable {
 
         }
 
-        double still_to_do =  this.monthNeeded < 0 ? 0 : this.monthNeeded;
-        if(still_to_do == 0) {
+        this.monthNeeded =  this.monthNeeded <= 0 ? 0 : this.monthNeeded;
+        if(monthNeeded == 0) {
+            setChanged();
             notifyObservers(new Double(0));
         }
 
 
-        return still_to_do;
+        return monthNeeded;
 
     }
+    public void notify(Object o){
+        setChanged();
+        notifyObservers(o);
+    }
 }
+

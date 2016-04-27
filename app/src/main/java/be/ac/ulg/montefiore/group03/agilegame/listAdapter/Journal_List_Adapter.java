@@ -33,7 +33,7 @@ public class Journal_List_Adapter extends Array_List_Adapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) { //TODO use registrated string
+    public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         if (vi == null)
             vi = inflater.inflate(R.layout.summary_item, null);
@@ -66,7 +66,7 @@ public class Journal_List_Adapter extends Array_List_Adapter{
                 txt += st;
             }
             if(((Journal_entry_programmer) entry).getWorkDone() != 0){
-                String s = String.format(res.getString(R.string.has_worked),((Journal_entry_programmer) entry).getWorkDone(),  ((Journal_entry_programmer) entry).getFeat().getId());
+                String s = String.format(res.getString(R.string.has_worked),((Journal_entry_programmer) entry).getWorkDone(),  Utils.getFeatureName(((Journal_entry_programmer) entry).getFeat(),context));
                 txt += s;
             }
         }
@@ -75,8 +75,8 @@ public class Journal_List_Adapter extends Array_List_Adapter{
             String[] names = Utils.getFeatureNamesArray(((Journal_entry_feature) entry).getType(), context);
             String[] events_names = res.getStringArray(R.array.events_features_name_array);
             img.setImageDrawable(Utils.getFeatureImg(((Journal_entry_feature) entry).getType(), context));
-            
-            name.setText(names[entry.getId()]);
+
+            name.setText(names[entry.getId() % names.length]);
             for(Feature_Event event : ((Journal_entry_feature) entry).getEvents()){
                 String st = String.format(res.getString(R.string.there_was), events_names[event.getId()]);
                 txt += st;

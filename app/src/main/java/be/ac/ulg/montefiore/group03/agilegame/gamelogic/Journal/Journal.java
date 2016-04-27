@@ -43,10 +43,18 @@ public class Journal implements Observer {
         if(observable instanceof Features){
             if(data instanceof Double && (Double) data == 0)
                 update_feature_completion((Features) observable);
-            if(data instanceof Double && (Double) data == -1)
+            if(data instanceof Double && (Double) data == -1) //Make constance or stuff like that
                 update_feature_cancel((Features) observable);
+            if(data instanceof Feature_Event)
+                update_feature_event((Features) observable, (Feature_Event) data);
 
         }
+    }
+
+    private void update_feature_event(Features feat, Feature_Event event) {
+        Journal_entry_feature entry = getOrNew(feat);
+        entry.addEvents(event);
+        entries_feat.put(feat, entry);
     }
 
 

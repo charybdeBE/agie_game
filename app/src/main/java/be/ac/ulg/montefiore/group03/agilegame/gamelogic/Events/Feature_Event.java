@@ -15,7 +15,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
  */
 public class Feature_Event extends Event{
 
-    private Features depend;
+    protected Features depend;
 
     public Feature_Event(String s, Date d) {
         super(s, d);
@@ -38,6 +38,7 @@ public class Feature_Event extends Event{
         if(features.contains(depend)){
             Features f = features.get(features.indexOf(depend));
             f.setBonus(delay * f.getBonus());
+            f.notify(this);
         }
     }
 }

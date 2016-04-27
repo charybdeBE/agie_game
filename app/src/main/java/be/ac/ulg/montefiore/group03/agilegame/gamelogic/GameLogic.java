@@ -128,10 +128,18 @@ public class GameLogic {
 
         return this.budget;
     }
-    
-    
+
+    /**
+     * Getter for feature List
+     * @return return only non complete tasks
+     */
     public ArrayList<Features> getFeatureList(){
-        return this.application.getFeatures();
+        ArrayList<Features> toret = new ArrayList<>();
+        for(Features f : application.getFeatures()){
+            if(f.getDuration() > 0)
+                toret.add(f);
+        }
+        return toret;
     }
 
     public void simulate(){
@@ -158,6 +166,7 @@ public class GameLogic {
             budget -= programmer.getSalary();
             programmer.deleteObserver(journal);
             programmer.setWork(null);
+            programmer.setBonus(1);
         }
 
         for(Features f : application.getFeatures()){
