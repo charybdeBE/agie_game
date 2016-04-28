@@ -198,5 +198,14 @@ public class GameLogic {
 
     public int getTurn(){return turn;}
 
+    public int getScore(boolean win){
+        int score = win ? 10000 * this.application.getInitTask(): 0;
+        score += budget;
+        score -= turn * 1000;
+        if(score < 10000 && win)
+            score = 10000 * this.application.getInitTask();
+        return score;
+    }
+
 }
 

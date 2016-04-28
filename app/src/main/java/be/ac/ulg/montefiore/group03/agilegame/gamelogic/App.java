@@ -10,6 +10,7 @@ public class App {
     private static final int MAX_TASK_SIZE = 20;
     private static final int INITIAL_BUDGET = 1020300;
     private ArrayList<Features> tasks;
+    private int init_task;
 
     private int initialBudget;
 
@@ -24,7 +25,7 @@ public class App {
             int size = e.nextInt(MAX_TASK_SIZE) + 1;
             tasks.add(new Features(i, s, size));
         }
-
+        this.init_task = features;
     }
 
     public int getInitialBudget() {
@@ -46,4 +47,6 @@ public class App {
         }
         return toRet;
     }
+
+    public int getInitTask(){ return this.init_task;}
 }

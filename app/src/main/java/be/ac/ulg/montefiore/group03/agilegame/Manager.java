@@ -26,7 +26,7 @@ public class Manager extends AppCompatActivity {
     ArrayList<Programmer> team = null;
     HelpMessage help_msg = null;
 
-    //TODO Fin de Jeu ?
+    //TODO implement endgame view side 
     //TODO save the current game
     @Override
     protected void onCreate(Bundle savedInstanceState) {

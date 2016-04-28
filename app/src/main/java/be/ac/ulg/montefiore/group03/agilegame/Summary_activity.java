@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
@@ -24,12 +25,6 @@ public class Summary_activity extends AppCompatActivity {
         setContentView(R.layout.activity_summary);
         ListView stuff = (ListView) findViewById(R.id.summary_list);
 
-        //TODO Navigate through all historic
-        //TODO handle null historic by  a message
-        if(GameLogic.getInstance().getSummary(GameLogic.getInstance().getTurn() - 1) != null) {
-            stuff.setAdapter(new Journal_List_Adapter(this, GameLogic.getInstance().getSummary(GameLogic.getInstance().getTurn() - 1)));
-        }
-
         Button back_btn = (Button) findViewById(R.id.back_button);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +33,18 @@ public class Summary_activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        //TODO Navigate through all historic
+        //TODO handle null historic by  a message
+        if(GameLogic.getInstance().getSummary(GameLogic.getInstance().getTurn() - 1) != null) {
+            stuff.setAdapter(new Journal_List_Adapter(this, GameLogic.getInstance().getSummary(GameLogic.getInstance().getTurn() - 1)));
+        }
+        else{
+            Toast.makeText(this, "No current Historic", Toast.LENGTH_SHORT).show();
+            back_btn.callOnClick();
+        }
+
+
     }
 
 }
