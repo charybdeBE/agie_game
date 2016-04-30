@@ -110,5 +110,11 @@
     <string name="new_medium">New Game (Medium)</string>
     <string name="new_hard">New Game (Hard)</string>
 
+    <!-- Game Over -->
+    <string name="end">This is the end</string>
+    <string name="game_over">Game Over : \n  %1$s \n Time elapsed : %2$d months \n Remaining budget : %3$d \n Final Score : %4$d</string>
+    <string name="win">You have WIN !</string>
+    <string name="lose">You have LOSE !</string>
+
 
 </resources>

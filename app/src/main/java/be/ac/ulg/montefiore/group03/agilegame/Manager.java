@@ -26,7 +26,6 @@ public class Manager extends AppCompatActivity {
     ArrayList<Programmer> team = null;
     HelpMessage help_msg = null;
 
-    //TODO implement endgame view side 
     //TODO save the current game
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +139,12 @@ public class Manager extends AppCompatActivity {
         month_button.setText(DateUtil.dateToString(GameLogic.getInstance().getNow(), "MMM yyyy"));
 
         ListView tasks = (ListView) findViewById(R.id.tasks);
-        tasks.setAdapter(new Task_List_Adapter(this, GameLogic.getInstance().getFeatureList()));
+        ArrayList<Features> uncompletedTasks =  GameLogic.getInstance().getFeatureList();
+        if(uncompletedTasks.size() == 0) {
+            GameOver gameOver = new GameOver();
+            gameOver.show(getSupportFragmentManager(), "endgame");
+        }
+        tasks.setAdapter(new Task_List_Adapter(this, uncompletedTasks));
     }
 
     public void refreshProgList(){
