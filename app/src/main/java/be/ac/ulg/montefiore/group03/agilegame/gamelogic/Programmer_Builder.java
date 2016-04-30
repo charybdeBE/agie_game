@@ -11,7 +11,7 @@ public class Programmer_Builder {
     private static final int MAX_PROG = 8;
     private static final int MAX_SKILLS = 3;
     private static final int MAX_INTEREST = 2;
-    private static final int MAX_LEVEL = 3;
+    private static final int MAX_LEVEL_START = 3;
 
     private static Programmer_Builder instance = null;
 
@@ -43,7 +43,7 @@ public class Programmer_Builder {
                 ArrayList<Interest> interest = new ArrayList<Interest>();
 
                 for(int j = 0; j < nr_skills; ++j){
-                    int level = generator.nextInt(MAX_LEVEL + 1);
+                    int level = generator.nextInt(MAX_LEVEL_START + 1);
                     int skill_int = generator.nextInt(val_skill.length);
                     skills.add(new Skills(val_skill[skill_int], level));
                 }

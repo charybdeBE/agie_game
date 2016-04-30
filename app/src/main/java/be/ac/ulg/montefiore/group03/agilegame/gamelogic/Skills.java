@@ -34,7 +34,9 @@ public class Skills {
     }
 
     public int levelDown(){
-        return --this.level;
+        if(level > 1) //No negative or 0 skill
+            --level;
+        return level;
     }
     public SkillType getType(){
         return type;
