@@ -4,6 +4,7 @@ package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
  * Created by charybde on 08.03.16.
  */
 public class Skills {
+    private static final int MAX_LEVEL = 5;
     //    level = (0.1 * sqrt(XP)) + 1
 
     private int level;
@@ -19,12 +20,17 @@ public class Skills {
 
     public Skills(SkillType _t, int _level){
         this.type = _t;
+        if(_level > MAX_LEVEL)
+            _level = 5;
+
         this.level = _level;
         this.current_xp = (_level - 1) *  (_level - 1) * 100;
     }
 
     public int levelUp(){
-       return  ++this.level;
+       if(level < MAX_LEVEL)
+           ++level;
+        return level;
     }
 
     public int levelDown(){
