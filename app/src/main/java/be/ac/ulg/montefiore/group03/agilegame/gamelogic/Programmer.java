@@ -125,7 +125,8 @@ public class Programmer extends Person {
         else {
             this.bonus = 1.0;
         }
-        this.workOn = null;
+
+//        this.workOn = null;
     }
 
     public ArrayList<Skills> getSkills() { return this.skills; }

@@ -62,12 +62,9 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
             TextView assignedTask = (TextView) vi.findViewById(R.id.programmers_tasks);
 
             if (data.get(position).getWork() != null) {
-
                 assignedTask.setText(Utils.getFeatureName(data.get(position).getWork(), context));
-
             }
-            else
-                assignedTask.setText("No task assigned");
+
         }
         return vi;
     }

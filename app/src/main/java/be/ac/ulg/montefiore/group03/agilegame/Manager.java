@@ -137,7 +137,7 @@ public class Manager extends AppCompatActivity {
 
         if (budgetTextView != null)
             budgetTextView.setText(budget);
-        Button month_button = (Button) findViewById(R.id.month_now);
+        Button month_button = (Button) findViewById(R.id.calendar_button);
         month_button.setText(DateUtil.dateToString(GameLogic.getInstance().getNow(), "MMM yyyy"));
 
         ListView tasks = (ListView) findViewById(R.id.tasks);

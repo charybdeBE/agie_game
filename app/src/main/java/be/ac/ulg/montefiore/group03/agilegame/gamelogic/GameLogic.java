@@ -161,11 +161,7 @@ public class GameLogic {
         }
 
         ArrayList<Programmer_Event> prog_event = getEventsOfMonth(now);
-        for(Programmer programmer : team) {
-            if (programmer == null) {
-                System.err.println("Gamelogic, simulate function, in 'for(Programmer programmer : team)...' programmer is null");
-                break;
-            }
+        for(Programmer programmer : team) { //TODO: Bug: java.util.ConcurrentModificationException
 
             programmer.addObserver(journal);
             for (Programmer_Event event : prog_event) {

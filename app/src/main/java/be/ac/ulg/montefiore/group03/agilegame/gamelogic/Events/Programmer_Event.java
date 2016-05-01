@@ -37,17 +37,17 @@ public class Programmer_Event extends Event{
 
     public void effect(Programmer _p) { //Could be inherited by special programmer_event
         if(_p.like(depend)){
-            if(_p.hasSkill(this.amelioration.getType())){ //TODO: Bug null pointer
-                Skills s =  _p.getSkill(this.amelioration.getType());
+            if (this.amelioration != null && _p.hasSkill(this.amelioration.getType())) { // TODO: bug null pointer resolved ?
+                Skills s = _p.getSkill(this.amelioration.getType());
                 boolean b = s.gainXp(this.amelioration.getXp());
-                if(b)
+                if (b)
                     _p.notifyObservers(s);
             }
+
             _p.setBonus(_p.getBonus() * this.delay);
 
             _p.notify(this);
         }
     }
-
 
 }
