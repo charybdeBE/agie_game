@@ -22,9 +22,9 @@ import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Task_List_Adapter;
 
 public class Manager extends AppCompatActivity {
 
-    ListView programmers_view = null;
-    ArrayList<Programmer> team = null;
-    HelpMessage help_msg = null;
+    private ListView programmers_view = null;
+    private ArrayList<Programmer> team = null;
+    private HelpMessage help_msg = null;
 
     //TODO: Reset button to undo all assigned task for the team
 
@@ -171,6 +171,7 @@ public class Manager extends AppCompatActivity {
         return newBudget;
     }
 
+    public int get_class() { return 1; }
 
 }
 

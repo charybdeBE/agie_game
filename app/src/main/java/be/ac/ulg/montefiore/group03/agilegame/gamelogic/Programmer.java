@@ -135,4 +135,8 @@ public class Programmer extends Person {
             return this.firedTime;
         return -1;
     }
+
+    public void hire() {
+        GameLogic.getInstance().hire(this);
+    }
 }

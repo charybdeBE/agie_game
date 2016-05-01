@@ -162,6 +162,11 @@ public class GameLogic {
 
         ArrayList<Programmer_Event> prog_event = getEventsOfMonth(now);
         for(Programmer programmer : team) {
+            if (programmer == null) {
+                System.err.println("Gamelogic, simulate function, in 'for(Programmer programmer : team)...' programmer is null");
+                break;
+            }
+
             programmer.addObserver(journal);
             for (Programmer_Event event : prog_event) {
                 event.effect(programmer);
@@ -206,5 +211,8 @@ public class GameLogic {
         return score;
     }
 
+    public void hire(Programmer p) {
+        this.team.add(p);
+    }
 }
 

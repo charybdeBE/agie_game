@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.Utils;
@@ -95,14 +96,25 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
                     }
                 });
 
-                // If we are in the management context, we create a Fire button
-                // If we are in the Pole_emploi context, we create a Hire button
-                this.p_info_builder.setNegativeButton("Fire", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        p.fire();
-                        dialog.dismiss();
-                    }
-                });
+                // If we are in the management activity, we create a Fire button
+                // If we are in the Pole_emploi activity, we create a Hire button
+                if (v.getContext().getClass().toString().equals("class be.ac.ulg.montefiore.group03.agilegame.Manager")) {
+                    this.p_info_builder.setNegativeButton("Fire", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                                p.fire();
+                                dialog.dismiss();
+                        }
+                    });
+                }
+                else if (v.getContext().getClass().toString().equals("class be.ac.ulg.montefiore.group03.agilegame.Pole_emploi")) {
+                    this.p_info_builder.setNegativeButton("Hire", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            p.hire();
+                            dialog.dismiss();
+                        }
+                    });
+                }
+
             }
 
             this.p_info_builder.setMessage(this.getInfo(this.p));
