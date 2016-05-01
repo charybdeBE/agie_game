@@ -89,18 +89,23 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
                 this.p_info_builder = new AlertDialog.Builder(v.getContext());
                 this.p_info_builder.setTitle(this.p.getName());
                 this.p_info_builder.setIcon(R.drawable.default_img);
-                this.p_info_builder.setMessage(this.getInfo(this.p));
                 this.p_info_builder.setPositiveButton("Back", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
+                        dialog.dismiss();
                     }
                 });
+
+                // If we are in the management context, we create a Fire button
+                // If we are in the Pole_emploi context, we create a Hire button
                 this.p_info_builder.setNegativeButton("Fire", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
+                        p.fire();
+                        dialog.dismiss();
                     }
                 });
             }
+
+            this.p_info_builder.setMessage(this.getInfo(this.p));
 
             AlertDialog programmer_info = p_info_builder.create();
             programmer_info.show();
@@ -127,7 +132,7 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
 
             int fired_time = p.isFired();
             if (fired_time != -1) {
-                info += "Will be fire in " + fired_time + "\n";
+                info += "Will be fire in " + fired_time + " month\n";
             }
 
             return info;
