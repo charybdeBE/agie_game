@@ -19,7 +19,9 @@ import java.util.ArrayList;
 
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.Utils;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 
 /**
  * Created by sylvain on 4/6/16.
@@ -86,7 +88,8 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
             if (p_info_builder == null) {
                 this.p_info_builder = new AlertDialog.Builder(v.getContext());
                 this.p_info_builder.setTitle(this.p.getName());
-                this.p_info_builder.setMessage(this.p.getInfo());
+                this.p_info_builder.setIcon(R.drawable.default_img);
+                this.p_info_builder.setMessage(this.getInfo(this.p));
                 this.p_info_builder.setPositiveButton("Back", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
@@ -101,6 +104,33 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
 
             AlertDialog programmer_info = p_info_builder.create();
             programmer_info.show();
+        }
+
+        public String getInfo(Programmer p) {
+            String info = "Salary: " + p.getSalary() + " $\n";
+
+            ArrayList<Interest> listOfInterest = p.getInterests();
+            if (!listOfInterest.isEmpty()) {
+                info += "Interested in:\n";
+                for (Interest i : listOfInterest) {
+                    info += i.name() + "\n";
+                }
+            }
+
+            ArrayList<Skills> listOfSkills = p.getSkills();
+            if (!listOfSkills.isEmpty()) {
+                info += "Skills:\n";
+                for (Skills s : listOfSkills) {
+                    info += s.getType() + " level " + s.getLevel() + "\n";
+                }
+            }
+
+            int fired_time = p.isFired();
+            if (fired_time != -1) {
+                info += "Will be fire in " + fired_time + "\n";
+            }
+
+            return info;
         }
     }
 

@@ -3,6 +3,8 @@ package be.ac.ulg.montefiore.group03.agilegame.gamelogic;
 import java.util.ArrayList;
 import java.util.List;
 
+import be.ac.ulg.montefiore.group03.agilegame.Utils;
+
 /**
  * Created by charybde on 08.03.16.
  */
@@ -126,11 +128,11 @@ public class Programmer extends Person {
         this.workOn = null;
     }
 
-    public String getInfo() {
-        String info = this.getName() + "\n";
-
-        info += "Salary: " + this.getSalary() + " $\n";
-
-        return info;
+    public ArrayList<Skills> getSkills() { return this.skills; }
+    public ArrayList<Interest> getInterests() { return this.interests; }
+    public int isFired() {
+        if (this.isFired)
+            return this.firedTime;
+        return -1;
     }
 }
