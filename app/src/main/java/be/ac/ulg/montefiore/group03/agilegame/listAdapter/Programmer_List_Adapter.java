@@ -1,9 +1,12 @@
 package be.ac.ulg.montefiore.group03.agilegame.listAdapter;
 
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,6 +42,8 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
 
             vi.findViewById(R.id.profile_photo).setOnTouchListener(new programmerTouchListener(data.get(position)));
 
+            vi.findViewById(R.id.programmer_info).setOnClickListener(new programmerClickListener(data.get(position)));
+
             TextView name = (TextView) vi.findViewById(R.id.programmer_name);
             if(data.get(position).hasId()){
                 Resources res = context.getResources();
@@ -62,6 +67,41 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
                 assignedTask.setText("No task assigned");
         }
         return vi;
+    }
+
+    private final class programmerClickListener implements  View.OnClickListener {
+
+        private Programmer p = null;
+        private AlertDialog.Builder p_info_builder = null;
+
+        public programmerClickListener (Programmer p) {
+            super();
+            this.p = p;
+            this.p_info_builder = null;
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            if (p_info_builder == null) {
+                this.p_info_builder = new AlertDialog.Builder(v.getContext());
+                this.p_info_builder.setTitle(this.p.getName());
+                this.p_info_builder.setMessage(this.p.getInfo());
+                this.p_info_builder.setPositiveButton("Back", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+                this.p_info_builder.setNegativeButton("Fire", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+            }
+
+            AlertDialog programmer_info = p_info_builder.create();
+            programmer_info.show();
+        }
     }
 
     private final class programmerTouchListener implements View.OnTouchListener {

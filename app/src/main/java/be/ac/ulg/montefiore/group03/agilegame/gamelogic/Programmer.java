@@ -125,4 +125,12 @@ public class Programmer extends Person {
         }
         this.workOn = null;
     }
+
+    public String getInfo() {
+        String info = this.getName() + "\n";
+
+        info += "Salary: " + this.getSalary() + " $\n";
+
+        return info;
+    }
 }

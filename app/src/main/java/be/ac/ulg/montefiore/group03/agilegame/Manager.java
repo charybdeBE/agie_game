@@ -26,6 +26,8 @@ public class Manager extends AppCompatActivity {
     ArrayList<Programmer> team = null;
     HelpMessage help_msg = null;
 
+    //TODO: Reset button to undo all assigned task for the team
+
     //TODO save the current game
     @Override
     protected void onCreate(Bundle savedInstanceState) {
