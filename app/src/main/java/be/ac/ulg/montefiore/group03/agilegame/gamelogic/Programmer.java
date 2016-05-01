@@ -10,6 +10,8 @@ public class Programmer extends Person {
     private ArrayList<Skills> skills;
     private ArrayList<Interest> interests;
 
+    private Boolean isFired;
+    private int firedTime; //nr of month before being really fired
     private Features workOn; // Work max on a task ?
     private int salary;
     private double bonus; // Bonus to be applied on his month work
@@ -19,6 +21,7 @@ public class Programmer extends Person {
         this.skills = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.bonus = 1;
+        this.isFired = false;
     }
 
     public Programmer(String name, ArrayList<Skills> _s, ArrayList<Interest> _i) {
@@ -30,6 +33,7 @@ public class Programmer extends Person {
         for(int i = 0; i < _s.size(); ++i){
             this.salary += 300 * _s.get(i).getLevel() * _s.get(i).getLevel();
         }
+        this.isFired = false;
     }
 
     public Programmer(int id, ArrayList<Skills> _s, ArrayList<Interest> _i) {
@@ -41,6 +45,7 @@ public class Programmer extends Person {
         for(int i = 0; i < _s.size(); ++i){
             this.salary += 300 * _s.get(i).getLevel() * _s.get(i).getLevel();
         }
+        this.isFired = false;
     }
 
     public Boolean like(Interest _i){
@@ -95,4 +100,29 @@ public class Programmer extends Person {
         this.salary += i;
     }
 
+    /**
+     * fire a programmer (due to legal issue he is only fire after 3 months)
+     */
+    public void fire(){
+        this.isFired = true;
+        this.firedTime = 3;
+    }
+
+    /**
+     * Reset the bonus, and workOn + progress on the fire action
+     * @param team = the team the programmer is working for
+     */
+    public void endMonth(ArrayList<Programmer> team){
+        if(isFired){
+            firedTime--;
+            if(firedTime == 0)
+                team.remove(this);
+
+            this.bonus = 0.5;
+        }
+        else {
+            this.bonus = 1.0;
+        }
+        this.workOn = null;
+    }
 }

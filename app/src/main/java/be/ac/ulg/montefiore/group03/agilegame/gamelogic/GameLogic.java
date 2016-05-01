@@ -170,8 +170,7 @@ public class GameLogic {
             journal.addSalary(programmer.getSalary());
             budget -= programmer.getSalary();
             programmer.deleteObserver(journal);
-            programmer.setWork(null);
-            programmer.setBonus(1);
+            programmer.endMonth(team);
         }
 
         for(Features f : application.getFeatures()){
