@@ -25,7 +25,6 @@ public class Person extends Observable{
         this.id = id;
     }
 
-
     public Boolean hasId() { return id != -1 ? true : false;}
     public int getId()  { return id;}
     public String getName() { return this.name; }

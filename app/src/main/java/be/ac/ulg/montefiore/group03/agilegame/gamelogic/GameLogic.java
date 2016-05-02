@@ -11,6 +11,8 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Feature_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Journal.Journal;
 
+// TODO: interrest in and skills are sometimes doubled in the dialog box, why ?
+
 /**
  * Created by charybde on 08.03.16.
  */
@@ -230,6 +232,7 @@ public class GameLogic {
      */
     public void hire(Programmer p) {
         this.team.add(p);
+        Programmer_Builder.getInstance().engage(p);
     }
 }
 

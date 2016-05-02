@@ -31,6 +31,7 @@ public class Programmer_Builder {
         }
         return Programmer_Builder.instance;
     }
+
     public ArrayList<Programmer> getAvaiableCoders(){
         if(this.avaiableCoders.size() < MAX_PROG) {
             SkillType[] val_skill = SkillType.values(); //Cache the table for performencies
@@ -50,7 +51,6 @@ public class Programmer_Builder {
                 for(int j = 0; j < nr_int; ++j){
                     interest.add(val_int[generator.nextInt(val_int.length)]);
                 }
-
 
                 avaiableCoders.add(new Programmer(total_nr_of_prog,skills, interest));
                 total_nr_of_prog++;
