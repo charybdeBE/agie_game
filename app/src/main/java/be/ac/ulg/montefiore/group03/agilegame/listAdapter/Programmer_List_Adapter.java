@@ -39,6 +39,8 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
+        Resources res = context.getResources();
+
         if (vi == null)
             vi = inflater.inflate(R.layout.programmer_item, null);
         if (vi != null) {
@@ -46,11 +48,10 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
             vi.findViewById(R.id.profile_photo).setOnTouchListener(new programmerTouchListener(data.get(position)));
 
 
-            vi.findViewById(R.id.programmer_info).setOnClickListener(new programmerClickListener(data.get(position)));
+            vi.findViewById(R.id.programmer_info).setOnClickListener(new programmerClickListener(data.get(position), context));
 
             TextView name = (TextView) vi.findViewById(R.id.programmer_name);
             if(data.get(position).hasId()){
-                Resources res = context.getResources();
                 name.setText(res.getStringArray(R.array.persons)[data.get(position).getId()]);
             }
             else {
@@ -58,7 +59,7 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
             }
 
             TextView salary = (TextView) vi.findViewById(R.id.programmers_salary);
-            salary.setText("Salary: " + data.get(position).getSalary() + " $");
+            salary.setText(String.format(res.getString(R.string.salary), data.get(position).getSalary()));
 
             TextView assignedTask = (TextView) vi.findViewById(R.id.programmers_tasks);
 
@@ -74,11 +75,13 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
 
         private Programmer p = null;
         private AlertDialog.Builder p_info_builder = null;
+        private Context context;
 
-        public programmerClickListener (Programmer p) {
+        public programmerClickListener (Programmer p, Context context) {
             super();
             this.p = p;
             this.p_info_builder = null;
+            this.context = context;
         }
 
         @Override
@@ -88,7 +91,7 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
                 this.p_info_builder = new AlertDialog.Builder(v.getContext());
                 this.p_info_builder.setTitle(this.p.getName() + " test");
                 this.p_info_builder.setIcon(R.drawable.default_img);
-                this.p_info_builder.setPositiveButton("Back", new DialogInterface.OnClickListener() {
+                this.p_info_builder.setPositiveButton(R.string.back, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -104,11 +107,13 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
         }
 
         public String getInfo(Programmer p) {
-            String info = "Salary: " + p.getSalary() + " $\n";
+            Resources res = context.getResources();
+
+            String info = String.format(res.getString(R.string.salary), p.getSalary());
 
             ArrayList<Interest> listOfInterest = p.getInterests();
             if (!listOfInterest.isEmpty()) {
-                info += "Interested in:\n";
+                info += res.getString(R.string.interested);
                 for (Interest i : listOfInterest) {
                     info += i.name() + "\n";
                 }
@@ -116,15 +121,15 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
 
             ArrayList<Skills> listOfSkills = p.getSkills();
             if (!listOfSkills.isEmpty()) {
-                info += "Skills:\n";
+                info += res.getString(R.string.skills);
                 for (Skills s : listOfSkills) {
-                    info += s.getType() + " level " + s.getLevel() + "\n";
+                    info += String.format(res.getString(R.string.level), s.getType().name(), s.getLevel());
                 }
             }
 
             int fired_time = p.isFired();
             if (fired_time != -1) {
-                info += "Will be fire in " + fired_time + " month\n";
+                info += String.format(res.getString(R.string.fired), fired_time);
             }
 
             return info;
@@ -142,7 +147,6 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
 
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-//                ClipData data = ClipData.newPlainText("hello", "word");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 view.startDrag(null, shadowBuilder, p, 0);
                 view.setVisibility(View.VISIBLE);

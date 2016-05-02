@@ -38,7 +38,6 @@ public class Features extends Observable {
 
 
         if(p.hasSkill(this.needed)){
-            System.out.println("DEBUG " + p.getSkill(this.needed).getLevel() + "B" + bonus + "C" + delay_bonus);
             int level = p.getSkill(this.needed).getLevel();
             double work = ((double) level) * bonus * delay_bonus;
             this.monthNeeded -= work;

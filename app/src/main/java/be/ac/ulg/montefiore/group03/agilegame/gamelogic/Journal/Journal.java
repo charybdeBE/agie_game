@@ -32,7 +32,6 @@ public class Journal implements Observer {
     @Override
     public void update(Observable observable, Object data) {
         if(observable instanceof Programmer){
-            System.out.println("Here is a prog");
             if(data instanceof Skills)
                 update_programmer_skills((Programmer) observable, (Skills) data);
             if(data instanceof Double)

@@ -151,7 +151,6 @@ public class Manager extends AppCompatActivity {
     }
 
     public void refreshProgList(){
-        System.out.println("Refresh ? ");
         this.team = GameLogic.getInstance().getTeam();
         this.programmers_view.setAdapter(new Programmer_Manager_List_Adapter(this, this.team));
     }

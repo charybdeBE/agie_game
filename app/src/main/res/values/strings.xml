@@ -14,7 +14,14 @@
     <string name="recruit_programmers_button">Recruit</string>
     <string name="ok">OK</string>
     <string name="back">Back</string>
-
+    <string name="salary">Salary : %1$d $\n</string>
+    <string name="interested">Interested in : \n</string>
+    <string name="skills">Skills : \n</string>
+    <string name="level">%1$s level %2$d\n</string>
+    <string name="fired">Will be fired in %1$d months </string>
+    <string name="fire">Fire</string>
+    <string name="hire">Hire</string>
+    <string name="budget_dynamic">Budget %1$s \n</string>
 
     <!--  String for events -->
 

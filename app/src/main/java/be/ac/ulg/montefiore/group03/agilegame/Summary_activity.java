@@ -35,7 +35,6 @@ public class Summary_activity extends AppCompatActivity {
         });
 
         //TODO Navigate through all historic
-        //TODO handle null historic by  a message
         if(GameLogic.getInstance().getSummary(GameLogic.getInstance().getTurn() - 1) != null) {
             stuff.setAdapter(new Journal_List_Adapter(this, GameLogic.getInstance().getSummary(GameLogic.getInstance().getTurn() - 1)));
         }
