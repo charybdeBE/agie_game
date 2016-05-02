@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class App {
     private static final int MAX_TASK_SIZE = 20;
-    private static final int INITIAL_BUDGET = 1020300;
+    private static final int INITIAL_BUDGET = 1000000;
     private ArrayList<Features> tasks;
     private int init_task;
 

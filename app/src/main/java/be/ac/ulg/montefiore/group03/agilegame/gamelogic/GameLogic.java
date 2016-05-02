@@ -26,7 +26,6 @@ public class GameLogic {
     private int turn;
     private int budget;
 
-
     private static GameLogic single = null; //Singleton rox
 
     public static GameLogic getInstance(){
@@ -43,8 +42,8 @@ public class GameLogic {
         events = new HashMap<Date, ArrayList<Programmer_Event>>();
         team = new ArrayList<Programmer>();
 
-        team.add(new Programmer("Sylvain Dazy"));
-        team.add(new Programmer("Laurent Vanosmael"));
+//        team.add(new Programmer("Sylvain Dazy"));
+//        team.add(new Programmer("Laurent Vanosmael"));
 
 
         start = ajd;
@@ -147,6 +146,9 @@ public class GameLogic {
         return toret;
     }
 
+    /**
+     *  Simulate the game.
+     */
     public void simulate(){
         Journal journal = new Journal();
         journal.setStartBudget(budget);
@@ -192,12 +194,27 @@ public class GameLogic {
 
     }
 
+    /**
+     * Get the summary
+     * @param when
+     * @return the summary
+     */
     public Journal getSummary(int when){
         return this.summary.get(when);
     }
 
-    public int getTurn(){return turn;}
+    /**
+     * Get the turn
+     * @return turn number
+     */
+    public int getTurn() {return turn;}
 
+    /**
+     * Get the score
+     * @param win true if the player has won the game
+     *            false otherwise
+     * @return the score of the game
+     */
     public int getScore(boolean win){
         int score = win ? 10000 * this.application.getInitTask(): 0;
         score += budget;
@@ -207,6 +224,10 @@ public class GameLogic {
         return score;
     }
 
+    /**
+     * Recruit a programmer
+     * @param p the programmer that has been recruited
+     */
     public void hire(Programmer p) {
         this.team.add(p);
     }

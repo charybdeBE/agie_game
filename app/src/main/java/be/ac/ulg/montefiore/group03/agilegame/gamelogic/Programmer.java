@@ -31,7 +31,7 @@ public class Programmer extends Person {
         this.bonus = 1;
         this.skills = _s;
         this.interests = _i;
-        this.salary = 800;
+        this.salary = 2000;
         for(int i = 0; i < _s.size(); ++i){
             this.salary += 300 * _s.get(i).getLevel() * _s.get(i).getLevel();
         }
@@ -43,7 +43,7 @@ public class Programmer extends Person {
         this.bonus = 1;
         this.skills = _s;
         this.interests = _i;
-        this.salary = 800;
+        this.salary = 2000;
         for(int i = 0; i < _s.size(); ++i){
             this.salary += 300 * _s.get(i).getLevel() * _s.get(i).getLevel();
         }
@@ -130,7 +130,9 @@ public class Programmer extends Person {
     }
 
     public ArrayList<Skills> getSkills() { return this.skills; }
+
     public ArrayList<Interest> getInterests() { return this.interests; }
+
     public int isFired() {
         if (this.isFired)
             return this.firedTime;
