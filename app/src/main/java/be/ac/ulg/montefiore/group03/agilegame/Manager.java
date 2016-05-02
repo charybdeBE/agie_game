@@ -22,9 +22,11 @@ import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Task_List_Adapter;
 
 public class Manager extends AppCompatActivity {
 
-    ListView programmers_view = null;
-    ArrayList<Programmer> team = null;
-    HelpMessage help_msg = null;
+    private ListView programmers_view = null;
+    private ArrayList<Programmer> team = null;
+    private HelpMessage help_msg = null;
+
+    //TODO: Reset button to undo all assigned task for the team
 
     //TODO save the current game
     @Override
@@ -135,7 +137,7 @@ public class Manager extends AppCompatActivity {
 
         if (budgetTextView != null)
             budgetTextView.setText(budget);
-        Button month_button = (Button) findViewById(R.id.month_now);
+        Button month_button = (Button) findViewById(R.id.calendar_button);
         month_button.setText(DateUtil.dateToString(GameLogic.getInstance().getNow(), "MMM yyyy"));
 
         ListView tasks = (ListView) findViewById(R.id.tasks);
@@ -169,6 +171,7 @@ public class Manager extends AppCompatActivity {
         return newBudget;
     }
 
+    public int get_class() { return 1; }
 
 }
 

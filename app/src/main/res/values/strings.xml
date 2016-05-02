@@ -11,7 +11,7 @@
     <string name="programmers_list_title">My Team</string>
     <string name="tasks_list_title">Tasks of the project</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="recruit_programmers_button">Recruit new team member</string>
+    <string name="recruit_programmers_button">Recruit</string>
     <string name="ok">OK</string>
     <string name="back">Back</string>
 

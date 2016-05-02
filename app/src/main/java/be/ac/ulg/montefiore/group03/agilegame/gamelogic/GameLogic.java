@@ -161,7 +161,8 @@ public class GameLogic {
         }
 
         ArrayList<Programmer_Event> prog_event = getEventsOfMonth(now);
-        for(Programmer programmer : team) {
+        for(Programmer programmer : team) { //TODO: Bug: java.util.ConcurrentModificationException
+
             programmer.addObserver(journal);
             for (Programmer_Event event : prog_event) {
                 event.effect(programmer);
@@ -206,5 +207,8 @@ public class GameLogic {
         return score;
     }
 
+    public void hire(Programmer p) {
+        this.team.add(p);
+    }
 }
 

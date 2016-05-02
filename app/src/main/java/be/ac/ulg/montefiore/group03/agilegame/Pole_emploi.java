@@ -28,4 +28,7 @@ public class Pole_emploi extends AppCompatActivity {
             }
         });
     }
+
+    public int get_class() { return 0; }
+
 }
