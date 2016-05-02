@@ -27,7 +27,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 /**
  * Created by sylvain on 4/6/16.
  */
-public class Programmer_List_Adapter extends Array_List_Adapter {
+public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
 
     ArrayList<Programmer> data;
 
@@ -44,6 +44,7 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
         if (vi != null) {
 
             vi.findViewById(R.id.profile_photo).setOnTouchListener(new programmerTouchListener(data.get(position)));
+
 
             vi.findViewById(R.id.programmer_info).setOnClickListener(new programmerClickListener(data.get(position)));
 
@@ -93,24 +94,8 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
                     }
                 });
 
-                // If we are in the management activity, we create a Fire button
-                // If we are in the Pole_emploi activity, we create a Hire button
-                if (v.getContext().getClass().toString().equals("class be.ac.ulg.montefiore.group03.agilegame.Manager")) {
-                    this.p_info_builder.setNegativeButton("Fire", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                                p.fire();
-                                dialog.dismiss();
-                        }
-                    });
-                }
-                else if (v.getContext().getClass().toString().equals("class be.ac.ulg.montefiore.group03.agilegame.Pole_emploi")) {
-                    this.p_info_builder.setNegativeButton("Hire", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            p.hire();
-                            dialog.dismiss();
-                        }
-                    });
-                }
+                setOnProgrammerClick(p_info_builder, p);
+
 
             }
 
@@ -169,6 +154,8 @@ public class Programmer_List_Adapter extends Array_List_Adapter {
             }
         }
     }
+
+       public abstract void setOnProgrammerClick(AlertDialog.Builder builder, final  Programmer p);
 }
 
 

@@ -9,15 +9,18 @@ import android.widget.ListView;
 
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer_Builder;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_List_Adapter;
+import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_Pole_Emploi_List_Adapter;
 
 public class Pole_emploi extends AppCompatActivity {
+
+    private ListView prog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pole_emploi);
-        ListView prog= (ListView) findViewById(R.id.avaiable_prog);
-        prog.setAdapter(new Programmer_List_Adapter(this, Programmer_Builder.getInstance().getAvaiableCoders()));
+        prog= (ListView) findViewById(R.id.avaiable_prog);
+        prog.setAdapter(new Programmer_Pole_Emploi_List_Adapter(this, Programmer_Builder.getInstance().getAvaiableCoders()));
 
         Button back_btn = (Button) findViewById(R.id.back_button);
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +32,8 @@ public class Pole_emploi extends AppCompatActivity {
         });
     }
 
-    public int get_class() { return 0; }
+    public void refreshList(){
+        prog.setAdapter(new Programmer_Pole_Emploi_List_Adapter(this, Programmer_Builder.getInstance().getAvaiableCoders()));
+    }
 
 }

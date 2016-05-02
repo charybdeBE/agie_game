@@ -18,6 +18,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_List_Adapter;
+import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_Manager_List_Adapter;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Task_List_Adapter;
 
 public class Manager extends AppCompatActivity {
@@ -125,7 +126,7 @@ public class Manager extends AppCompatActivity {
         /* Set up the programmers list */
         this.team = GameLogic.getInstance().getTeam();
         this.programmers_view = (ListView) findViewById(R.id.programmers);
-        this.programmers_view.setAdapter(new Programmer_List_Adapter(this, this.team));
+        this.programmers_view.setAdapter(new Programmer_Manager_List_Adapter(this, this.team));
 
         /* Set up the budget */
         int newBudget = 0;
@@ -152,7 +153,7 @@ public class Manager extends AppCompatActivity {
     public void refreshProgList(){
         System.out.println("Refresh ? ");
         this.team = GameLogic.getInstance().getTeam();
-        this.programmers_view.setAdapter(new Programmer_List_Adapter(this, this.team));
+        this.programmers_view.setAdapter(new Programmer_Manager_List_Adapter(this, this.team));
     }
 
     //TODO move at an appropriate place
