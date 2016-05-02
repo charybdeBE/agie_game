@@ -84,9 +84,9 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
         @Override
         public void onClick(View v) {
 
-            if (p_info_builder == null) {
+            if (this.p_info_builder == null) {
                 this.p_info_builder = new AlertDialog.Builder(v.getContext());
-                this.p_info_builder.setTitle(this.p.getName());
+                this.p_info_builder.setTitle(this.p.getName() + " test");
                 this.p_info_builder.setIcon(R.drawable.default_img);
                 this.p_info_builder.setPositiveButton("Back", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -95,8 +95,6 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
                 });
 
                 setOnProgrammerClick(p_info_builder, p);
-
-
             }
 
             this.p_info_builder.setMessage(this.getInfo(this.p));

@@ -11,6 +11,12 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Feature_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Journal.Journal;
 
+// TODO: interrest in and skills are sometimes doubled in the dialog box, why ?
+// TODO: Instanciate programmers with names
+// TODO: quand on recrute un nouveau membre, il doit etre retire du pole emploi immediatement
+// TODO: (pour l'instant il n'est retirer que lorsqu'on quitte l'activite et qu'on y revient apres)
+// TODO: design pattern is complete but still in the list of tasks ?!
+
 /**
  * Created by charybde on 08.03.16.
  */
@@ -231,6 +237,7 @@ public class GameLogic {
     public void hire(Programmer p) {
         Programmer_Builder.getInstance().engage(p);
         this.team.add(p);
+        Programmer_Builder.getInstance().engage(p);
     }
 }
 
