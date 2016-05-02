@@ -235,7 +235,6 @@ public class GameLogic {
      * @param p the programmer that has been recruited
      */
     public void hire(Programmer p) {
-        Programmer_Builder.getInstance().engage(p);
         this.team.add(p);
         Programmer_Builder.getInstance().engage(p);
     }
