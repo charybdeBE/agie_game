@@ -78,4 +78,30 @@ public class Utils {
         return getFeatureImg(f.getNeeded(), context);
     }
 
+    /**
+     * From an integer representing an amount of money, get the string corresponding to it.
+     * @param money the money to convert into string
+     * @return the string corresponding to the money in the format 123,456
+     * Warning: the comma represents thousands
+     */
+    public static String getMoneyReadable(int money) {
+        String newMoney = "";
+
+        while ((money / 1000) > 0) {
+
+            String money_to_treat = "" + money % 1000;
+            /* padding 0 to the money to be treaten */
+
+            while (money_to_treat.length() < 3) {
+                money_to_treat = "0" + money_to_treat;
+            }
+
+            newMoney = "," + money_to_treat + newMoney;
+            money = money / 1000;
+        }
+
+        newMoney = money + newMoney;
+
+        return newMoney;
+    }
 }
