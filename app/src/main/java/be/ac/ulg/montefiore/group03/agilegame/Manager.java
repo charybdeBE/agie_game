@@ -23,7 +23,7 @@ import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_List_Adapte
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_Manager_List_Adapter;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Task_List_Adapter;
 
-public class Manager extends AppCompatActivity {
+public class Manager extends AppCompatActivity implements GameOver.OnDialogDismissListener{
 
     private ListView programmers_view = null;
     private ArrayList<Programmer> team = null;
@@ -155,6 +155,7 @@ public class Manager extends AppCompatActivity {
         if(uncompletedTasks.size() == 0 || newBudget <= 0) {
             GameOver gameOver = new GameOver();
             gameOver.show(getSupportFragmentManager(), "endgame");
+
         }
         tasks.setAdapter(new Task_List_Adapter(this, uncompletedTasks));
     }
@@ -167,5 +168,12 @@ public class Manager extends AppCompatActivity {
         this.programmers_view.setAdapter(new Programmer_Manager_List_Adapter(this, this.team));
     }
 
+    /**
+     * Callback when the gameover dialog fragment is closed
+     * @param position
+     */
+    public void onDialogDismissListener(int position) {
+        this.onStart();
+    }
 }
 
