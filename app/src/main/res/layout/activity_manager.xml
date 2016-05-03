@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:text="@string/budget_text"
             android:id="@+id/budget_textView"
-            android:layout_weight=".33"
+            android:layout_weight=".25"
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
@@ -125,7 +125,15 @@
             android:layout_height="wrap_content"
             android:text="@string/recruit_programmers_button"
             android:id="@+id/recruit_btn"
-            android:layout_weight=".33"
+            android:layout_weight=".25"
+            style="?android:attr/buttonBarButtonStyle" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset_btn"
+            android:id="@+id/reset_btn"
+            android:layout_weight=".25"
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
@@ -133,7 +141,7 @@
             android:layout_height="wrap_content"
             android:text="@string/simulate_button_text"
             android:id="@+id/simulate_button"
-            android:layout_weight=".33"
+            android:layout_weight=".25"
             style="?android:attr/buttonBarButtonStyle" />
 
     </LinearLayout>

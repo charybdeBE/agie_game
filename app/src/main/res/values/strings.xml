@@ -22,6 +22,7 @@
     <string name="fire">Fire</string>
     <string name="hire">Hire</string>
     <string name="budget_dynamic">Budget %1$s \n</string>
+    <string name="reset_btn">Reset</string>
 
     <!--  String for events -->
 
