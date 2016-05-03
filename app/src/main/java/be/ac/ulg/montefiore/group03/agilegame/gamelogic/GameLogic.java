@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event_Builder;
@@ -11,8 +14,6 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Feature_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Journal.Journal;
 
-// TODO: interrest in and skills are sometimes doubled in the dialog box, why ?
-// TODO: (pour l'instant il n'est retirer que lorsqu'on quitte l'activite et qu'on y revient apres)
 // TODO: design pattern is complete but still in the list of tasks ?!
 
 /**
@@ -46,11 +47,6 @@ public class GameLogic {
         events = new HashMap<Date, ArrayList<Programmer_Event>>();
         team = new ArrayList<Programmer>();
         Programmer_Builder.getInstance().regenerateAvaiableCoders();
-
-//        team.add(new Programmer("Sylvain Dazy"));
-//        team.add(new Programmer("Laurent Vanosmael"));
-
-
         start = ajd;
         now = ajd;
         turn = 0;
@@ -168,8 +164,9 @@ public class GameLogic {
         }
 
         ArrayList<Programmer_Event> prog_event = getEventsOfMonth(now);
-        for(Programmer programmer : team) { //TODO: Bug: java.util.ConcurrentModificationException
-
+        ListIterator<Programmer> iterator = team.listIterator();
+        while (iterator.hasNext()) {
+            Programmer programmer = iterator.next();
             programmer.addObserver(journal);
             for (Programmer_Event event : prog_event) {
                 event.effect(programmer);
@@ -178,7 +175,7 @@ public class GameLogic {
             journal.addSalary(programmer.getSalary());
             budget -= programmer.getSalary();
             programmer.deleteObserver(journal);
-            programmer.endMonth(team);
+            programmer.endMonth();
         }
 
         for(Features f : application.getFeatures()){

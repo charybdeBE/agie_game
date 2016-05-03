@@ -112,21 +112,20 @@ public class Programmer extends Person {
 
     /**
      * Reset the bonus, and workOn + progress on the fire action
-     * @param team = the team the programmer is working for
+     *
      */
-    public void endMonth(ArrayList<Programmer> team){
+    public void endMonth(){
         if(isFired){
             firedTime--;
             if(firedTime == 0)
-                team.remove(this);
-
+                GameLogic.getInstance().getTeam().remove(this);
             this.bonus = 0.5;
         }
         else {
             this.bonus = 1.0;
         }
 
-        if(this.workOn.getDuration() <= 0)
+        if(this.workOn != null && this.workOn.getDuration() <= 0)
             this.workOn = null;
     }
 
