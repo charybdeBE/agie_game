@@ -47,16 +47,20 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
 
             vi.findViewById(R.id.profile_photo).setOnTouchListener(new programmerTouchListener(data.get(position)));
 
-
             vi.findViewById(R.id.programmer_info).setOnClickListener(new programmerClickListener(data.get(position), context));
 
             TextView name = (TextView) vi.findViewById(R.id.programmer_name);
+
+            name.setText(Utils.getProgrammerName(data.get(position), context));
+
+            /*
             if(data.get(position).hasId()){
-                name.setText(res.getStringArray(R.array.persons)[data.get(position).getId()]);
+                name.setText(res.getStringArray(R.array.persons)[data.get(position).getId()]); //TODO: bug @modulo
             }
             else {
                 name.setText(data.get(position).getName());
             }
+            */
 
             TextView salary = (TextView) vi.findViewById(R.id.programmers_salary);
             salary.setText(String.format(res.getString(R.string.salary), data.get(position).getSalary()));
@@ -89,7 +93,7 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
             Resources res = context.getResources();
             if (this.p_info_builder == null) {
                 this.p_info_builder = new AlertDialog.Builder(v.getContext());
-                this.p_info_builder.setTitle(res.getStringArray(R.array.persons)[this.p.getId()]);
+                this.p_info_builder.setTitle(Utils.getProgrammerName(p,context));
                 this.p_info_builder.setIcon(R.drawable.default_img);
                 this.p_info_builder.setPositiveButton(R.string.back, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
