@@ -45,6 +45,7 @@ public class GameLogic {
         Date ajd = DateUtil.dateFromString("1.3.2016","d.M.y");
         events = new HashMap<Date, ArrayList<Programmer_Event>>();
         team = new ArrayList<Programmer>();
+        Programmer_Builder.getInstance().regenerateAvaiableCoders();
 
 //        team.add(new Programmer("Sylvain Dazy"));
 //        team.add(new Programmer("Laurent Vanosmael"));
@@ -195,6 +196,8 @@ public class GameLogic {
         }
         now = DateUtil.dateFromString("1."+month+"."+year, "d.M.y");
         turn++;
+
+        Programmer_Builder.getInstance().regenerateAvaiableCoders();
 
     }
 

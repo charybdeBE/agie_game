@@ -30,6 +30,10 @@ public class Programmer_Builder implements GameLogic_Const {
     }
 
     public ArrayList<Programmer> getAvaiableCoders(){
+        return avaiableCoders;
+    }
+
+    public void regenerateAvaiableCoders(){
         if(this.avaiableCoders.size() < MAX_PROG) {
             SkillType[] val_skill = SkillType.values(); //Cache the table for performencies
             Interest[] val_int = Interest.values();
@@ -55,8 +59,6 @@ public class Programmer_Builder implements GameLogic_Const {
                 total_nr_of_prog++;
             }
         }
-
-        return avaiableCoders;
     }
 
     /**
