@@ -50,15 +50,35 @@ public class Programmer extends Person {
         this.isFired = false;
     }
 
-    public Boolean like(Interest _i){
-        return this.interests.contains(_i);
+    /**
+     * Does the programmer like an interest ?
+     * @param _i interest
+     * @return true if the programmer likes _i
+     *         false otherwise
+     */
+    public Boolean like(Interest _i) {
+        if (this.interests != null)
+            return this.interests.contains(_i);
+        return false;
     }
 
+    /**
+     * Does the programmer has some skills corresponding to a skill type?
+     * @param type a skill type
+     * @return true if the programmer has some skills corresponding to the skill type type
+     *         false otherwise
+     */
     public Boolean hasSkill(SkillType type){
         if(getSkill(type) != null)
             return true;
         return false;
     }
+
+    /**
+     * Get the skills that corresponds to a skill type.
+     * @param type the skill type
+     * @return All skills corresponding to a skill type in an ArrayList<Skills>
+     */
     public Skills getSkill(SkillType type){
         for(Skills s : skills){
             if(s.getType() == type)
@@ -67,14 +87,25 @@ public class Programmer extends Person {
         return null;
     }
 
+    /**
+     * Get salary
+     * @return the programmers'salary (int)
+     */
     public int getSalary(){
         return this.salary;
     }
 
+    /**
+     * Get the task on wich the programmer is working on
+     * @return the task on which the programmer is working on
+     */
     public Features getWork(){
         return workOn;
     }
 
+    /**
+     * Do the programmer working on his task
+     */
     public void work(){
         if(workOn != null) {
             Double workTime = workOn.getDuration() - workOn.progress(this);
@@ -82,22 +113,43 @@ public class Programmer extends Person {
         }
     }
 
+    /**
+     * Set a bonus for the programmer
+     * @param bonus the bonus to set
+     */
     public void setBonus(double bonus){
         this.bonus = bonus;
     }
+
+    /**
+     * Get the bonus of the programmer
+     * @return the programmer's bonus
+     */
     public double getBonus(){
         return bonus;
     }
 
+    /**
+     * Set the programmer's task
+     * @param task the task on which the programmer will work on
+     */
     public void setWork(Features task){
         this.workOn = task;
     }
 
+    /**
+     * Add a skill to a programmer
+     * @param s the skill to add
+     */
     public void addSkill(Skills s){
         notifyObservers(s);
         skills.add(s);
     }
 
+    /**
+     * Raise the programmer'salary. salary = salary + i.
+     * @param i the raise of the salary
+     */
     public void getRaise(int i){
         this.salary += i;
     }
@@ -129,16 +181,33 @@ public class Programmer extends Person {
             this.workOn = null;
     }
 
+    /**
+     * Get all programmer'skills
+     * @return programmer'skills in an ArrayList<Skills>
+     */
     public ArrayList<Skills> getSkills() { return this.skills; }
 
+    /**
+     * Get all programmer's interests
+     * @return programmer's interest in an ArrayList<Interest>
+     */
     public ArrayList<Interest> getInterests() { return this.interests; }
 
+    /**
+     * Is the programmer fired ?
+     * @return if the programmer is fired, it returns the number of month before the programmer is effectively fired
+     *         -1 if the programmer is not fired
+     */
     public int isFired() {
         if (this.isFired)
             return this.firedTime;
         return -1;
     }
 
+    /**
+     * Hire the programmer
+     * After the function, the programmer will be a team member.
+     */
     public void hire() {
         GameLogic.getInstance().hire(this);
     }

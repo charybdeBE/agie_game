@@ -85,6 +85,16 @@ public class Manager extends AppCompatActivity {
              }
         });
 
+        Button reset_btn = (Button) findViewById(R.id.reset_btn);
+        reset_btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                for(Programmer p : team) {
+                    p.setWork(null);
+                }
+                refreshProgList();
+            }
+        });
+
     }
 
     @Override
