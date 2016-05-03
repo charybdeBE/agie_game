@@ -27,23 +27,46 @@ public class Skills {
         this.current_xp = (_level - 1) *  (_level - 1) * 100;
     }
 
+    /**
+     * Level up this skills (bounded)
+     * @return the new level
+     */
     public int levelUp(){
        if(level < MAX_LEVEL)
            ++level;
         return level;
     }
 
+    /**
+     * level down this skills
+     * @return the new level
+     */
     public int levelDown(){
         if(level > 1) //No negative or 0 skill
             --level;
         return level;
     }
+
+    /**
+     * get the type of the skill
+     * @return the skill type
+     */
     public SkillType getType(){
         return type;
     }
+
+    /**
+     * get the level for this skill
+     * @return the level
+     */
     public int getLevel(){
         return level;
     }
+
+    /**
+     * get the experiences on this skill
+     * @return the experience
+     */
     public int getXp() { return this.current_xp; }
 
     /**
