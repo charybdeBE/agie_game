@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.GoogleAuthException;
+
 import java.util.ArrayList;
 
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
@@ -96,9 +98,6 @@ public class Manager extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         switch (id) {
@@ -143,7 +142,7 @@ public class Manager extends AppCompatActivity {
 
         ListView tasks = (ListView) findViewById(R.id.tasks);
         ArrayList<Features> uncompletedTasks =  GameLogic.getInstance().getFeatureList();
-        if(uncompletedTasks.size() == 0) {
+        if(uncompletedTasks.size() == 0 || newBudget <= 0) {
             GameOver gameOver = new GameOver();
             gameOver.show(getSupportFragmentManager(), "endgame");
         }
