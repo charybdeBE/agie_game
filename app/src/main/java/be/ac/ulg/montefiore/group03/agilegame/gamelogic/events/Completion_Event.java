@@ -1,4 +1,4 @@
-package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events;
+package be.ac.ulg.montefiore.group03.agilegame.gamelogic.events;
 
 import java.util.ArrayList;
 import java.util.Date;

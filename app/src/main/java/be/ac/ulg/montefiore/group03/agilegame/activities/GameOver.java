@@ -1,4 +1,4 @@
-package be.ac.ulg.montefiore.group03.agilegame;
+package be.ac.ulg.montefiore.group03.agilegame.activities;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
+import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 
 /**

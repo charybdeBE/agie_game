@@ -7,7 +7,7 @@ import android.support.v7.app.AlertDialog;
 
 import java.util.ArrayList;
 
-import be.ac.ulg.montefiore.group03.agilegame.Pole_emploi;
+import be.ac.ulg.montefiore.group03.agilegame.activities.Pole_emploi;
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 

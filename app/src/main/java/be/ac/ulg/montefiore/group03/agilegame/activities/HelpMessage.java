@@ -1,4 +1,4 @@
-package be.ac.ulg.montefiore.group03.agilegame;
+package be.ac.ulg.montefiore.group03.agilegame.activities;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 
 import java.util.Random;
+
+import be.ac.ulg.montefiore.group03.agilegame.R;
 
 /**
  * Created by charybde on 18.04.16.

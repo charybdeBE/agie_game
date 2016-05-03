@@ -1,4 +1,4 @@
-package be.ac.ulg.montefiore.group03.agilegame;
+package be.ac.ulg.montefiore.group03.agilegame.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer_Builder;
-import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_List_Adapter;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_Pole_Emploi_List_Adapter;
 
 public class Pole_emploi extends AppCompatActivity {

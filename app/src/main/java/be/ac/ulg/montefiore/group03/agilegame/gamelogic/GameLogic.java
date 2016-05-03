@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.ListIterator;
 
 import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event_Builder;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Feature_Event;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Journal.Journal;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.events.Event_Builder;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.events.Feature_Event;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.events.Programmer_Event;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.journal.Journal;
 
 // TODO: design pattern is complete but still in the list of tasks ?!
 // TODO: There is a bug when the game is finished and we want to start a new game (in the end dialog box)

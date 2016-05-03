@@ -1,30 +1,21 @@
 package be.ac.ulg.montefiore.group03.agilegame.listAdapter;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.view.DragEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import be.ac.ulg.montefiore.group03.agilegame.Manager;
+import be.ac.ulg.montefiore.group03.agilegame.activities.Manager;
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.Utils;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType;
-
-import static be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType.Android;
 
 //http://stackoverflow.com/questions/15832335/android-custom-row-item-for-listview
 public class Task_List_Adapter extends Array_List_Adapter {

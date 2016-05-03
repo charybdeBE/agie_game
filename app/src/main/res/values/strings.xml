@@ -1,16 +1,11 @@
 <resources>
     <string name="app_name">AgileGame</string>
-    <string name="action_settings">Settings</string>
-    <string name="quit_button_text">Quit</string>
     <string name="summary_button_text">Summary</string>
     <string name="help_button_text">Did you know ?</string>
-    <string name="calendar_button_text">Calendar</string>
     <string name="simulate_button_text">Simulate</string>
     <string name="budget_text">Budget:\n0 $</string>
-    <string name="title_activity_manager">Manager</string>
     <string name="programmers_list_title">My Team</string>
     <string name="tasks_list_title">Tasks of the project</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="recruit_programmers_button">Recruit</string>
     <string name="ok">OK</string>
     <string name="back">Back</string>
@@ -21,7 +16,6 @@
     <string name="fired">Will be fired in %1$d months </string>
     <string name="fire">Fire</string>
     <string name="hire">Hire</string>
-    <string name="budget_dynamic">Budget %1$s \n</string>
     <string name="reset_btn">Reset</string>
 
     <!--  String for events -->

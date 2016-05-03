@@ -1,24 +1,20 @@
-package be.ac.ulg.montefiore.group03.agilegame;
+package be.ac.ulg.montefiore.group03.agilegame.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
+import be.ac.ulg.montefiore.group03.agilegame.R;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Event_List_Adapter;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event;
-
 
 
 public class Calendar extends AppCompatActivity {

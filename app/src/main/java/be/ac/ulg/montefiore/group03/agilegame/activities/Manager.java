@@ -1,10 +1,8 @@
-package be.ac.ulg.montefiore.group03.agilegame;
+package be.ac.ulg.montefiore.group03.agilegame.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,14 +10,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.auth.GoogleAuthException;
-
 import java.util.ArrayList;
 
+import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
+import be.ac.ulg.montefiore.group03.agilegame.R;
+import be.ac.ulg.montefiore.group03.agilegame.Utils;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
-import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_List_Adapter;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Programmer_Manager_List_Adapter;
 import be.ac.ulg.montefiore.group03.agilegame.listAdapter.Task_List_Adapter;
 

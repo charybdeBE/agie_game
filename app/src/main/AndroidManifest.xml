@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Manager"
+            android:name=".activities.Manager"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -18,10 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Calendar" />
-        <activity android:name=".Pole_emploi" />
+        <activity android:name=".activities.Calendar" />
+        <activity android:name=".activities.Pole_emploi" />
         <activity
-            android:name=".Summary_activity"
+            android:name=".activities.Summary_activity"
             android:label="@string/title_activity_summary_activity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for

@@ -1,9 +1,7 @@
-package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events;
+package be.ac.ulg.montefiore.group03.agilegame.gamelogic.events;
 
 import java.util.Date;
-import java.util.Observable;
 
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;

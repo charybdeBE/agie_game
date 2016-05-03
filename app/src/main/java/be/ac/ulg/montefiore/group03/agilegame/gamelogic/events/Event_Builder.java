@@ -1,18 +1,14 @@
-package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events;
-
-import android.content.res.Resources;
+package be.ac.ulg.montefiore.group03.agilegame.gamelogic.events;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
 import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
-import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.App;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic_Const;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 

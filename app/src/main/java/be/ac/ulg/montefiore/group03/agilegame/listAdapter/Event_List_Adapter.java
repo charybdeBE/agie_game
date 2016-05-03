@@ -2,18 +2,14 @@ package be.ac.ulg.montefiore.group03.agilegame.listAdapter;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import be.ac.ulg.montefiore.group03.agilegame.R;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Event;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.events.Programmer_Event;
 
 /**
  * Created by charybde on 08.04.16.

@@ -1,8 +1,8 @@
-package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Journal;
+package be.ac.ulg.montefiore.group03.agilegame.gamelogic.journal;
 
 import java.util.ArrayList;
 
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 

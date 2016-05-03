@@ -1,4 +1,4 @@
-package be.ac.ulg.montefiore.group03.agilegame.gamelogic.Journal;
+package be.ac.ulg.montefiore.group03.agilegame.gamelogic.journal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,10 +6,8 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.All_Team_Event;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Feature_Event;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
-import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Salary_Event;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.events.Feature_Event;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
