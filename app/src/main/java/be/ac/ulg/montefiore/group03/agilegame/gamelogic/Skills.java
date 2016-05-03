@@ -60,4 +60,20 @@ public class Skills {
         }
         return  lvlUp;
     }
+
+    /**
+     *
+     * @param o an object  to test
+     * @return True if the object is of the same skill than o
+     */
+    public boolean equals(Object o){
+        if(o == null)
+            return false;
+        if(!(o instanceof Skills ))
+            return false;
+        if(type == ((Skills) o).getType())
+            return true;
+        return false;
+    }
+
 }

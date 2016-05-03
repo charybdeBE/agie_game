@@ -41,12 +41,14 @@ public class Programmer_Builder implements GameLogic_Const {
                 ArrayList<Interest> interest = new ArrayList<Interest>();
 
                 for(int j = 0; j < nr_skills; ++j){
-                    int level = generator.nextInt(MAX_LEVEL_START + 1);
+                    int level = generator.nextInt(MAX_LEVEL_START) + 1;
                     int skill_int = generator.nextInt(val_skill.length);
-                    skills.add(new Skills(val_skill[skill_int], level));
+                    if(!skills.contains(new Skills(val_skill[skill_int], 0)))
+                        skills.add(new Skills(val_skill[skill_int], level));
                 }
                 for(int j = 0; j < nr_int; ++j){
-                    interest.add(val_int[generator.nextInt(val_int.length)]);
+                    if(!interest.contains(val_int[generator.nextInt(val_int.length)]))
+                        interest.add(val_int[generator.nextInt(val_int.length)]);
                 }
 
                 avaiableCoders.add(new Programmer(total_nr_of_prog,skills, interest));
