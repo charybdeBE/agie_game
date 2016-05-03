@@ -23,9 +23,19 @@ public class GameOver extends DialogFragment{
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
-
         Resources res = getResources();
-        String msg = String.format(res.getString(R.string.game_over), res.getString(R.string.win), GameLogic.getInstance().getTurn(), GameLogic.getInstance().getBudget(), GameLogic.getInstance().getScore(true));
+        String result = "";
+        Boolean win;
+        if(GameLogic.getInstance().getBudget() <= 0){
+            result = res.getString(R.string.lose);
+            win = false;
+        }
+        else{
+            result = res.getString(R.string.win);
+            win = true;
+        }
+
+        String msg = String.format(res.getString(R.string.game_over), result , GameLogic.getInstance().getTurn(), GameLogic.getInstance().getBudget(), GameLogic.getInstance().getScore(win));
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.end)
                 .setMessage(msg)
