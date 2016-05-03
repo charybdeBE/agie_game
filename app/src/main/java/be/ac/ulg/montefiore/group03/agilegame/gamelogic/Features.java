@@ -7,7 +7,7 @@ import java.util.Observable;
  */
 public class Features extends Observable {
     private SkillType needed; // The skill needed to work on tat feature
-    private double monthNeeded; // The numbe rof month / Level of work
+    private double monthNeeded; // The number of month / Level of work
     private int id;
     private double delay_bonus;
 

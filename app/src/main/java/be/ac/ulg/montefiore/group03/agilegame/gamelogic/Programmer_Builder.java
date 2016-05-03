@@ -7,11 +7,8 @@ import java.util.Random;
  * Created by charybde on 18.03.16.
  * Builder and "controller" of programmers
  */
-public class Programmer_Builder {
-    private static final int MAX_PROG = 8;
-    private static final int MAX_SKILLS = 3;
-    private static final int MAX_INTEREST = 2;
-    private static final int MAX_LEVEL_START = 3;
+public class Programmer_Builder implements GameLogic_Const {
+
 
     private static Programmer_Builder instance = null;
 

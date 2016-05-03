@@ -10,6 +10,7 @@ import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.App;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic_Const;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Interest;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType;
@@ -18,11 +19,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Skills;
 /**
  * Created by charybde on 14.03.16.
  */
-public class Event_Builder {
-    public static final int MAX_EVENT = 10;
-    public static final double RANDOMNESS = 0.7;
-    public static final int NR_OF_PROG_EVENT = 9;
-    public static final int NR_OF_FEAT_EVENT = 4;
+public class Event_Builder implements GameLogic_Const {
 
     private static Event_Builder instance = null;
     private ArrayList<Integer> nrOfEvents;
@@ -65,7 +62,7 @@ public class Event_Builder {
         haveFeatEvent.set(turn,true);
 
         double coin = gen.nextDouble();
-        if(coin > RANDOMNESS)
+        if(coin > RANDOMNESS_EVENT)
             return null;
 
         int day = getADay(); //Select a day of the month
@@ -156,7 +153,7 @@ public class Event_Builder {
         nrOfEvents.set(turn, nrOfEvents.get(turn)  + 1);
 
         double coin = gen.nextDouble();
-        if(coin > RANDOMNESS)
+        if(coin > RANDOMNESS_EVENT)
             return null;
 
         int day = getADay(); //Select a day of the month

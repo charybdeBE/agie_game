@@ -6,9 +6,8 @@ import java.util.Random;
 /**
  * Created by charybde on 18.03.16.
  */
-public class App {
-    private static final int MAX_TASK_SIZE = 20;
-    private static final int INITIAL_BUDGET = 1000000;
+public class App  implements GameLogic_Const{
+
     private ArrayList<Features> tasks;
     private int init_task;
 
