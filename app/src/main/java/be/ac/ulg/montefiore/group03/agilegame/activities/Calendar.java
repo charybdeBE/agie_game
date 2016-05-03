@@ -11,6 +11,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Date;
 
+import be.ac.ulg.montefiore.group03.agilegame.DateUtil;
 import be.ac.ulg.montefiore.group03.agilegame.R;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
