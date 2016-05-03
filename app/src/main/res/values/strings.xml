@@ -14,7 +14,7 @@
     <string name="recruit_programmers_button">Recruit</string>
     <string name="ok">OK</string>
     <string name="back">Back</string>
-    <string name="salary">Salary : %1$d $\n</string>
+    <string name="salary">Salary : %1$d $</string>
     <string name="interested">Interested in : \n</string>
     <string name="skills">Skills : \n</string>
     <string name="level">%1$s level %2$d\n</string>
@@ -52,15 +52,51 @@
         <item>Pierre Wolper</item>
         <item>Bernard Boigelot</item>
         <item>Benoit Donnet</item>
+        <item>Lise Vaneukem</item>
+        <item>Jérémie Thiébaut</item>
+        <item>Nicolas Marenne</item>
+        <item>Maxime Gillet</item>
+        <item>Antoine Engelen</item>
+        <item>Florian Moyen</item>
+        <item>Thomas Jeanmoye</item>
+        <item>Romain Albert</item>
+        <item>Philippe Leroy</item>
+        <item>Tom Istaz</item>
+        <item>Pascal Leroy Jr</item>
+        <item>Romain Pitchot</item>
+        <item>Charles Albert</item>
+        <item>Mathieu Paesmans</item>
+        <item>Quentin Plumier</item>
+        <item>Stephane Rauw</item>
+        <item>Benjamin Scalais</item>
+        <item>Pascal Scholzen</item>
+        <item>Thibault Manders</item>
+        <item>Olivier Dumont</item>
+        <item>Guillaume Henrotte</item>
+        <item>Xavier Claessens</item>
+        <item>Arthur Guerin</item>
+        <item>Benoît Mattheus</item>
+        <item>Cedric Marchal</item>
+        <item>Florent Colet</item>
+        <item>Julien Olla</item>
+        <item>Etienne Archambeau</item>
+        <item>Heloise Dubois</item>
+        <item>Manon Heuveneers</item>
+        <item>Mathieu Cop</item>
+        <item>Francois Delvaux</item>
+        <item>Helene Hendrickx</item>
+        <item>Kathleen Jacquerie</item>
+        <item>Laurie Pazienza</item>
+        <item>Celine Deubel</item>
+        <item>Pauline Mosh</item>
+        <item>Tom Crasset</item>
     </string-array>
 
     <!--  String for features -->
     <string-array name="features_JAVA">
-        <item>
-            Binary Search Algorithm
-        </item>
-        <item> Back End implementation</item>
-        <item> Menu clickable</item>
+        <item>Binary Search Algorithm</item>
+        <item>Back End implementation</item>
+        <item>Menu clickable</item>
     </string-array>
     <string-array name="features_NETWORK">
         <item>Configure Server</item>
@@ -129,6 +165,5 @@
     <string name="game_over">Game Over : \n  %1$s \n Time elapsed : %2$d months \n Remaining budget : %3$d \n Final Score : %4$d</string>
     <string name="win">You have WIN !</string>
     <string name="lose">You have LOSE !</string>
-
 
 </resources>

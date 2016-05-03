@@ -8,11 +8,21 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Features;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.SkillType;
+import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 
 /**
  * Created by charybde on 26.04.16.
  */
 public class Utils {
+
+    public static String getProgrammerName(Programmer p, Context context) {
+        Resources res = context.getResources();
+        if (p.hasId()) {
+            return res.getStringArray(R.array.persons)[p.getId() % res.getStringArray(R.array.persons).length];
+        }
+
+        return p.getName();
+    }
 
     public static String getFeatureName(Features f, Context context){
         Resources res = context.getResources();
