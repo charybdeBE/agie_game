@@ -86,10 +86,10 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
 
         @Override
         public void onClick(View v) {
-
+            Resources res = context.getResources();
             if (this.p_info_builder == null) {
                 this.p_info_builder = new AlertDialog.Builder(v.getContext());
-                this.p_info_builder.setTitle(this.p.getName() + " test");
+                this.p_info_builder.setTitle(res.getStringArray(R.array.persons)[this.p.getId()]);
                 this.p_info_builder.setIcon(R.drawable.default_img);
                 this.p_info_builder.setPositiveButton(R.string.back, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
