@@ -18,12 +18,40 @@ public class Features extends Observable {
         this.delay_bonus = 1;
     }
 
-
+    /**
+     * get the skill type needed to do the feature
+     * @return the skill type
+     */
     public SkillType getNeeded() { return this.needed; }
+
+    /**
+     * get the Duration
+     * @return TODO
+     */
     public double getDuration(){ return  this.monthNeeded; }
+
+    /**
+     * Get the id of the feature
+     * @return the id of the feature
+     */
     public int getId() {return this.id; }
+
+    /**
+     * Get the bonus associated to the feature
+     * @return the bonus
+     */
     public double getBonus() {return  this.delay_bonus; }
+
+    /**
+     * set the bonus of the feature
+     * @param _b the bonus
+     */
     public void setBonus(double _b) {this.delay_bonus = _b;}
+
+    /**
+     * set the duration of the feature
+     * @param _d the duration
+     */
     public void setDuration(double _d){ this.monthNeeded = _d; }
 
     /**
@@ -67,6 +95,11 @@ public class Features extends Observable {
         return monthNeeded;
 
     }
+
+    /**
+     * TODO
+     * @param o
+     */
     public void notify(Object o){
         setChanged();
         notifyObservers(o);

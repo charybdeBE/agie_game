@@ -32,6 +32,9 @@ public class Pole_emploi extends AppCompatActivity {
         });
     }
 
+    /**
+     * Refresh the list
+     */
     public void refreshList(){
         prog.setAdapter(new Programmer_Pole_Emploi_List_Adapter(this, Programmer_Builder.getInstance().getAvaiableCoders()));
     }

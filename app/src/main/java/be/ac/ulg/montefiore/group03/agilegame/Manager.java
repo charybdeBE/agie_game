@@ -34,7 +34,7 @@ public class Manager extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /* Set up the global vieuw */
+        /* Set up the global view */
         setContentView(R.layout.activity_manager);
 
         /* Set up the calendar button listener */
@@ -126,7 +126,9 @@ public class Manager extends AppCompatActivity {
         }
 
     }
-    //Use this function to update view when come from hidden
+    /**
+     * Use this function to update view when come from hidden
+     */
     protected void onStart(){
         super.onStart();
 
@@ -157,12 +159,13 @@ public class Manager extends AppCompatActivity {
         tasks.setAdapter(new Task_List_Adapter(this, uncompletedTasks));
     }
 
+    /**
+     * refresh the programmer list
+     */
     public void refreshProgList(){
         this.team = GameLogic.getInstance().getTeam();
         this.programmers_view.setAdapter(new Programmer_Manager_List_Adapter(this, this.team));
     }
-
-    public int get_class() { return 1; }
 
 }
 

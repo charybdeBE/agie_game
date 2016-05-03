@@ -29,10 +29,17 @@ public class Programmer_Builder implements GameLogic_Const {
         return Programmer_Builder.instance;
     }
 
+    /**
+     * Get all available Coders
+     * @return the available coders in an array list
+     */
     public ArrayList<Programmer> getAvaiableCoders(){
         return avaiableCoders;
     }
 
+    /**
+     * Regenerate available coders list
+     */
     public void regenerateAvaiableCoders(){
         if(this.avaiableCoders.size() < MAX_PROG) {
             SkillType[] val_skill = SkillType.values(); //Cache the table for performencies

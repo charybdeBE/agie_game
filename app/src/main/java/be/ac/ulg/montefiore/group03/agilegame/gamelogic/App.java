@@ -27,9 +27,18 @@ public class App  implements GameLogic_Const{
         this.init_task = features;
     }
 
+    /**
+     * Get the initial budget for the application
+     * @return the initial budget of the game's application
+     */
     public int getInitialBudget() {
         return this.initialBudget;
     }
+
+    /**
+     * Get all features of the game's application
+     * @return feature of the game's application in an array list
+     */
     public ArrayList<Features> getFeatures() { return this.tasks;  }
 
     /**
@@ -47,5 +56,10 @@ public class App  implements GameLogic_Const{
         return toRet;
     }
 
+    /**
+     * get the initial tasks
+     * @return TODO ??
+     */
     public int getInitTask(){ return this.init_task;}
+
 }

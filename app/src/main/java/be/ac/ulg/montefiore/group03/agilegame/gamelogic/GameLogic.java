@@ -15,6 +15,7 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Events.Programmer_Event;
 import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Journal.Journal;
 
 // TODO: design pattern is complete but still in the list of tasks ?!
+// TODO: There is a bug when the game is finished and we want to start a new game (in the end dialog box)
 
 /**
  * Created by charybde on 08.03.16.
@@ -54,10 +55,20 @@ public class GameLogic {
         budget = application.getInitialBudget();
     }
 
+    /**
+     * Create a new game
+     * @param difficulty the difficulty of the new game
+     * TODO: Bug ? when there is no instance ? or when there is already an instance
+     */
     public static void newGame(int difficulty){
         GameLogic.single = new GameLogic(difficulty * 4);
     }
 
+    /**
+     * Get all events corresponding to a day
+     * @param _d the date
+     * @return events of the day in an array list
+     */
     public ArrayList<Programmer_Event> getEventsOfDay (Date _d) {
         ArrayList<Programmer_Event> toRet = new ArrayList<>();
         ArrayList<Programmer_Event> e = events.get(DateUtil.getFirstDayOfMonth(_d));
@@ -77,15 +88,26 @@ public class GameLogic {
         return toRet;
     }
 
+    /**
+     * Get the start date
+     * @return the start date
+     */
     public Date getStart(){
         return start;
     }
 
+    /**
+     * Get the current date
+     * @return the current date
+     */
     public Date getNow(){
         return now;
     }
 
-
+    /**
+     * Generate randomly events of the month
+     * @param _d the date
+     */
     private void generateMonthEvent(Date _d){
         int actualTurn =  12 * (DateUtil.getYear(_d) - DateUtil.getYear(start)) + DateUtil.getMonth(_d) - DateUtil.getMonth(start);
         if(actualTurn < 0) {
@@ -102,6 +124,11 @@ public class GameLogic {
 
     }
 
+    /**
+     * Get all events of the month
+     * @param _d the date
+     * @return the events of the month in an array list
+     */
     public ArrayList<Programmer_Event> getEventsOfMonth(Date _d) {
         ArrayList<Programmer_Event> e = events.get(DateUtil.getFirstDayOfMonth(_d));
         if(e == null){
