@@ -29,7 +29,6 @@ public class Manager extends AppCompatActivity {
     private ArrayList<Programmer> team = null;
     private HelpMessage help_msg = null;
 
-    //TODO: Reset button to undo all assigned task for the team
 
     //TODO save the current game
     @Override

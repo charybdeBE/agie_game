@@ -40,7 +40,6 @@ public class GameLogic {
         return GameLogic.single;
     }
 
-    //TODO clean constructor
     private GameLogic(int task){
         summary = new HashMap<>();
         Date ajd = DateUtil.dateFromString("1.3.2016","d.M.y");
@@ -112,8 +111,6 @@ public class GameLogic {
 
         return e;
     }
-
-    //TODO Manage programmers
 
     /**
      * Give the current team of programmers

@@ -13,7 +13,6 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.GameLogic;
  * Created by charybde on 29.04.16.
  */
 
-//TODO Lose the game (find a way to put a boolean here)
 public class GameOver extends DialogFragment{
 
     public GameOver(){

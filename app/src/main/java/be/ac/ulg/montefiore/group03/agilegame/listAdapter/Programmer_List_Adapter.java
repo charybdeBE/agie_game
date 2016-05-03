@@ -53,15 +53,6 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
 
             name.setText(Utils.getProgrammerName(data.get(position), context));
 
-            /*
-            if(data.get(position).hasId()){
-                name.setText(res.getStringArray(R.array.persons)[data.get(position).getId()]); //TODO: bug @modulo
-            }
-            else {
-                name.setText(data.get(position).getName());
-            }
-            */
-
             TextView salary = (TextView) vi.findViewById(R.id.programmers_salary);
             salary.setText(String.format(res.getString(R.string.salary), data.get(position).getSalary()));
 
