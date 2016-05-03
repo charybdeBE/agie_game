@@ -105,11 +105,11 @@ public class Event_Builder implements GameLogic_Const {
         id %= NR_OF_PROG_EVENT;
         switch(id){
             case 0:case 3:
-                return new Programmer_Event(id, d, Interest.Video_Game, null, 0.7);
+                return new Programmer_Event(id, d, Interest.Games, null, 0.7);
             case 1:
                 Skills s = new Skills(SkillType.JAVA);
                 s.gainXp(50);
-                return new Programmer_Event(id, d, Interest.New_Tech, s, 0.2);
+                return new Programmer_Event(id, d, Interest.Technologies, s, 0.2);
             case 2:
                 SkillType[] cache = SkillType.values();
                 Skills ss = new Skills(cache[gen.nextInt(cache.length)]); //random skill for the theme of the conference
@@ -122,7 +122,7 @@ public class Event_Builder implements GameLogic_Const {
             case 6:
                 return new All_Team_Event(id, d, 0.7);
             case 7:
-                return new Programmer_Event(id, d, Interest.New_Tech, null, 0.8);
+                return new Programmer_Event(id, d, Interest.Technologies, null, 0.8);
             case 8:
                 return new Salary_Event(id, d, 0.9, 100);
 

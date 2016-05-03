@@ -104,27 +104,27 @@ public abstract  class Programmer_List_Adapter extends Array_List_Adapter {
         public String getInfo(Programmer p) {
             Resources res = context.getResources();
 
-            String info = String.format(res.getString(R.string.salary), p.getSalary());
+            String info = String.format(res.getString(R.string.salary), p.getSalary()) + "\n";
 
             ArrayList<Interest> listOfInterest = p.getInterests();
             if (!listOfInterest.isEmpty()) {
-                info += res.getString(R.string.interested);
+                info += "\n" + res.getString(R.string.interested);
                 for (Interest i : listOfInterest) {
-                    info += i.name() + "\n";
+                    info += " - " + i.name() + "\n";
                 }
             }
 
             ArrayList<Skills> listOfSkills = p.getSkills();
             if (!listOfSkills.isEmpty()) {
-                info += res.getString(R.string.skills);
+                info += "\n" + res.getString(R.string.skills);
                 for (Skills s : listOfSkills) {
-                    info += String.format(res.getString(R.string.level), s.getType().name(), s.getLevel());
+                    info += " - " + String.format(res.getString(R.string.level), s.getType().name(), s.getLevel());
                 }
             }
 
             int fired_time = p.isFired();
             if (fired_time != -1) {
-                info += String.format(res.getString(R.string.fired), fired_time);
+                info += "\n" + String.format(res.getString(R.string.fired), fired_time);
             }
 
             return info;
