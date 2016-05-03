@@ -12,9 +12,16 @@ import be.ac.ulg.montefiore.group03.agilegame.gamelogic.Programmer;
 
 /**
  * Created by charybde on 26.04.16.
+ * Contains all methods that are utils for the application but not specific of a particular class
  */
 public class Utils {
 
+    /**
+     * Get the name of a programmer
+     * @param p the programmer we want to get the name
+     * @param context the context in which the method is called
+     * @return the name of the programmer in a string
+     */
     public static String getProgrammerName(Programmer p, Context context) {
         Resources res = context.getResources();
         if (p.hasId()) {
@@ -24,6 +31,12 @@ public class Utils {
         return p.getName();
     }
 
+    /**
+     * Get the name of a feature
+     * @param f the feature we want the name
+     * @param context the context in which the method is called
+     * @return the name of the feature in a String
+     */
     public static String getFeatureName(Features f, Context context){
         Resources res = context.getResources();
         switch(f.getNeeded()){
@@ -41,6 +54,12 @@ public class Utils {
         return "No Name";
     }
 
+    /**
+     * Get the names of skills corresponding to a particulare skill type
+     * @param type the skill type
+     * @param context the context in which the method is called
+     * @return An array of strings. Each element is the name of a skill
+     */
     public static String[] getFeatureNamesArray(SkillType type, Context context){
         Resources res = context.getResources();
         switch(type){
@@ -58,6 +77,12 @@ public class Utils {
         return null;
     }
 
+    /**
+     * Get the sprite corresponding to a skill type
+     * @param type the skill type
+     * @param context the context in which the method is called
+     * @return the drawable resource corresponding to the sprite
+     */
     public static Drawable getFeatureImg(SkillType type, Context context){
         switch(type){
             case Android :
@@ -78,4 +103,30 @@ public class Utils {
         return getFeatureImg(f.getNeeded(), context);
     }
 
+    /**
+     * From an integer representing an amount of money, get the string corresponding to it.
+     * @param money the money to convert into string
+     * @return the string corresponding to the money in the format 123,456
+     * Warning: the comma represents thousands
+     */
+    public static String getMoneyReadable(int money) {
+        String newMoney = "";
+
+        while ((money / 1000) > 0) {
+
+            String money_to_treat = "" + money % 1000;
+            /* padding 0 to the money to be treaten */
+
+            while (money_to_treat.length() < 3) {
+                money_to_treat = "0" + money_to_treat;
+            }
+
+            newMoney = "," + money_to_treat + newMoney;
+            money = money / 1000;
+        }
+
+        newMoney = money + newMoney;
+
+        return newMoney;
+    }
 }

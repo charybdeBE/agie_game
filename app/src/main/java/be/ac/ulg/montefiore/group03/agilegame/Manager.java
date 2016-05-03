@@ -29,7 +29,6 @@ public class Manager extends AppCompatActivity {
     private ArrayList<Programmer> team = null;
     private HelpMessage help_msg = null;
 
-
     //TODO save the current game
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +138,7 @@ public class Manager extends AppCompatActivity {
         /* Set up the budget */
         int newBudget = 0;
         newBudget = GameLogic.getInstance().getBudget();
-        String budget = getBudgetReadable(newBudget);
+        String budget = Utils.getMoneyReadable(newBudget);
         budget = "Budget:\n" + budget + " $";
 
         TextView budgetTextView = (TextView) findViewById(R.id.budget_textView);
@@ -161,22 +160,6 @@ public class Manager extends AppCompatActivity {
     public void refreshProgList(){
         this.team = GameLogic.getInstance().getTeam();
         this.programmers_view.setAdapter(new Programmer_Manager_List_Adapter(this, this.team));
-    }
-
-    //TODO move at an appropriate place
-    public static String getBudgetReadable(int budget) {
-        String newBudget = "";
-        while ((budget / 1000) > 0) {
-            String reste = "" + budget % 1000;
-            /* padding 0 to the reste */
-            while (reste.length() < 3) {
-                reste = "0" + reste;
-            }
-            newBudget = "," + reste + newBudget;
-            budget = budget / 1000;
-        }
-        newBudget = budget + newBudget;
-        return newBudget;
     }
 
     public int get_class() { return 1; }

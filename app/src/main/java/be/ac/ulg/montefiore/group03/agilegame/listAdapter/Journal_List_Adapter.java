@@ -93,11 +93,11 @@ public class Journal_List_Adapter extends Array_List_Adapter{
 
         if(entry instanceof Journal_entry_budget){
             name.setText(res.getString(R.string.budget));
-            String st = String.format(res.getString(R.string.start_budget), Manager.getBudgetReadable(((Journal_entry_budget) entry).getStartBudget()));
+            String st = String.format(res.getString(R.string.start_budget), Utils.getMoneyReadable(((Journal_entry_budget) entry).getStartBudget()));
             txt += st;
-            st = String.format(res.getString(R.string.salaries), Manager.getBudgetReadable(((Journal_entry_budget) entry).getDepenses()));
+            st = String.format(res.getString(R.string.salaries), Utils.getMoneyReadable(((Journal_entry_budget) entry).getDepenses()));
             txt += st;
-            st = String.format(res.getString(R.string.new_budget), Manager.getBudgetReadable(((Journal_entry_budget) entry).getNewBudget()));
+            st = String.format(res.getString(R.string.new_budget), Utils.getMoneyReadable(((Journal_entry_budget) entry).getNewBudget()));
             txt += st;
             img.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.bourse));
         }
